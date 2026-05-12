@@ -246,13 +246,13 @@ LCP 4-5s 主要因为：裸 IP（无 HTTP/2、无 CDN、无静态缓存头）+ J
 | 项 | 状态 |
 |---|---|
 | 本地未推 commit | `feat/ui-rebuild` ≥30 commits 未 push（等 Vercel envs 就绪） |
-| origin | 已配置 `https://github.com/lesliezhili/silverconnect-global.git` |
+| origin | 已配置 `https://github.com/yanhaocn2000/silverconnect.git` |
 | .env.example secret 占位符 | 全是 `your-xxx`；上线前给生产 .env |
 | 🟡 `sc-deploy.key` 私钥 | 用户说"上线后轮换" |
 
 ### 7.1 Vercel 首次部署 checklist（用户操作）
 
-**A. Vercel Dashboard → silverconnect-global → Settings → Git**：连 `lesliezhili/silverconnect-global`，Production Branch 设为 `main`，**关掉 Vercel 自带 auto-deploy**（GitHub Actions 控）
+**A. Vercel Dashboard → silverconnect-global → Settings → Git**：连 `yanhaocn2000/silverconnect`，Production Branch 设为 `main`，**关掉 Vercel 自带 auto-deploy**（GitHub Actions 控）
 
 **B. Vercel Dashboard → Settings → Environment Variables**（All Environments）：
 ```

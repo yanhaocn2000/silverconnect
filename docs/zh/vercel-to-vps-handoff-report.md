@@ -1,5 +1,7 @@
 # Vercel → VPS 迁移：交接报告
 
+> ⚠️ **历史记录**。仓库已迁到 **`github.com/yanhaocn2000/silverconnect`**（账号 `yanhaocn2000@163.com`）—— 本文档里出现的 `lesliezhili/silverconnect-global` 那个旧仓库**已删除**，下面引用它的命令仅作历史记录，别照着跑。当前权威信息见根目录 [DEPLOYMENT.md](../../DEPLOYMENT.md)。
+
 **日期**：2026-05-10
 **状态**：可逆部分已完成；剩 4 步需要用户操作（key 轮换、分支 reorg、首次部署、cron 安装）
 **完整方案**：[migrate-vercel-to-vps.md](migrate-vercel-to-vps.md)

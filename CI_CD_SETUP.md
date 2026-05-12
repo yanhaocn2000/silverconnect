@@ -65,7 +65,7 @@ Complete CI/CD pipeline, testing infrastructure, and multi-service architecture 
 
 ### Step 1: Clone & Install
 ```bash
-git clone https://github.com/lesliezhili/silverconnect-global.git
+git clone https://github.com/yanhaocn2000/silverconnect.git
 cd silverconnect-global
 npm install
 ```
@@ -338,7 +338,7 @@ docker-compose ps          # Show status
 npx vercel --prod
 
 # Push Docker image
-docker push ghcr.io/lesliezhili/silverconnect-global:latest
+docker push ghcr.io/yanhaocn2000/silverconnect:latest
 
 # Run migrations
 npm run db:migrate

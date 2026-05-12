@@ -106,7 +106,7 @@ SilverConnect Global uses a comprehensive CI/CD pipeline with automated testing,
 
 #### 3. 🐳 Docker Build & Push
 - **Registry**: GitHub Container Registry (ghcr.io)
-- **Image**: `ghcr.io/lesliezhili/silverconnect-global:latest`
+- **Image**: `ghcr.io/yanhaocn2000/silverconnect:latest`
 - **Tags**: Latest + git SHA
 
 #### 4. 🗄️ Database Migration
@@ -259,7 +259,7 @@ test('should complete full booking flow', async ({ page }) => {
 
 ```bash
 # Clone repository
-git clone https://github.com/lesliezhili/silverconnect-global.git
+git clone https://github.com/yanhaocn2000/silverconnect.git
 cd silverconnect-global
 
 # Install dependencies

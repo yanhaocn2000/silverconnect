@@ -12,7 +12,7 @@
 
 ```bash
 # Clone repository
-git clone https://github.com/lesliezhili/silverconnect-global.git
+git clone https://github.com/yanhaocn2000/silverconnect.git
 cd silverconnect-global
 
 # Install dependencies
