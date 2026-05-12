@@ -2,7 +2,7 @@
 
 > **For AI agents and new contributors**: this is the only authoritative deploy doc. All older deploy guides are in [docs/archive/deploy-2026-05-pre-vps/](docs/archive/deploy-2026-05-pre-vps/) and should not be followed.
 >
-> **Git remote**: the canonical repo is **`https://github.com/yanhaocn2000/silverconnect.git`** (account `yanhaocn2000@163.com`) — this is `origin`. The old `lesliezhili/silverconnect-global` (account `yanhaoau@gmail.com`) is deprecated; it's kept only as the `lesliezhili-archive` remote. `git push` must target `origin` — never push to `lesliezhili-archive`. Older docs (incl. `docs/UNFINISHED.md`, `docs/zh/vercel-to-vps-handoff-report.md`) that still say `origin = lesliezhili/...` are stale. Deploy itself does not go through GitHub — `scripts/deploy.ps1` SCPs straight to the VPS.
+> **Git remote**: the canonical repo is **`https://github.com/yanhaocn2000/silverconnect.git`** (account `yanhaocn2000@163.com`) — this is `origin` (the only remote). The old `lesliezhili/silverconnect-global` (account `yanhaoau@gmail.com`) is **dead — deleted by the owner** and removed from this repo's remotes; never push to, fetch from, or reference it. Older docs (incl. `docs/UNFINISHED.md`, `docs/zh/vercel-to-vps-handoff-report.md`, anything under `docs/archive/deploy-2026-05-pre-vps/`) that still say `origin = lesliezhili/...` are stale. Deploy itself does not go through GitHub — `scripts/deploy.ps1` SCPs straight to the VPS.
 
 ## TL;DR
 
