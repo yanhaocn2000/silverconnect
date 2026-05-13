@@ -6,7 +6,7 @@ const intlMiddleware = createMiddleware(routing);
 
 const SHORT_LINKS: Record<string, { pathname: string; query?: Record<string, string> }> = {
   "/login": { pathname: "/auth/login" },
-  "/p": { pathname: "/auth/login", query: { role: "provider" } },
+  "/p": { pathname: "/provider" },
 };
 
 export default function proxy(request: NextRequest): NextResponse {

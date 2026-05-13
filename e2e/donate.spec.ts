@@ -22,19 +22,18 @@ test.describe("donate page", () => {
     // form
     await expect(page.getByText("现在就帮助一位长者")).toBeVisible();
     await expect(
-      page.getByRole("button", { name: /\$50/ }),
+      page.getByRole("button", { name: "$50", exact: true }),
     ).toHaveAttribute("aria-pressed", "true");
   });
 
   test("preset toggle flips aria-pressed", async ({ page }) => {
     await page.goto("/zh-CN/donate");
-    const btn100 = page.getByRole("button", { name: "$100" });
+    const btn100 = page.getByRole("button", { name: "$100", exact: true });
     await btn100.click();
     await expect(btn100).toHaveAttribute("aria-pressed", "true");
-    await expect(page.getByRole("button", { name: "$50" })).toHaveAttribute(
-      "aria-pressed",
-      "false",
-    );
+    await expect(
+      page.getByRole("button", { name: "$50", exact: true }),
+    ).toHaveAttribute("aria-pressed", "false");
   });
 
   test("submit posts cents and locale to checkout API", async ({ page }) => {
@@ -49,8 +48,8 @@ test.describe("donate page", () => {
       });
     });
 
-    await page.getByLabel(/姓名/).fill("Test User");
-    await page.getByLabel(/邮箱/).fill("test@example.com");
+    await page.getByRole("textbox", { name: /姓名/ }).fill("Test User");
+    await page.getByRole("textbox", { name: /邮箱/ }).fill("test@example.com");
 
     const [request] = await Promise.all([
       page.waitForRequest("**/api/donate/checkout"),

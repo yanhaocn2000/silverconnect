@@ -43,7 +43,7 @@ async function main() {
       .update(users)
       .set({
         passwordHash,
-        role: "provider",
+        role: "customer",
         country: "AU",
         emailVerifiedAt: new Date(),
         name: "E2E Provider",
@@ -58,7 +58,7 @@ async function main() {
       .values({
         email: EMAIL,
         passwordHash,
-        role: "provider",
+        role: "customer",
         country: "AU",
         emailVerifiedAt: new Date(),
         name: "E2E Provider",

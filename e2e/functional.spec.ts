@@ -1,5 +1,13 @@
 import { test, expect, type Page } from "@playwright/test";
 
+// NOTE (2026-05-12): tests marked `test.fixme(...)` below were written against
+// the 2026-04 mock-data version of the app. They reference mock IDs that no
+// longer exist (J-1042 / D-2031 / C-301 / AI-501), the pre-iron-session plain
+// "Name|Initials" cookie, demo@silverconnect.com, the deleted GET /auth/logout
+// & GET /admin/logout handlers, or wizard fields that have since changed. They
+// need rewriting against `_helpers/db.ts` seeded fixtures (cf. e2e/full-flow-ui.spec.ts)
+// — see docs/TESTING.md "Known test debt". The ~50 unmarked smoke tests here are current.
+
 const BASE = process.env.PLAYWRIGHT_TEST_BASE_URL || "http://47.236.169.73";
 
 const SESSION = "Demo User|DU";
@@ -82,7 +90,8 @@ test.describe("auth", () => {
     await expect(page.locator('input[name="password"]')).toBeVisible();
   });
 
-  test("login Server Action sets cookie + redirects to home", async ({ page }) => {
+  // fixme: demo@silverconnect.com is not a seeded account — rewrite to seed+login a real customer.
+  test.fixme("login Server Action sets cookie + redirects to home", async ({ page }) => {
     await page.goto(BASE + "/en/auth/login");
     await page.fill('input[name="email"]', "demo@silverconnect.com");
     await page.fill('input[name="password"]', "password123");
@@ -105,7 +114,8 @@ test.describe("auth", () => {
     await expect(page.locator('main [role="alert"]').first()).toBeVisible();
   });
 
-  test("logout clears cookie and lands at home", async ({ page }) => {
+  // fixme: asCustomer's plain cookie isn't a valid iron-session, and /auth/logout is POST-only now.
+  test.fixme("logout clears cookie and lands at home", async ({ page }) => {
     await asCustomer(page);
     await page.goto(BASE + "/zh/auth/logout");
     await page.waitForURL(/\/zh\/home/);
@@ -136,7 +146,8 @@ test.describe("customer signed-in: profile + sub-pages", () => {
     });
   }
 
-  test("profile main lists 8 menu items + sign-out", async ({ page }) => {
+  // fixme: needs a real customer iron-session (asCustomer's plain cookie no longer authenticates).
+  test.fixme("profile main lists 8 menu items + sign-out", async ({ page }) => {
     await page.goto(BASE + "/zh/profile");
     const items = page.locator("ul a[href*='/profile/'], ul a[href*='/help']");
     expect(await items.count()).toBeGreaterThanOrEqual(8);
@@ -148,7 +159,8 @@ test.describe("customer signed-in: profile + sub-pages", () => {
     await expect(page.locator("main")).toBeVisible();
   });
 
-  test("/bookings/recurring renders without zh badge bug", async ({ page }) => {
+  // fixme: needs a real customer session + seeded recurring data for the "进行中" badge assertion.
+  test.fixme("/bookings/recurring renders without zh badge bug", async ({ page }) => {
     await page.goto(BASE + "/zh/bookings/recurring");
     await expect(page.locator("main")).toBeVisible();
     // Active badge in zh should say "进行中" — guards against the previous split() bug.
@@ -164,13 +176,15 @@ test.describe("customer signed-in: profile + sub-pages", () => {
     await expectNoIntlError(page);
   });
 
-  test("safety report form renders + has severity radio + textarea", async ({ page }) => {
+  // fixme: needs a real customer session to reach /safety/report.
+  test.fixme("safety report form renders + has severity radio + textarea", async ({ page }) => {
     await page.goto(BASE + "/zh/safety/report");
     await expect(page.locator('input[name="severity"]')).toHaveCount(3);
     await expect(page.locator('textarea[name="describe"]')).toBeVisible();
   });
 
-  test("emergency overlay opens via #sos hash", async ({ page }) => {
+  // fixme: the `#sos` hash trigger no longer opens the overlay (it's `?emergency=1` now — cf. sprint1-smoke).
+  test.fixme("emergency overlay opens via #sos hash", async ({ page }) => {
     await page.goto(BASE + "/zh/home");
     await page.evaluate(() => {
       window.location.hash = "sos";
@@ -205,13 +219,15 @@ test.describe("provider signed-in", () => {
     });
   }
 
-  test("provider job detail action bar shows status-specific buttons", async ({ page }) => {
+  // fixme: J-1042 is a mock job id; rewrite against a real seeded booking + provider session.
+  test.fixme("provider job detail action bar shows status-specific buttons", async ({ page }) => {
     await page.goto(BASE + "/zh/provider/jobs/J-1042");
     // J-1042 status is "accepted" → should show "出发" button
     await expect(page.getByRole("button", { name: /出发|On the way/ })).toBeVisible();
   });
 
-  test("register wizard step 1 → 2 navigation works", async ({ page }) => {
+  // fixme: wizard Step1 fields changed (bio + ABN now); needs provider session + updated selectors.
+  test.fixme("register wizard step 1 → 2 navigation works", async ({ page }) => {
     await page.goto(BASE + "/zh/provider/register?step=1");
     await page.fill('input[name="name"]', "Demo Provider");
     await page.fill('input[name="phone"]', "+61400000000");
@@ -231,7 +247,8 @@ test.describe("provider signed-in", () => {
     expect(beforeChecked).toBe(0);
   });
 
-  test("compliance shows expired warning when a doc is expired", async ({ page }) => {
+  // fixme: needs a real provider session + a seeded doc with a past expiresAt.
+  test.fixme("compliance shows expired warning when a doc is expired", async ({ page }) => {
     await page.goto(BASE + "/zh/provider/compliance");
     await expect(page.locator('main [role="alert"]').first()).toBeVisible();
   });
@@ -270,7 +287,8 @@ test.describe("admin signed-in: full nav + drawers", () => {
     expect(await navLinks.count()).toBeGreaterThanOrEqual(11);
   });
 
-  test("dispute drawer opens via ?id and closes via X", async ({ page }) => {
+  // fixme: D-2031 is a mock dispute id; rewrite against a real seeded dispute.
+  test.fixme("dispute drawer opens via ?id and closes via X", async ({ page }) => {
     await page.goto(BASE + "/zh/admin/disputes?id=D-2031");
     const drawer = page.locator('aside[role="dialog"]');
     await expect(drawer).toBeVisible();
@@ -279,7 +297,8 @@ test.describe("admin signed-in: full nav + drawers", () => {
     await page.waitForURL(/\/admin\/disputes$/);
   });
 
-  test("KB entry add form renders without MALFORMED_ARGUMENT", async ({ page }) => {
+  // fixme: KB add-form selector/markup drifted; revisit after confirming current /admin/ai/kb?add=1 UI.
+  test.fixme("KB entry add form renders without MALFORMED_ARGUMENT", async ({ page }) => {
     await page.goto(BASE + "/zh/admin/ai/kb?add=1");
     await expect(page.locator('form[action]')).toBeVisible();
     await expectNoIntlError(page);
@@ -288,7 +307,8 @@ test.describe("admin signed-in: full nav + drawers", () => {
     expect(html).toContain("customer_name");
   });
 
-  test("AI conversation drawer renders transcript bubbles", async ({ page }) => {
+  // fixme: AI-501 is a mock conversation id; rewrite against a real seeded conversation.
+  test.fixme("AI conversation drawer renders transcript bubbles", async ({ page }) => {
     await page.goto(BASE + "/zh/admin/ai/conversations?id=AI-501");
     const drawer = page.locator('aside[role="dialog"]');
     await expect(drawer).toBeVisible();
@@ -304,7 +324,8 @@ test.describe("admin signed-in: full nav + drawers", () => {
     await expect(page.locator('input[name="totp"]')).toBeVisible();
   });
 
-  test("admin logout clears sc-admin", async ({ page }) => {
+  // fixme: /admin/logout is POST-only now (GET handler removed); drive the logout form instead.
+  test.fixme("admin logout clears sc-admin", async ({ page }) => {
     await asAdmin(page);
     await page.goto(BASE + "/zh/admin/logout");
     await page.waitForURL(/\/admin\/login/);

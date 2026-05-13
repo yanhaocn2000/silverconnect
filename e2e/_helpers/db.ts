@@ -125,7 +125,9 @@ export async function seedApprovedProvider(opts: {
     .values({
       email: opts.email,
       passwordHash,
-      role: "provider",
+      // Every account is both consumer and provider; "is an active provider"
+      // comes from the providerProfiles row below, not users.role.
+      role: "customer",
       country: "AU",
       name: opts.name,
       emailVerifiedAt: new Date(),

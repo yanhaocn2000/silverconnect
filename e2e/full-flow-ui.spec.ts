@@ -160,11 +160,12 @@ test("provider signup + email verify (UI)", async ({ page }) => {
 
 test("seed Helen's approved provider profile via DB (skip wizard UI)", async () => {
   // Wizard UI is exercised separately; here we just need the data so the
-  // customer-side discovery has someone to find. Promote Helen from
-  // customer to provider + create the profile.
+  // customer-side discovery has someone to find. Helen stays a regular
+  // (customer-role) account; the provider profile below is what makes her
+  // an active provider.
   await db
     .update(users)
-    .set({ role: "provider", name: "Helen Li" })
+    .set({ name: "Helen Li" })
     .where(eq(users.email, HELEN));
   const [u] = await db
     .select({ id: users.id })
