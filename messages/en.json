@@ -34,6 +34,7 @@
     "messages": "Messages",
     "donate": "Donate",
     "profile": "Profile",
+    "providerMode": "Provider mode",
     "primary": "Primary navigation"
   },
   "theme": {

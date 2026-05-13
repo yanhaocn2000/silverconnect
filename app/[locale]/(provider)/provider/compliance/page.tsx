@@ -42,7 +42,6 @@ async function uploadDocAction(formData: FormData) {
 
   const me = await getCurrentUser();
   if (!me) nextRedirect(`/${locale}/auth/login`);
-  if (me.role !== "provider") nextRedirect(`/${locale}/home`);
 
   const [profile] = await db
     .select({
@@ -137,7 +136,6 @@ export default async function CompliancePage({
   setRequestLocale(locale);
   const me = await getCurrentUser();
   if (!me) nextRedirect(`/${locale}/auth/login`);
-  if (me.role !== "provider") nextRedirect(`/${locale}/home`);
   const country = await getCountry();
   const t = await getTranslations("pCompliance");
   const tProvider = await getTranslations("provider");

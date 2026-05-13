@@ -52,7 +52,6 @@ async function saveAvailabilityAction(formData: FormData) {
   const locale = String(formData.get("locale") ?? "en");
   const me = await getCurrentUser();
   if (!me) nextRedirect(`/${locale}/auth/login`);
-  if (me.role !== "provider") nextRedirect(`/${locale}/home`);
   const providerId = await ensureProviderId(me.id);
   if (!providerId) nextRedirect(`/${locale}/provider/register`);
 
@@ -112,7 +111,6 @@ export default async function ProviderAvailabilityPage({
   setRequestLocale(locale);
   const me = await getCurrentUser();
   if (!me) nextRedirect(`/${locale}/auth/login`);
-  if (me.role !== "provider") nextRedirect(`/${locale}/home`);
   const country = await getCountry();
   const t = await getTranslations("provider");
   const tCommon = await getTranslations("common");

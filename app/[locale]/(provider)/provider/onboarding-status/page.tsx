@@ -22,7 +22,7 @@ async function retryBgCheckAction(formData: FormData) {
   "use server";
   const locale = String(formData.get("locale") ?? "en");
   const me = await getCurrentUser();
-  if (!me || me.role !== "provider") nextRedirect(`/${locale}/auth/login`);
+  if (!me) nextRedirect(`/${locale}/auth/login`);
   const [p] = await db
     .select({ id: providerProfiles.id })
     .from(providerProfiles)
@@ -51,7 +51,6 @@ export default async function OnboardingStatusPage({
   setRequestLocale(locale);
   const me = await getCurrentUser();
   if (!me) nextRedirect(`/${locale}/auth/login`);
-  if (me.role !== "provider") nextRedirect(`/${locale}/home`);
   const country = await getCountry();
   const t = await getTranslations("provider");
   const tCommon = await getTranslations("common");

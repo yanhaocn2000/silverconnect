@@ -16,7 +16,7 @@ import {
   providerCategories,
   providerAvailability,
 } from "@/lib/db/schema/providers";
-import { getCurrentUser, signInUser } from "@/lib/auth/server";
+import { getCurrentUser } from "@/lib/auth/server";
 import {
   ensureConnectAccount,
   createConnectOnboardingLink,
@@ -240,17 +240,9 @@ async function finishWizard(formData: FormData) {
       updatedAt: new Date(),
     })
     .where(eq(providerProfiles.id, draft.id));
-  await db
-    .update(users)
-    .set({ role: "provider", updatedAt: new Date() })
-    .where(eq(users.id, me.id));
-  // Re-issue session with provider role so /provider/* unlocks immediately.
-  await signInUser({
-    id: me.id,
-    email: me.email,
-    name: me.name,
-    role: "provider",
-  });
+  // No role change: an account is both consumer and provider. "Is an active
+  // provider" is derived from providerProfiles.onboardingStatus === 'approved'
+  // (see lib/provider/requireActiveProvider.ts), not from users.role.
   // Kick off the background check (creates a local `pending` row now, fires
   // the vendor call in the background).
   await startBackgroundCheck(draft.id);

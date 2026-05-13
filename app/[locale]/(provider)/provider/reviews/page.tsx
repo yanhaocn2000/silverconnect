@@ -27,7 +27,7 @@ async function replyAction(formData: FormData) {
   const reviewId = String(formData.get("id") ?? "");
   const body = String(formData.get("reply") ?? "").trim();
   const me = await getCurrentUser();
-  if (!me || me.role !== "provider") nextRedirect(`/${locale}/auth/login`);
+  if (!me) nextRedirect(`/${locale}/auth/login`);
   if (!reviewId || body.length < 5) {
     nextRedirect(`/${locale}/provider/reviews?error=invalid`);
   }
@@ -67,7 +67,6 @@ export default async function ProviderReviewsPage({
   setRequestLocale(locale);
   const me = await getCurrentUser();
   if (!me) nextRedirect(`/${locale}/auth/login`);
-  if (me.role !== "provider") nextRedirect(`/${locale}/home`);
   const country = await getCountry();
   const t = await getTranslations("provider");
   const tCommon = await getTranslations("common");

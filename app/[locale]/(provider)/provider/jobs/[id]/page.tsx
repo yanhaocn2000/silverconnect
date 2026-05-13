@@ -59,7 +59,7 @@ async function jobAction(formData: FormData) {
   const action = String(formData.get("action") ?? "") as Action;
   const reason = String(formData.get("reason") ?? "");
   const me = await getCurrentUser();
-  if (!me || me.role !== "provider") {
+  if (!me) {
     nextRedirect(`/${locale}/auth/login`);
   }
   const owned = await ensureProviderJob(id, me.id);
@@ -190,7 +190,6 @@ export default async function ProviderJobDetailPage({
   setRequestLocale(locale);
   const me = await getCurrentUser();
   if (!me) nextRedirect(`/${locale}/auth/login`);
-  if (me.role !== "provider") nextRedirect(`/${locale}/home`);
   const country = await getCountry();
   const t = await getTranslations("provider");
   const tCategories = await getTranslations("categories");

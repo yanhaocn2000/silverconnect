@@ -39,7 +39,6 @@ export default async function ProviderWorkbenchPage({
   setRequestLocale(locale);
   const me = await getCurrentUser();
   if (!me) nextRedirect(`/${locale}/auth/login`);
-  if (me.role !== "provider") nextRedirect(`/${locale}/home`);
   const country = await getCountry();
   const t = await getTranslations("provider");
   const tCategories = await getTranslations("categories");

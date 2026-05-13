@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { ChevronLeft, Heart, User } from "lucide-react";
+import { ChevronLeft, Heart, User, Briefcase } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Link, useRouter } from "@/i18n/navigation";
 import { type CountryCode } from "./CountrySelector";
@@ -72,6 +72,16 @@ export function Header({
           <Heart size={16} aria-hidden className="fill-current" />
           <span className="hidden sm:inline">{tNav("donate")}</span>
         </Link>
+        {signedIn && (
+          <Link
+            href="/provider"
+            aria-label={tNav("providerMode")}
+            className="inline-flex h-12 items-center gap-1.5 rounded-md px-2.5 text-[13px] font-bold text-text-secondary transition-colors hover:bg-bg-surface-2 sm:px-4 sm:text-[14px]"
+          >
+            <Briefcase size={16} aria-hidden />
+            <span className="hidden sm:inline">{tNav("providerMode")}</span>
+          </Link>
+        )}
         <ThemeToggle />
         <CountrySwitcher value={country} />
         <LanguageChip />

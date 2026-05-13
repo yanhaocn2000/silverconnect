@@ -31,7 +31,6 @@ async function addBlockAction(formData: FormData) {
   const locale = String(formData.get("locale") ?? "en");
   const me = await getCurrentUser();
   if (!me) nextRedirect(`/${locale}/auth/login`);
-  if (me.role !== "provider") nextRedirect(`/${locale}/home`);
   const providerId = await ensureProviderId(me.id);
   if (!providerId) nextRedirect(`/${locale}/provider/register`);
 
@@ -67,7 +66,6 @@ async function deleteBlockAction(formData: FormData) {
   const id = String(formData.get("id") ?? "");
   const me = await getCurrentUser();
   if (!me) nextRedirect(`/${locale}/auth/login`);
-  if (me.role !== "provider") nextRedirect(`/${locale}/home`);
   const providerId = await ensureProviderId(me.id);
   if (!providerId) nextRedirect(`/${locale}/provider/register`);
   await db
@@ -93,7 +91,6 @@ export default async function BlockedTimesPage({
   setRequestLocale(locale);
   const me = await getCurrentUser();
   if (!me) nextRedirect(`/${locale}/auth/login`);
-  if (me.role !== "provider") nextRedirect(`/${locale}/home`);
   const country = await getCountry();
   const t = await getTranslations("pBlocked");
   const tCommon = await getTranslations("common");
