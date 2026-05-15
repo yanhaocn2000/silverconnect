@@ -51,7 +51,7 @@ export default function LocaleErrorBoundary({
         </button>
         <Link
           href="/home"
-          className="inline-flex h-14 items-center rounded-md border-[1.5px] border-border-strong bg-bg-base px-5 text-[15px] font-semibold text-text-primary"
+          className="inline-flex h-14 items-center rounded-md border-[1.5px] border-border-strong bg-bg-surface px-5 text-[15px] font-semibold text-text-primary hover:bg-bg-surface-2"
         >
           {t("home")}
         </Link>
