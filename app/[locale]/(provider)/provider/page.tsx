@@ -133,7 +133,7 @@ export default async function ProviderWorkbenchPage({
 
         <Link
           href="/provider/earnings"
-          className="mt-5 flex items-center gap-4 rounded-lg border border-border bg-bg-base p-4"
+          className="mt-5 flex items-center gap-4 rounded-lg border border-border bg-bg-surface p-4"
         >
           <span
             aria-hidden
@@ -177,7 +177,7 @@ export default async function ProviderWorkbenchPage({
           </div>
 
           {todayJobs.length === 0 ? (
-            <div className="mt-4 rounded-lg border border-dashed border-border-strong bg-bg-base p-6 text-center text-[15px] text-text-secondary">
+            <div className="mt-4 rounded-lg border border-dashed border-border-strong bg-bg-surface p-6 text-center text-[15px] text-text-secondary">
               {t("noJobsToday")}
             </div>
           ) : (
@@ -203,7 +203,7 @@ export default async function ProviderWorkbenchPage({
                   <li key={j.id}>
                     <Link
                       href={`/provider/jobs/${j.id}`}
-                      className="flex items-center gap-3 rounded-lg border border-border bg-bg-base p-4"
+                      className="flex items-center gap-3 rounded-lg border border-border bg-bg-surface p-4"
                     >
                       <ProviderAvatar
                         size={48}

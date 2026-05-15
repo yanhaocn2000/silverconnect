@@ -28,7 +28,7 @@ export function ProviderBottomTabBar() {
   return (
     <nav
       aria-label="Provider primary navigation"
-      className="fixed inset-x-0 bottom-0 z-30 grid h-[84px] grid-cols-5 border-t border-border bg-bg-base sm:hidden"
+      className="fixed inset-x-0 bottom-0 z-30 grid h-[84px] grid-cols-5 border-t border-border bg-bg-surface pb-4 md:hidden"
     >
       {TABS.map(({ key, href, Icon, exact }) => {
         const on = exact ? pathname === href : pathname?.startsWith(href);
@@ -38,11 +38,19 @@ export function ProviderBottomTabBar() {
             href={href}
             aria-current={on ? "page" : undefined}
             className={cn(
-              "flex flex-col items-center justify-center gap-1 px-1 py-2 text-[13px] font-medium",
+              "flex flex-col items-center justify-center gap-1 px-1 text-[11px] font-semibold",
               on ? "text-brand" : "text-text-tertiary"
             )}
           >
-            <Icon size={26} strokeWidth={on ? 2.5 : 2} aria-hidden />
+            <span
+              aria-hidden
+              className={cn(
+                "flex h-8 w-14 items-center justify-center rounded-pill transition-colors",
+                on && "bg-brand-soft"
+              )}
+            >
+              <Icon size={20} strokeWidth={on ? 2.5 : 2} aria-hidden />
+            </span>
             <span>{t(key)}</span>
           </Link>
         );

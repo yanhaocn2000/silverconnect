@@ -265,7 +265,7 @@ export default async function CompliancePage({
             return (
               <li
                 key={d.type}
-                className="rounded-lg border border-border bg-bg-base p-4"
+                className="rounded-lg border border-border bg-bg-surface p-4"
               >
                 <div className="flex items-start gap-3">
                   <span
@@ -358,7 +358,7 @@ export default async function CompliancePage({
                   </div>
                   <div className="flex flex-col gap-2 sm:items-stretch">
                     <Label htmlFor={`file-${d.type}`}>
-                      <span className="inline-flex h-10 w-full cursor-pointer items-center justify-center gap-1.5 rounded-md border-[1.5px] border-border-strong bg-bg-base px-3 text-[13px] font-semibold text-text-primary">
+                      <span className="inline-flex h-10 w-full cursor-pointer items-center justify-center gap-1.5 rounded-md border-[1.5px] border-border-strong bg-bg-surface px-3 text-[13px] font-semibold text-text-primary">
                         <Upload size={14} aria-hidden /> Choose file
                       </span>
                     </Label>

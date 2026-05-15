@@ -470,7 +470,7 @@ export default async function ProviderRegisterPage({
           <div className="mt-4 flex items-center gap-3">
             <Link
               href={prevHref}
-              className="inline-flex h-12 items-center rounded-md border-[1.5px] border-border-strong bg-bg-base px-5 text-[15px] font-semibold text-text-primary"
+              className="inline-flex h-12 items-center rounded-md border-[1.5px] border-border-strong bg-bg-surface px-5 text-[15px] font-semibold text-text-primary"
             >
               {tCommon("back")}
             </Link>
@@ -555,7 +555,7 @@ function Step1({
           rows={3}
           defaultValue={draft.bio}
           aria-describedby="bio-hint"
-          className="block w-full rounded-md border-[1.5px] border-border-strong bg-bg-base p-3.5 text-[16px] text-text-primary focus:border-brand focus:outline-none"
+          className="block w-full rounded-md border-[1.5px] border-border-strong bg-bg-surface p-3.5 text-[16px] text-text-primary focus:border-brand focus:outline-none"
         />
         <p id="bio-hint" className="mt-1.5 text-[13px] text-text-tertiary">
           {t("rBioHint")}
@@ -580,7 +580,7 @@ function Step2({ t, country }: { t: T; country: string }) {
       {docs.map((d) => (
         <li
           key={d.key}
-          className="flex items-center gap-3 rounded-lg border border-border bg-bg-base p-4"
+          className="flex items-center gap-3 rounded-lg border border-border bg-bg-surface p-4"
         >
           <span
             aria-hidden
@@ -596,7 +596,7 @@ function Step2({ t, country }: { t: T; country: string }) {
               </p>
             )}
           </div>
-          <label className="inline-flex h-10 items-center rounded-sm border-[1.5px] border-border-strong bg-bg-base px-3 text-[13px] font-semibold text-text-primary">
+          <label className="inline-flex h-10 items-center rounded-sm border-[1.5px] border-border-strong bg-bg-surface px-3 text-[13px] font-semibold text-text-primary">
             {t("docUpload")}
             <input type="file" accept="image/*,application/pdf" className="sr-only" />
           </label>
@@ -623,7 +623,7 @@ function Step3({
   );
   return (
     <>
-      <div className="rounded-lg border border-border bg-bg-base p-4">
+      <div className="rounded-lg border border-border bg-bg-surface p-4">
         <p className="flex items-center gap-2 text-[15px] font-bold">
           <MapPin size={18} className="text-brand" aria-hidden />
           {t("serviceArea")}
@@ -653,7 +653,7 @@ function Step3({
           {cats.map((c) => (
             <label
               key={c}
-              className="inline-flex cursor-pointer items-center gap-1 rounded-pill border-[1.5px] border-border-strong bg-bg-base px-4 py-2 text-[14px] font-semibold text-text-primary has-[:checked]:border-brand has-[:checked]:bg-brand-soft has-[:checked]:text-brand"
+              className="inline-flex cursor-pointer items-center gap-1 rounded-pill border-[1.5px] border-border-strong bg-bg-surface px-4 py-2 text-[14px] font-semibold text-text-primary has-[:checked]:border-brand has-[:checked]:bg-brand-soft has-[:checked]:text-brand"
             >
               <input
                 type="checkbox"
@@ -681,14 +681,14 @@ function Step4({ t, draft }: { t: T; draft: DraftSnapshot }) {
           return (
             <li
               key={d}
-              className="grid grid-cols-[60px_1fr] items-center gap-3 rounded-lg border border-border bg-bg-base p-3"
+              className="grid grid-cols-[60px_1fr] items-center gap-3 rounded-lg border border-border bg-bg-surface p-3"
             >
               <span className="text-[15px] font-bold">{t(DAY_KEYS[d])}</span>
               <div className="grid grid-cols-3 gap-2">
                 {SLOT_KEYS.map((s) => (
                   <label
                     key={s}
-                    className="inline-flex cursor-pointer items-center justify-center rounded-sm border-[1.5px] border-border-strong bg-bg-base px-2 py-2 text-[13px] font-semibold text-text-primary has-[:checked]:border-brand has-[:checked]:bg-brand-soft has-[:checked]:text-brand"
+                    className="inline-flex cursor-pointer items-center justify-center rounded-sm border-[1.5px] border-border-strong bg-bg-surface px-2 py-2 text-[13px] font-semibold text-text-primary has-[:checked]:border-brand has-[:checked]:bg-brand-soft has-[:checked]:text-brand"
                   >
                     <input
                       type="checkbox"
@@ -719,7 +719,7 @@ function Step5({
   connectAction: (formData: FormData) => void | Promise<void>;
 }) {
   return (
-    <div className="rounded-lg border border-border bg-bg-base p-5">
+    <div className="rounded-lg border border-border bg-bg-surface p-5">
       <p className="text-[15px] text-text-secondary">{t("stripeHint")}</p>
       {connected && (
         <p className="mt-3 inline-flex items-center gap-1.5 rounded-sm bg-success-soft px-2.5 py-1 text-[13px] font-semibold text-success">

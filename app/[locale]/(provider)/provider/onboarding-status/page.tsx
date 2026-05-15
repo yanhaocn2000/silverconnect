@@ -182,7 +182,7 @@ export default async function OnboardingStatusPage({
           <input type="hidden" name="locale" value={locale} />
           <button
             type="submit"
-            className="inline-flex h-10 items-center gap-1.5 rounded-md border-[1.5px] border-brand bg-bg-base px-4 text-[14px] font-bold text-brand"
+            className="inline-flex h-10 items-center gap-1.5 rounded-md border-[1.5px] border-brand bg-bg-surface px-4 text-[14px] font-bold text-brand"
           >
             <RotateCcw size={14} aria-hidden /> {tCommon("retry")}
           </button>
@@ -250,7 +250,7 @@ function CtaLink({ href, label }: { href: string; label: string }) {
   return (
     <Link
       href={href}
-      className="inline-flex h-10 items-center rounded-md border-[1.5px] border-brand bg-bg-base px-4 text-[14px] font-bold text-brand"
+      className="inline-flex h-10 items-center rounded-md border-[1.5px] border-brand bg-bg-surface px-4 text-[14px] font-bold text-brand"
     >
       {label}
     </Link>
