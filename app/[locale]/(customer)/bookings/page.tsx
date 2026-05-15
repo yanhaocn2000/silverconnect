@@ -185,7 +185,7 @@ export default async function BookingsListPage({
       >
         <nav
           aria-label={tNav("bookings")}
-          className="flex border-b border-border bg-bg-base"
+          className="flex border-b border-border bg-bg-surface"
         >
           {TABS.map((k) => {
             const on = k === tab;
@@ -238,7 +238,7 @@ export default async function BookingsListPage({
                 <li key={b.id}>
                   <Link
                     href={`/bookings/${b.id}`}
-                    className="flex items-start gap-3 rounded-lg border border-border bg-bg-base p-4 shadow-card"
+                    className="flex items-start gap-3 rounded-lg border border-border bg-bg-surface p-4 shadow-card"
                   >
                     <ProviderAvatar
                       size={56}
@@ -280,7 +280,7 @@ export default async function BookingsListPage({
             {seriesRows.map((s) => (
               <li
                 key={s.id}
-                className="rounded-lg border border-border bg-bg-base p-4"
+                className="rounded-lg border border-border bg-bg-surface p-4"
               >
                 <p className="text-[16px] font-bold">{s.serviceCode || "—"}</p>
                 <p className="mt-1 text-[14px] text-text-secondary">

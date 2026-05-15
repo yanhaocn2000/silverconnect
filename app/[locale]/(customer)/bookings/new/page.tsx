@@ -268,7 +268,7 @@ export default async function BookingNewPage({
                 <li key={s.id}>
                   <label
                     className={
-                      "flex cursor-pointer items-center gap-3 rounded-md border-[1.5px] bg-bg-base p-4 has-[:checked]:border-2 has-[:checked]:border-brand " +
+                      "flex cursor-pointer items-center gap-3 rounded-md border-[1.5px] bg-bg-surface p-4 has-[:checked]:border-2 has-[:checked]:border-brand " +
                       (checked ? "border-brand" : "border-border")
                     }
                   >
@@ -363,7 +363,7 @@ export default async function BookingNewPage({
           </Alert>
         )}
         {providers.length === 0 ? (
-          <p className="mt-6 rounded-md border border-border bg-bg-base p-4 text-[14px] text-text-secondary">
+          <p className="mt-6 rounded-md border border-border bg-bg-surface p-4 text-[14px] text-text-secondary">
             {isZh
               ? "目前没有可服务的提供者，请稍后再试。"
               : "No approved providers for this service yet — please try later."}
@@ -385,7 +385,7 @@ export default async function BookingNewPage({
                     <li key={p.id}>
                       <label
                         className={
-                          "flex cursor-pointer items-center gap-3 rounded-md border-[1.5px] bg-bg-base p-3.5 has-[:checked]:border-2 has-[:checked]:border-brand " +
+                          "flex cursor-pointer items-center gap-3 rounded-md border-[1.5px] bg-bg-surface p-3.5 has-[:checked]:border-2 has-[:checked]:border-brand " +
                           (checked ? "border-brand" : "border-border")
                         }
                       >
@@ -426,7 +426,7 @@ export default async function BookingNewPage({
                 type="datetime-local"
                 defaultValue={defaultDateTime}
                 required
-                className="mt-1.5 block h-touch-btn w-full rounded-md border-[1.5px] border-border bg-bg-base px-4 text-body text-text-primary focus:border-brand focus:outline-none"
+                className="mt-1.5 block h-touch-btn w-full rounded-md border-[1.5px] border-border bg-bg-surface px-4 text-body text-text-primary focus:border-brand focus:outline-none"
               />
               <p className="mt-1.5 text-[13px] text-text-tertiary">
                 {isZh
@@ -462,7 +462,7 @@ export default async function BookingNewPage({
           <Alert>{isZh ? "请选择一个地址" : "Pick an address"}</Alert>
         )}
         {myAddresses.length === 0 ? (
-          <div className="mt-6 rounded-md border border-border bg-bg-base p-4">
+          <div className="mt-6 rounded-md border border-border bg-bg-surface p-4">
             <p className="text-[14px] text-text-secondary">
               {isZh
                 ? "还没有保存地址。请先到资料里新增一个地址。"
@@ -487,7 +487,7 @@ export default async function BookingNewPage({
                   <li key={a.id}>
                     <label
                       className={
-                        "flex h-20 cursor-pointer items-center gap-3 rounded-md border-[1.5px] bg-bg-base p-4 has-[:checked]:border-2 has-[:checked]:border-brand " +
+                        "flex h-20 cursor-pointer items-center gap-3 rounded-md border-[1.5px] bg-bg-surface p-4 has-[:checked]:border-2 has-[:checked]:border-brand " +
                         (checked ? "border-brand" : "border-border")
                       }
                     >
@@ -583,7 +583,7 @@ export default async function BookingNewPage({
   return (
     <Wizard step={step} country={country} initials={me.initials}>
       <h1 className="text-[22px] font-bold">{t("step4Title")}</h1>
-      <section className="mt-4 rounded-lg border border-border bg-bg-base p-4 text-[14px]">
+      <section className="mt-4 rounded-lg border border-border bg-bg-surface p-4 text-[14px]">
         <Row
           label={isZh ? "服务" : "Service"}
           value={
@@ -622,7 +622,7 @@ export default async function BookingNewPage({
           }
         />
       </section>
-      <section className="mt-3 rounded-lg border border-border bg-bg-base p-4">
+      <section className="mt-3 rounded-lg border border-border bg-bg-surface p-4">
         <div className="flex justify-between text-[14px] text-text-secondary">
           <span>{isZh ? "服务费" : "Service"}</span>
           <span className="tabular-nums">
@@ -667,7 +667,7 @@ export default async function BookingNewPage({
             name="notes"
             rows={3}
             maxLength={500}
-            className="mt-1.5 block w-full rounded-md border-[1.5px] border-border-strong bg-bg-base p-3 text-[15px] text-text-primary focus:border-brand focus:outline-none"
+            className="mt-1.5 block w-full rounded-md border-[1.5px] border-border-strong bg-bg-surface p-3 text-[15px] text-text-primary focus:border-brand focus:outline-none"
           />
         </div>
         <Footer
@@ -722,10 +722,10 @@ function Footer({
   finalCta?: string;
 }) {
   return (
-    <div className="sticky bottom-[84px] z-10 -mx-5 mt-4 flex gap-2 border-t border-border bg-bg-base p-3 sm:bottom-0">
+    <div className="sticky bottom-[84px] z-10 -mx-5 mt-4 flex gap-2 border-t border-border bg-bg-surface p-3 sm:bottom-0">
       <Link
         href={backHref}
-        className="inline-flex h-14 flex-1 items-center justify-center rounded-md border-2 border-brand bg-bg-base text-[16px] font-semibold text-brand"
+        className="inline-flex h-14 flex-1 items-center justify-center rounded-md border-2 border-brand bg-bg-surface text-[16px] font-semibold text-brand"
       >
         {t("back")}
       </Link>

@@ -334,7 +334,7 @@ export default async function BookingDetailPage({
 
         {cancelBar}
 
-        <section className="mt-4 rounded-lg border border-border bg-bg-base p-4">
+        <section className="mt-4 rounded-lg border border-border bg-bg-surface p-4">
           <div className="flex items-center gap-3">
             <ProviderAvatar
               size={56}
@@ -399,7 +399,7 @@ export default async function BookingDetailPage({
         )}
       </main>
 
-      <div className="sticky bottom-[84px] z-10 flex gap-2 border-t border-border bg-bg-base p-3 sm:bottom-0">
+      <div className="sticky bottom-[84px] z-10 flex gap-2 border-t border-border bg-bg-surface p-3 sm:bottom-0">
         {showCancel && (
           <form action={cancelBookingAction}>
             <input type="hidden" name="locale" value={locale} />
@@ -407,7 +407,7 @@ export default async function BookingDetailPage({
             <button
               type="submit"
               aria-label={tCommon("cancel")}
-              className="inline-flex h-14 w-14 items-center justify-center rounded-md border-[1.5px] border-danger bg-bg-base text-danger"
+              className="inline-flex h-14 w-14 items-center justify-center rounded-md border-[1.5px] border-danger bg-bg-surface text-danger"
             >
               <X size={22} aria-hidden />
             </button>

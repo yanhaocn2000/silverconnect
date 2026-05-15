@@ -91,7 +91,7 @@ export default async function RecurringPage({
                   <li
                     key={s.id}
                     className={
-                      "rounded-lg border bg-bg-base p-4 " +
+                      "rounded-lg border bg-bg-surface p-4 " +
                       (s.paused ? "border-border" : "border-brand")
                     }
                   >
@@ -122,14 +122,14 @@ export default async function RecurringPage({
                     <div className="mt-3 flex flex-wrap gap-2">
                       <button
                         type="button"
-                        className="inline-flex h-10 items-center gap-1 rounded-sm border-[1.5px] border-border-strong bg-bg-base px-3 text-[13px] font-semibold text-text-primary"
+                        className="inline-flex h-10 items-center gap-1 rounded-sm border-[1.5px] border-border-strong bg-bg-surface px-3 text-[13px] font-semibold text-text-primary"
                       >
                         {s.paused ? <Play size={13} aria-hidden /> : <Pause size={13} aria-hidden />}
                         {s.paused ? t("resume") : t("pause")}
                       </button>
                       <button
                         type="button"
-                        className="ml-auto inline-flex h-10 items-center gap-1 rounded-sm border-[1.5px] border-danger bg-bg-base px-3 text-[13px] font-semibold text-danger"
+                        className="ml-auto inline-flex h-10 items-center gap-1 rounded-sm border-[1.5px] border-danger bg-bg-surface px-3 text-[13px] font-semibold text-danger"
                       >
                         <X size={13} aria-hidden />
                         {t("end")}
