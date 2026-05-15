@@ -193,7 +193,7 @@ export default async function ProvidersByCategoryPage({
               type="button"
               disabled
               title="Filter wiring is a Wave 7 polish"
-              className="inline-flex h-12 shrink-0 items-center rounded-pill border-[1.5px] border-border-strong bg-bg-base px-4 text-[15px] font-semibold text-text-primary opacity-60"
+              className="inline-flex h-10 shrink-0 items-center rounded-pill border border-border bg-bg-surface px-3.5 text-small font-semibold text-text-primary opacity-60"
             >
               {t(`filters.${k}` as Parameters<typeof t>[0])}
             </button>
@@ -201,7 +201,7 @@ export default async function ProvidersByCategoryPage({
           <button
             type="button"
             disabled
-            className="inline-flex h-12 shrink-0 items-center rounded-pill border-[1.5px] border-border-strong bg-bg-base px-3.5 text-[15px] font-semibold text-text-primary opacity-60"
+            className="inline-flex h-10 shrink-0 items-center rounded-pill border border-border bg-bg-surface px-3.5 text-small font-semibold text-text-primary opacity-60"
           >
             {t("sortRecommended")} ▾
           </button>
@@ -212,7 +212,7 @@ export default async function ProvidersByCategoryPage({
             <EmptyState title={t("noMatch")} />
           </div>
         ) : (
-          <div className="mt-4 flex flex-col gap-3">
+          <div className="mt-4 grid grid-cols-1 gap-3 md:grid-cols-2">
             {provs.map((p, i) => (
               <ProviderCard
                 key={p.id}

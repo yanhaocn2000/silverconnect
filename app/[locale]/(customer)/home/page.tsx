@@ -28,12 +28,14 @@ type CatKey =
   | "personalCare"
   | "repair";
 
-const CAT_ICON_BG: Record<string, { bg: string; fg: string; emoji: string }> = {
-  cleaning:     { bg: "#E8F0FE", fg: "#1F6FEB", emoji: "🧹" },
-  cooking:      { bg: "#FEF3C7", fg: "#F59E0B", emoji: "🍳" },
-  garden:       { bg: "#DCFCE7", fg: "#16A34A", emoji: "🌿" },
-  personalCare: { bg: "#FCE7F3", fg: "#DB2777", emoji: "🤝" },
-  repair:       { bg: "#EDE9FE", fg: "#7C3AED", emoji: "🔧" },
+// Decorative chip tones per category (each picks a different chip-*
+// token from the new design system, so dark mode flips them too).
+const CAT_TILE: Record<string, { tile: string; emoji: string }> = {
+  cleaning:     { tile: "bg-[var(--chip-blue-bg)] text-[var(--chip-blue-fg)]",   emoji: "🧹" },
+  cooking:      { tile: "bg-[var(--chip-amber-bg)] text-[var(--chip-amber-fg)]", emoji: "🍳" },
+  garden:       { tile: "bg-[var(--chip-green-bg)] text-[var(--chip-green-fg)]", emoji: "🌿" },
+  personalCare: { tile: "bg-[var(--chip-pink-bg)] text-[var(--chip-pink-fg)]",   emoji: "🤝" },
+  repair:       { tile: "bg-[var(--chip-purple-bg)] text-[var(--chip-purple-fg)]", emoji: "🔧" },
 };
 
 function priceFromHourly(country: CountryCode, baseHr: number, locale: string) {
@@ -207,143 +209,164 @@ export default async function CustomerHomePage({
       />
       <main
         id="main-content"
-        className="mx-auto w-full max-w-content pb-[120px] sm:pb-12"
+        className="mx-auto w-full max-w-content pb-[120px] md:max-w-[1080px] md:pb-12"
       >
-        <section className="flex items-start justify-between gap-3 px-5 pb-1 pt-5">
-          <div className="min-w-0 flex-1">
-            <h1 className="break-words text-[30px] font-extrabold leading-tight">
-              {t("greeting", { name: greetingName })}
-            </h1>
-            <p className="mt-1.5 text-[17px] text-text-secondary">
-              {t("prompt")}
-            </p>
-          </div>
-          <div className="-mt-2 shrink-0">
-            <S1TeaTime width={140} height={100} />
-          </div>
-        </section>
-
-        <form
-          action={`/${locale}/search`}
-          method="get"
-          className="px-5 py-3"
-        >
-          <input
-            type="search"
-            name="q"
-            placeholder={t("searchPlaceholder")}
-            aria-label={t("searchAria")}
-            className="block h-14 w-full rounded-md border-[1.5px] border-border-strong bg-bg-base px-4 text-[17px] text-text-primary placeholder:text-text-tertiary focus:border-brand focus:outline-none"
-          />
-        </form>
-
-        <section className="px-5 pt-1">
-          <h2 className="my-3 text-h3">{t("categoriesTitle")}</h2>
-          <div className="grid grid-cols-2 gap-3">
-            {catRows.map((c) => {
-              const meta = CAT_ICON_BG[c.code] ?? {
-                bg: "#E8F0FE",
-                fg: "#1F6FEB",
-                emoji: "•",
-              };
-              const hr = minHourlyByCategory.get(c.code);
-              return (
-                <Link
-                  key={c.code}
-                  href={`/services/${c.code}`}
-                  className="flex h-40 flex-col justify-between rounded-lg border border-border bg-bg-base p-4 shadow-card"
-                >
-                  <span
-                    className="flex h-14 w-14 items-center justify-center rounded-md"
-                    style={{ background: meta.bg, color: meta.fg }}
-                  >
-                    <span aria-hidden className="text-2xl">
-                      {meta.emoji}
-                    </span>
-                  </span>
-                  <span>
-                    <span className="block text-[18px] font-bold text-text-primary">
-                      {tCat(c.code as CatKey)}
-                    </span>
-                    <span className="mt-0.5 block text-[14px] text-text-secondary">
-                      {hr
-                        ? priceFromHourly(country, Math.round(hr), locale)
-                        : ""}
-                    </span>
-                  </span>
-                </Link>
-              );
-            })}
-          </div>
-        </section>
-
-        {me && recentProviders.length > 0 && (
-          <section className="pl-5 pt-5">
-            <h2 className="text-h3">{t("recentTitle")}</h2>
-            <div className="mt-3 flex gap-3 overflow-x-auto scrollbar-hide pb-1 pr-5">
-              {recentProviders.map((p) => (
-                <article
-                  key={p.providerProfileId}
-                  className="flex h-[120px] min-w-[240px] items-center gap-3 rounded-md border border-border bg-bg-base p-3.5"
-                >
-                  <ProviderAvatar size={64} hue={0} initials={p.initials} />
-                  <div className="flex-1">
-                    <p className="text-[16px] font-bold text-text-primary">
-                      {p.providerName}
-                    </p>
-                    <p className="mt-0.5 text-[13px] text-text-secondary">
-                      {p.serviceCategory
-                        ? tCat(p.serviceCategory as CatKey)
-                        : ""}
-                    </p>
-                    <Link
-                      href={`/providers/${p.providerProfileId}`}
-                      className="mt-2 inline-flex rounded-sm border-[1.5px] border-brand px-2.5 py-1 text-[13px] font-semibold text-brand"
-                    >
-                      {t("bookAgain")}
-                    </Link>
-                  </div>
-                </article>
-              ))}
+        <div className="flex flex-col gap-6 px-5 pt-5 md:gap-7 md:px-8 md:pt-8">
+          {/* Greeting illu block */}
+          <section className="flex items-center gap-4 rounded-lg bg-gradient-to-br from-brand-soft to-bg-surface p-[22px] md:p-9">
+            <div className="min-w-0 flex-1">
+              <h1 className="break-words text-[30px] font-extrabold leading-tight text-text-primary md:text-[36px]">
+                {t("greeting", { name: greetingName })}
+              </h1>
+              <p className="mt-2 text-body text-text-secondary">
+                {t("prompt")}
+              </p>
+            </div>
+            <div className="shrink-0">
+              <S1TeaTime width={120} height={90} className="md:scale-[1.4]" />
             </div>
           </section>
-        )}
 
-        {!me && (
-          <p className="px-5 pt-3 text-[15px] font-semibold text-brand">
-            {t("welcomeFirst")}
-          </p>
-        )}
-
-        {recommended.length > 0 ? (
-          <section className="px-5 pb-4 pt-3">
-            <h2 className="mb-3 text-h3">{t("recommendedTitle")}</h2>
-            <ProviderCard
-              country={country}
-              provider={{
-                id: recommended[0].id,
-                name:
-                  recommended[0].providerName ||
-                  (recommended[0].providerEmail?.split("@")[0] ?? "Provider"),
-                initials: initialsOf(
-                  recommended[0].providerName,
-                  recommended[0].providerEmail ?? "?",
-                ),
-                hue: 0,
-                rating: Number(recommended[0].ratingAvg) || 0,
-                reviews: Number(recommended[0].ratingCount) || 0,
-                distanceKm: "—",
-                pricePerHour: recommendedHourly || 0,
-                verified: recommendedVerified,
-                firstAid: false,
-              }}
+          {/* Search */}
+          <form action={`/${locale}/search`} method="get" className="flex gap-2">
+            <input
+              type="search"
+              name="q"
+              placeholder={t("searchPlaceholder")}
+              aria-label={t("searchAria")}
+              className="block h-14 flex-1 rounded-2xl border-[1.5px] border-border bg-bg-surface px-4 text-body text-text-primary placeholder:text-text-tertiary focus:border-brand focus:outline-none focus:ring-4 focus:ring-brand-soft"
             />
+          </form>
+
+          {/* Categories */}
+          <section>
+            <div className="mb-3.5 flex items-center justify-between">
+              <h2 className="text-[22px] font-extrabold leading-tight text-text-primary">
+                {t("categoriesTitle")}
+              </h2>
+              <Link
+                href="/services"
+                className="text-small font-semibold text-brand-ink hover:underline"
+              >
+                {t("seeAll")} →
+              </Link>
+            </div>
+            <div className="grid grid-cols-2 gap-3 md:grid-cols-5">
+              {catRows.map((c) => {
+                const meta = CAT_TILE[c.code] ?? { tile: "bg-bg-surface-2 text-text-secondary", emoji: "•" };
+                const hr = minHourlyByCategory.get(c.code);
+                return (
+                  <Link
+                    key={c.code}
+                    href={`/services/${c.code}`}
+                    className="group flex min-h-[132px] flex-col items-start gap-2.5 rounded-lg border border-border bg-bg-surface p-[18px] transition-shadow hover:shadow-md md:min-h-[148px]"
+                  >
+                    <span
+                      aria-hidden
+                      className={`flex h-11 w-11 items-center justify-center rounded-[14px] text-2xl ${meta.tile}`}
+                    >
+                      {meta.emoji}
+                    </span>
+                    <span className="text-body font-bold text-text-primary md:text-h3">
+                      {tCat(c.code as CatKey)}
+                    </span>
+                    {hr ? (
+                      <span className="text-small text-text-secondary">
+                        {priceFromHourly(country, Math.round(hr), locale)}
+                      </span>
+                    ) : null}
+                  </Link>
+                );
+              })}
+            </div>
           </section>
-        ) : me ? (
-          <div className="mt-4 px-5">
-            <EmptyState title={t("noRecent").replace(/^· /, "")} />
+
+          {/* Recent + Recommended side-by-side on desktop */}
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-[1.4fr_1fr] md:gap-5">
+            {me && recentProviders.length > 0 ? (
+              <section>
+                <div className="mb-3.5 flex items-center justify-between">
+                  <h2 className="text-[22px] font-extrabold text-text-primary">
+                    {t("recentTitle")}
+                  </h2>
+                  <Link
+                    href="/bookings"
+                    className="text-small font-semibold text-brand-ink hover:underline"
+                  >
+                    {t("seeAll")} →
+                  </Link>
+                </div>
+                <div className="flex gap-3 overflow-x-auto scrollbar-hide pb-1 md:flex-col md:overflow-visible">
+                  {recentProviders.map((p) => (
+                    <article
+                      key={p.providerProfileId}
+                      className="flex h-[120px] min-w-[240px] items-center gap-3 rounded-lg border border-border bg-bg-surface p-3.5 md:min-w-0"
+                    >
+                      <ProviderAvatar size={64} hue={0} initials={p.initials} />
+                      <div className="flex-1">
+                        <p className="text-body font-bold text-text-primary">
+                          {p.providerName}
+                        </p>
+                        <p className="mt-0.5 text-small text-text-secondary">
+                          {p.serviceCategory
+                            ? tCat(p.serviceCategory as CatKey)
+                            : ""}
+                        </p>
+                        <Link
+                          href={`/providers/${p.providerProfileId}`}
+                          className="mt-2 inline-flex rounded-sm border-[1.5px] border-brand px-2.5 py-1 text-[13px] font-semibold text-brand"
+                        >
+                          {t("bookAgain")}
+                        </Link>
+                      </div>
+                    </article>
+                  ))}
+                </div>
+              </section>
+            ) : null}
+
+            {recommended.length > 0 ? (
+              <section>
+                <div className="mb-3.5 flex items-center justify-between">
+                  <h2 className="text-[22px] font-extrabold text-text-primary">
+                    {t("recommendedTitle")}
+                  </h2>
+                  <span className="rounded-pill bg-brand-soft px-2.5 py-1 text-[12px] font-bold text-brand-ink">
+                    {t("editorPick")}
+                  </span>
+                </div>
+                <ProviderCard
+                  country={country}
+                  provider={{
+                    id: recommended[0].id,
+                    name:
+                      recommended[0].providerName ||
+                      (recommended[0].providerEmail?.split("@")[0] ?? "Provider"),
+                    initials: initialsOf(
+                      recommended[0].providerName,
+                      recommended[0].providerEmail ?? "?",
+                    ),
+                    hue: 0,
+                    rating: Number(recommended[0].ratingAvg) || 0,
+                    reviews: Number(recommended[0].ratingCount) || 0,
+                    distanceKm: "—",
+                    pricePerHour: recommendedHourly || 0,
+                    verified: recommendedVerified,
+                    firstAid: false,
+                  }}
+                />
+              </section>
+            ) : me ? (
+              <EmptyState title={t("noRecent").replace(/^· /, "")} />
+            ) : null}
           </div>
-        ) : null}
+
+          {!me && (
+            <p className="text-small font-semibold text-brand-ink">
+              {t("welcomeFirst")}
+            </p>
+          )}
+        </div>
       </main>
     </>
   );

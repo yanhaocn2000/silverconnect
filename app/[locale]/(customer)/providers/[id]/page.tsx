@@ -291,7 +291,7 @@ export default async function ProviderDetailPage({
         </header>
 
         {profile.bio && (
-          <section className="mt-4 rounded-md border border-border bg-bg-base p-3.5">
+          <section className="mt-4 rounded-md border border-border bg-bg-surface p-3.5">
             <p className="text-[15px] leading-relaxed text-text-secondary">
               {profile.bio}
             </p>
@@ -303,7 +303,7 @@ export default async function ProviderDetailPage({
             {t("servicesOffered")}
           </h2>
           {servicesOffered.length === 0 ? (
-            <p className="rounded-md border border-border bg-bg-base p-3.5 text-[14px] text-text-secondary">
+            <p className="rounded-md border border-border bg-bg-surface p-3.5 text-[14px] text-text-secondary">
               {isZh
                 ? "该服务者暂无可提供的服务。"
                 : "No service variants available right now."}
@@ -312,7 +312,7 @@ export default async function ProviderDetailPage({
             <ul className="flex flex-col gap-2.5">
               {servicesOffered.map((s) => (
                 <li key={s.id}>
-                  <div className="flex min-h-16 items-center gap-3 rounded-md border-[1.5px] border-border bg-bg-base p-3.5">
+                  <div className="flex min-h-16 items-center gap-3 rounded-md border-[1.5px] border-border bg-bg-surface p-3.5">
                     <span className="min-w-0 flex-1">
                       <span className="block text-[16px] font-bold">
                         {tCategories(
@@ -339,7 +339,7 @@ export default async function ProviderDetailPage({
         <section className="mt-6">
           <h2 className="mb-2.5 text-[18px] font-bold">{t("reviewsTitle")}</h2>
           {reviewCount === 0 ? (
-            <div className="rounded-md border border-border bg-bg-base p-6 text-center">
+            <div className="rounded-md border border-border bg-bg-surface p-6 text-center">
               <p className="text-[16px] font-semibold text-text-secondary">
                 {t("noReviews")}
               </p>
@@ -349,7 +349,7 @@ export default async function ProviderDetailPage({
             </div>
           ) : (
             <>
-              <div className="flex items-start gap-4 rounded-md border border-border bg-bg-base p-3.5">
+              <div className="flex items-start gap-4 rounded-md border border-border bg-bg-surface p-3.5">
                 <div className="text-[36px] font-extrabold tabular-nums text-text-primary">
                   {avgRating.toFixed(1)}
                 </div>
@@ -389,7 +389,7 @@ export default async function ProviderDetailPage({
                 {recent.map((r) => (
                   <li
                     key={r.id}
-                    className="rounded-md border border-border bg-bg-base p-3.5"
+                    className="rounded-md border border-border bg-bg-surface p-3.5"
                   >
                     <div className="flex items-start gap-2">
                       <div
@@ -440,12 +440,12 @@ export default async function ProviderDetailPage({
         </section>
       </main>
 
-      <div className="sticky bottom-[84px] z-10 flex gap-2 border-t border-border bg-bg-base p-3 sm:bottom-0">
+      <div className="sticky bottom-[84px] z-10 flex gap-2 border-t border-border bg-bg-surface p-3 sm:bottom-0">
         <button
           type="button"
           aria-label={t("messageLabel")}
           disabled
-          className="inline-flex h-14 w-14 items-center justify-center rounded-md border-[1.5px] border-border-strong bg-bg-base text-text-secondary opacity-60"
+          className="inline-flex h-14 w-14 items-center justify-center rounded-md border-[1.5px] border-border-strong bg-bg-surface text-text-secondary opacity-60"
         >
           <MessageCircle size={22} aria-hidden />
         </button>

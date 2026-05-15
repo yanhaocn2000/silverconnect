@@ -112,14 +112,14 @@ export default async function ServicesPage({
         id="main-content"
         className="mx-auto w-full max-w-content px-5 pb-[120px] pt-5 sm:pb-12"
       >
-        <h1 className="text-[28px] font-extrabold">{t("title")}</h1>
+        <h1 className="text-[28px] font-extrabold md:text-[32px]">{t("title")}</h1>
 
-        <div className="mt-4 flex h-12 items-center gap-2 rounded-md border border-border bg-bg-base px-4 text-[15px] text-text-secondary">
+        <div className="mt-4 flex items-start gap-2.5 rounded-md bg-brand-soft px-4 py-3 text-small text-brand-ink">
           <span aria-hidden>ℹ️</span>
-          <span>{tTax(country)}</span>
+          <span className="flex-1">{tTax(country)}</span>
         </div>
 
-        <ul className="mt-4 flex flex-col gap-3">
+        <ul className="mt-4 grid grid-cols-1 gap-3 md:grid-cols-2">
           {cats.map((c) => {
             const Char = CHAR_BY_CODE[c.code] ?? C3HelperMei;
             const range = ranges.get(c.code);
@@ -130,20 +130,20 @@ export default async function ServicesPage({
               <li key={c.code}>
                 <Link
                   href={`/services/${c.code}`}
-                  className="flex h-[200px] cursor-pointer items-center gap-4 rounded-lg border border-border bg-bg-base p-4"
+                  className="flex h-[200px] cursor-pointer items-center gap-4 rounded-lg border border-border bg-bg-surface p-4 transition-shadow hover:shadow-md"
                 >
                   <span className="shrink-0">
                     <Char size={120} />
                   </span>
                   <span className="min-w-0 flex-1">
-                    <span className="block text-[22px] font-bold">
+                    <span className="block text-[22px] font-bold text-text-primary">
                       {tCat(c.code as CatKey)}
                     </span>
                     <span className="mt-1.5 block text-[16px] leading-tight text-text-secondary">
                       {tCat(`${c.code}Desc` as Parameters<typeof tCat>[0])}
                     </span>
                     {range && (
-                      <span className="mt-2.5 block text-[18px] font-bold text-brand">
+                      <span className="mt-2.5 block text-[18px] font-bold text-brand-ink">
                         {fmtPriceRange(country, lo, hi)}
                         {isZh ? "/小时" : "/h"}
                       </span>

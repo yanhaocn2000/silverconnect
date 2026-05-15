@@ -80,7 +80,9 @@
     "welcomeFirst": "ようこそ — 最初のサービスを予約しましょう →",
     "noRecent": "· まだ最近の予約はありません",
     "errorLoad": "サービスを読み込めませんでした。もう一度お試しください",
-    "categoriesAll": "すべて →"
+    "categoriesAll": "すべて →",
+    "seeAll": "すべて見る",
+    "editorPick": "編集者のおすすめ"
   },
   "categories": {
     "cleaning": "清掃",

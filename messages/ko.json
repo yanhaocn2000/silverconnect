@@ -80,7 +80,9 @@
     "welcomeFirst": "환영합니다 — 첫 서비스를 예약해보세요 →",
     "noRecent": "· 최근 예약 내역이 없습니다",
     "errorLoad": "서비스를 불러오지 못했어요. 다시 시도해주세요",
-    "categoriesAll": "전체 →"
+    "categoriesAll": "전체 →",
+    "seeAll": "모두 보기",
+    "editorPick": "에디터 추천"
   },
   "categories": {
     "cleaning": "청소",

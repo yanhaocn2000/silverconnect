@@ -80,7 +80,9 @@
     "welcomeFirst": "歡迎使用 SilverConnect，先預約一次試試 →",
     "noRecent": "· 沒有最近預約紀錄",
     "errorLoad": "載入服務時發生錯誤，請重試",
-    "categoriesAll": "全部 →"
+    "categoriesAll": "全部 →",
+    "seeAll": "查看全部",
+    "editorPick": "編輯精選"
   },
   "categories": {
     "cleaning": "清潔",

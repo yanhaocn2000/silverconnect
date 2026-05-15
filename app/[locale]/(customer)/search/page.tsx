@@ -259,7 +259,7 @@ export default async function SearchPage({
             defaultValue={q}
             placeholder={t("placeholder")}
             autoComplete="off"
-            className="block h-touch-btn flex-1 rounded-md border-[1.5px] border-border-strong bg-bg-base px-4 text-body text-text-primary placeholder:text-text-placeholder focus:border-brand focus:outline-none"
+            className="block h-touch-btn flex-1 rounded-2xl border-[1.5px] border-border bg-bg-surface px-4 text-body text-text-primary placeholder:text-text-placeholder focus:border-brand focus:outline-none focus:ring-4 focus:ring-brand-soft"
           />
           <button
             type="submit"
@@ -283,7 +283,7 @@ export default async function SearchPage({
         )}
 
         {empty && (
-          <p className="mt-4 rounded-lg border border-dashed border-border-strong bg-bg-base px-5 py-8 text-center text-[14px] text-text-secondary">
+          <p className="mt-4 rounded-lg border border-dashed border-border-strong bg-bg-surface px-5 py-8 text-center text-[14px] text-text-secondary">
             {t("noResults")}
           </p>
         )}
@@ -298,7 +298,7 @@ export default async function SearchPage({
                 <li key={p.id}>
                   <Link
                     href={`/providers/${p.id}`}
-                    className="flex items-center gap-3 rounded-lg border border-border bg-bg-base p-3"
+                    className="flex items-center gap-3 rounded-lg border border-border bg-bg-surface p-3"
                   >
                     <ProviderAvatar size={44} hue={1} initials={p.initials} />
                     <div className="min-w-0 flex-1">
@@ -359,7 +359,7 @@ export default async function SearchPage({
                 <li key={a.slug}>
                   <Link
                     href={`/help/${a.slug}`}
-                    className="block rounded-lg border border-border bg-bg-base p-3 text-[14px] font-semibold text-text-primary"
+                    className="block rounded-lg border border-border bg-bg-surface p-3 text-[14px] font-semibold text-text-primary"
                   >
                     {isZh ? a.titleZh : a.titleEn}
                   </Link>

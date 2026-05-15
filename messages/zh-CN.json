@@ -80,7 +80,9 @@
     "welcomeFirst": "欢迎使用 SilverConnect，先订一次试试 →",
     "noRecent": "· 没有最近订过的记录",
     "errorLoad": "加载服务时出错，请重试",
-    "categoriesAll": "全部 →"
+    "categoriesAll": "全部 →",
+    "seeAll": "查看全部",
+    "editorPick": "编辑精选"
   },
   "categories": {
     "cleaning": "清洁",

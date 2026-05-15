@@ -80,7 +80,9 @@
     "welcomeFirst": "Welcome — book your first service →",
     "noRecent": "· No recent bookings yet",
     "errorLoad": "Couldn't load services. Try again",
-    "categoriesAll": "All →"
+    "categoriesAll": "All →",
+    "seeAll": "See all",
+    "editorPick": "Editor's pick"
   },
   "categories": {
     "cleaning": "Cleaning",
