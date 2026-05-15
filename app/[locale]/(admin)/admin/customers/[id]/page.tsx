@@ -31,6 +31,9 @@ export default async function AdminCustomerDetailPage({
   params: Promise<{ locale: string; id: string }>;
 }) {
   const { locale, id } = await params;
+  if (!/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(id)) {
+    notFound();
+  }
   setRequestLocale(locale);
   const admin = await getAdmin();
   if (!admin.signedIn) redirect({ href: "/admin/login", locale });
@@ -125,7 +128,7 @@ export default async function AdminCustomerDetailPage({
         <ChevronLeft size={16} aria-hidden /> {tC("title")}
       </Link>
 
-      <div className="mt-3 flex items-center gap-4 rounded-lg border border-border bg-bg-base p-5">
+      <div className="mt-3 flex items-center gap-4 rounded-lg border border-border bg-bg-surface p-5">
         <ProviderAvatar size={72} hue={1} initials={initials} />
         <div className="min-w-0 flex-1">
           <h1 className="text-h2">{dispName}</h1>
@@ -149,7 +152,7 @@ export default async function AdminCustomerDetailPage({
         <Stat label={tD("family")} value={String(familyCount ?? 0)} />
       </section>
 
-      <section className="mt-5 rounded-lg border border-border bg-bg-base p-4">
+      <section className="mt-5 rounded-lg border border-border bg-bg-surface p-4">
         <p className="text-[14px] font-bold">{tD("bookings")}</p>
         {recentBookings.length === 0 ? (
           <p className="mt-2 text-[13px] text-text-tertiary">—</p>
@@ -182,7 +185,7 @@ export default async function AdminCustomerDetailPage({
         )}
       </section>
 
-      <section className="mt-5 rounded-lg border border-border bg-bg-base p-4">
+      <section className="mt-5 rounded-lg border border-border bg-bg-surface p-4">
         <p className="text-[14px] font-bold">Reviews given</p>
         {recentReviews.length === 0 ? (
           <p className="mt-2 text-[13px] text-text-tertiary">—</p>
@@ -211,13 +214,13 @@ export default async function AdminCustomerDetailPage({
       </section>
 
       <section className="mt-5 grid grid-cols-2 gap-3">
-        <div className="rounded-lg border border-border bg-bg-base p-4">
+        <div className="rounded-lg border border-border bg-bg-surface p-4">
           <p className="text-[12px] text-text-tertiary">Addresses</p>
           <p className="mt-1 text-[22px] font-extrabold tabular-nums">
             {addressCount}
           </p>
         </div>
-        <div className="rounded-lg border border-border bg-bg-base p-4">
+        <div className="rounded-lg border border-border bg-bg-surface p-4">
           <p className="text-[12px] text-text-tertiary">Emergency contacts</p>
           <p className="mt-1 text-[22px] font-extrabold tabular-nums">
             {emergencyCount}
@@ -236,7 +239,7 @@ export default async function AdminCustomerDetailPage({
             key={k}
             type="button"
             disabled
-            className="inline-flex h-10 items-center rounded-md border-[1.5px] border-border bg-bg-base px-4 text-[14px] font-bold text-text-tertiary opacity-60"
+            className="inline-flex h-10 items-center rounded-md border-[1.5px] border-border bg-bg-surface px-4 text-[14px] font-bold text-text-tertiary opacity-60"
           >
             {tD(k)}
           </button>
@@ -248,7 +251,7 @@ export default async function AdminCustomerDetailPage({
 
 function Stat({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-lg border border-border bg-bg-base p-4">
+    <div className="rounded-lg border border-border bg-bg-surface p-4">
       <p className="text-[12px] text-text-tertiary">{label}</p>
       <p className="mt-1 text-[22px] font-extrabold tabular-nums">{value}</p>
     </div>

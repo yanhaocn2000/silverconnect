@@ -65,7 +65,7 @@ export default async function AdminKbPage({
   const adding = sp.add === "1";
 
   const fieldClass =
-    "block h-touch-btn w-full rounded-md border-[1.5px] border-border bg-bg-base px-4 text-body";
+    "block h-touch-btn w-full rounded-md border-[1.5px] border-border bg-bg-surface px-4 text-body";
 
   const entries = await db
     .select({
@@ -124,7 +124,7 @@ export default async function AdminKbPage({
       )}
 
       {entries.length === 0 ? (
-        <p className="mt-6 rounded-lg border border-border bg-bg-base px-5 py-8 text-center text-[14px] text-text-tertiary">
+        <p className="mt-6 rounded-lg border border-border bg-bg-surface px-5 py-8 text-center text-[14px] text-text-tertiary">
           —
         </p>
       ) : (
@@ -132,7 +132,7 @@ export default async function AdminKbPage({
           {entries.map((e) => (
             <li
               key={e.id}
-              className="rounded-lg border border-border bg-bg-base p-4"
+              className="rounded-lg border border-border bg-bg-surface p-4"
             >
               <div className="flex items-start gap-3">
                 <div className="min-w-0 flex-1">
@@ -160,7 +160,7 @@ export default async function AdminKbPage({
                   <button
                     type="submit"
                     aria-label={tA("kbDelete")}
-                    className="inline-flex h-9 w-9 items-center justify-center rounded-sm border-[1.5px] border-danger bg-bg-base text-danger"
+                    className="inline-flex h-9 w-9 items-center justify-center rounded-sm border-[1.5px] border-danger bg-bg-surface text-danger"
                   >
                     <Trash2 size={14} aria-hidden />
                   </button>
@@ -174,7 +174,7 @@ export default async function AdminKbPage({
       {adding && (
         <form
           action={saveKb}
-          className="mt-6 flex flex-col gap-4 rounded-lg border-2 border-brand bg-bg-base p-5"
+          className="mt-6 flex flex-col gap-4 rounded-lg border-2 border-brand bg-bg-surface p-5"
         >
           <input type="hidden" name="locale" value={locale} />
           <h2 className="text-h3">{tA("kbAdd")}</h2>
@@ -212,7 +212,7 @@ export default async function AdminKbPage({
               rows={5}
               required
               aria-describedby="kb-var-hint"
-              className="block w-full rounded-md border-[1.5px] border-border-strong bg-bg-base p-3 text-[14px] focus:border-brand focus:outline-none"
+              className="block w-full rounded-md border-[1.5px] border-border-strong bg-bg-surface p-3 text-[14px] focus:border-brand focus:outline-none"
             />
             <p id="kb-var-hint" className="mt-1.5 text-[12px] text-text-tertiary">
               {tA("kbVarHint")}

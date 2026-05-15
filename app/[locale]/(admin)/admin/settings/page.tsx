@@ -127,7 +127,7 @@ export default async function AdminSettingsPage({
       <form action={saveSettings} className="mt-5 flex flex-col gap-5">
         <input type="hidden" name="locale" value={locale} />
 
-        <section className="rounded-lg border border-border bg-bg-base p-4">
+        <section className="rounded-lg border border-border bg-bg-surface p-4">
           <p className="text-[15px] font-bold">{tA("feeRates")}</p>
           <p className="mt-2 text-[13px] text-text-secondary">
             {PLATFORM_FEE_PERCENT}% — global rate set via{" "}
@@ -138,7 +138,7 @@ export default async function AdminSettingsPage({
           </p>
         </section>
 
-        <section className="rounded-lg border border-border bg-bg-base p-4">
+        <section className="rounded-lg border border-border bg-bg-surface p-4">
           <Label htmlFor="cancelHours" className="text-[15px] font-bold">
             {tA("cancelWindow")}
           </Label>
@@ -155,7 +155,7 @@ export default async function AdminSettingsPage({
           </div>
         </section>
 
-        <section className="rounded-lg border border-border bg-bg-base p-4">
+        <section className="rounded-lg border border-border bg-bg-surface p-4">
           <Label htmlFor="kw" className="text-[15px] font-bold">
             {tA("emergencyKw")}
           </Label>
@@ -175,7 +175,7 @@ export default async function AdminSettingsPage({
           </p>
         </section>
 
-        <section className="rounded-lg border border-border bg-bg-base p-4">
+        <section className="rounded-lg border border-border bg-bg-surface p-4">
           <p className="text-[15px] font-bold">{tA("admins")}</p>
           {adminUsers.length === 0 ? (
             <p className="mt-3 text-[13px] text-text-tertiary">—</p>
@@ -184,7 +184,7 @@ export default async function AdminSettingsPage({
               {adminUsers.map((a) => (
                 <li
                   key={a.id}
-                  className="flex items-center justify-between rounded-md border border-border bg-bg-base px-3 py-2"
+                  className="flex items-center justify-between rounded-md border border-border bg-bg-surface px-3 py-2"
                 >
                   <span>{a.email}</span>
                   <span className="rounded-sm bg-bg-surface-2 px-2 py-0.5 text-[11px] font-bold uppercase text-text-secondary">
@@ -196,7 +196,7 @@ export default async function AdminSettingsPage({
           )}
         </section>
 
-        <section className="rounded-lg border border-border bg-bg-base p-4">
+        <section className="rounded-lg border border-border bg-bg-surface p-4">
           <p className="text-[15px] font-bold">{tA("auditLog")}</p>
           {recentAudit.length === 0 ? (
             <p className="mt-2 text-[13px] text-text-tertiary">—</p>

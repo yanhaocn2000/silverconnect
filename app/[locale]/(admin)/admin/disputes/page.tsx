@@ -337,7 +337,7 @@ export default async function AdminDisputesPage({
 
       <form
         method="get"
-        className="mt-4 flex flex-wrap items-end gap-3 rounded-md border border-border bg-bg-base p-3"
+        className="mt-4 flex flex-wrap items-end gap-3 rounded-md border border-border bg-bg-surface p-3"
       >
         <div>
           <Label htmlFor="status">{t("filterStatus")}</Label>
@@ -345,7 +345,7 @@ export default async function AdminDisputesPage({
             id="status"
             name="status"
             defaultValue={fStatus}
-            className="block h-10 rounded-md border-[1.5px] border-border bg-bg-base px-3 text-[14px]"
+            className="block h-10 rounded-md border-[1.5px] border-border bg-bg-surface px-3 text-[14px]"
           >
             {STATUS_OPTIONS.map((s) => (
               <option key={s} value={s}>
@@ -366,7 +366,7 @@ export default async function AdminDisputesPage({
         {rows.length} {rows.length === 1 ? "case" : "cases"}
       </p>
 
-      <div className="mt-2 overflow-hidden rounded-lg border border-border bg-bg-base">
+      <div className="mt-2 overflow-hidden rounded-lg border border-border bg-bg-surface">
         {rows.length === 0 ? (
           <p className="px-5 py-8 text-center text-[14px] text-text-tertiary">
             {t("emptyDisputes")}
@@ -517,9 +517,9 @@ function DisputeDrawer({
         role="dialog"
         aria-modal="true"
         aria-label={t("disputeDrawer")}
-        className="fixed inset-y-0 right-0 z-50 flex w-full max-w-[480px] flex-col overflow-y-auto border-l border-border bg-bg-base shadow-xl"
+        className="fixed inset-y-0 right-0 z-50 flex w-full max-w-[480px] flex-col overflow-y-auto border-l border-border bg-bg-surface shadow-xl"
       >
-        <header className="sticky top-0 flex items-center justify-between border-b border-border bg-bg-base px-5 py-3">
+        <header className="sticky top-0 flex items-center justify-between border-b border-border bg-bg-surface px-5 py-3">
           <p className="text-[16px] font-bold tabular-nums">
             D-{row.id.slice(0, 8)}
           </p>
@@ -565,7 +565,7 @@ function DisputeDrawer({
                 {messages.map((m) => (
                   <li
                     key={m.id}
-                    className="rounded-md border border-border bg-bg-base p-3 text-[13px]"
+                    className="rounded-md border border-border bg-bg-surface p-3 text-[13px]"
                   >
                     <p className="text-[12px] text-text-tertiary">
                       {m.authorName ?? "—"} ·{" "}
@@ -599,7 +599,7 @@ function DisputeDrawer({
                     ] as const
                   ).map((a) => (
                     <li key={a.key}>
-                      <label className="flex cursor-pointer items-center gap-3 rounded-md border-[1.5px] border-border bg-bg-base p-3 has-[:checked]:border-2 has-[:checked]:border-brand">
+                      <label className="flex cursor-pointer items-center gap-3 rounded-md border-[1.5px] border-border bg-bg-surface p-3 has-[:checked]:border-2 has-[:checked]:border-brand">
                         <input
                           type="radio"
                           name="action"
@@ -639,7 +639,7 @@ function DisputeDrawer({
                   name="note"
                   rows={3}
                   aria-describedby="note-hint"
-                  className="block w-full rounded-md border-[1.5px] border-border-strong bg-bg-base p-3 text-[14px] focus:border-brand focus:outline-none"
+                  className="block w-full rounded-md border-[1.5px] border-border-strong bg-bg-surface p-3 text-[14px] focus:border-brand focus:outline-none"
                 />
                 <p
                   id="note-hint"

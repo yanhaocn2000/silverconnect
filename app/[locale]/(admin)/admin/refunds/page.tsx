@@ -92,7 +92,7 @@ export default async function AdminRefundsPage({
         </div>
       )}
 
-      <div className="mt-5 overflow-hidden rounded-lg border border-border bg-bg-base">
+      <div className="mt-5 overflow-hidden rounded-lg border border-border bg-bg-surface">
         {rows.length === 0 ? (
           <p className="px-5 py-8 text-center text-[14px] text-text-tertiary">
             {t("refundEmpty")}

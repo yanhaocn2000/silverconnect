@@ -42,7 +42,7 @@ export default async function AdminLoginPage({
       className="flex min-h-screen items-center justify-center bg-bg-surface-2 px-5 py-12"
     >
       <PublicThemeCorner />
-      <div className="w-full max-w-[420px] rounded-lg border border-border bg-bg-base p-6 shadow-card sm:p-8">
+      <div className="w-full max-w-[420px] rounded-lg border border-border bg-bg-surface p-6 shadow-card sm:p-8">
         <div className="flex items-center gap-2">
           <span
             aria-hidden

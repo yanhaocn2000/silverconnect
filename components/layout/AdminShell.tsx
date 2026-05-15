@@ -56,7 +56,7 @@ export function AdminShell({
       {/* Top bar */}
       <header
         role="banner"
-        className="sticky top-0 z-40 flex h-14 items-center justify-between border-b border-border bg-bg-base px-4 sm:px-6"
+        className="sticky top-0 z-40 flex h-14 items-center justify-between border-b border-border bg-bg-surface px-4 sm:px-6"
       >
         <div className="flex items-center gap-3">
           <button
@@ -81,7 +81,7 @@ export function AdminShell({
             <button
               type="submit"
               aria-label={t("signOut")}
-              className="inline-flex h-10 w-10 items-center justify-center rounded-md border-[1.5px] border-border-strong bg-bg-base text-text-primary"
+              className="inline-flex h-10 w-10 items-center justify-center rounded-md border-[1.5px] border-border-strong bg-bg-surface text-text-primary"
             >
               <LogOut size={18} aria-hidden />
             </button>
@@ -103,7 +103,7 @@ export function AdminShell({
         <aside
           aria-label={t("sidebar")}
           className={cn(
-            "fixed left-0 top-14 bottom-0 z-30 w-64 shrink-0 overflow-y-auto border-r border-border bg-bg-base p-4 sm:sticky sm:top-14 sm:h-[calc(100vh-3.5rem)]",
+            "fixed left-0 top-14 bottom-0 z-30 w-64 shrink-0 overflow-y-auto border-r border-border bg-bg-surface p-4 sm:sticky sm:top-14 sm:h-[calc(100vh-3.5rem)]",
             openMobile ? "block" : "hidden sm:block"
           )}
         >

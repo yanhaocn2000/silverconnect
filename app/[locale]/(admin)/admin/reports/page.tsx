@@ -137,7 +137,7 @@ export default async function AdminReportsPage({
       )}
 
       {rows.length === 0 ? (
-        <p className="mt-6 rounded-lg border border-border bg-bg-base px-5 py-8 text-center text-[14px] text-text-tertiary">
+        <p className="mt-6 rounded-lg border border-border bg-bg-surface px-5 py-8 text-center text-[14px] text-text-tertiary">
           {tR("empty")}
         </p>
       ) : (
@@ -145,7 +145,7 @@ export default async function AdminReportsPage({
           {rows.map((r) => (
             <li
               key={r.id}
-              className="rounded-lg border border-border bg-bg-base p-4"
+              className="rounded-lg border border-border bg-bg-surface p-4"
             >
               <div className="flex items-start gap-3">
                 <span
@@ -206,7 +206,7 @@ export default async function AdminReportsPage({
                   type="submit"
                   name="action"
                   value="keep"
-                  className="inline-flex h-10 items-center rounded-sm border-[1.5px] border-border-strong bg-bg-base px-3 text-[13px] font-semibold text-text-primary"
+                  className="inline-flex h-10 items-center rounded-sm border-[1.5px] border-border-strong bg-bg-surface px-3 text-[13px] font-semibold text-text-primary"
                 >
                   {tR("actionKeep")}
                 </button>
@@ -214,7 +214,7 @@ export default async function AdminReportsPage({
                   type="submit"
                   name="action"
                   value="delete"
-                  className="inline-flex h-10 items-center rounded-sm border-[1.5px] border-danger bg-bg-base px-3 text-[13px] font-bold text-danger"
+                  className="inline-flex h-10 items-center rounded-sm border-[1.5px] border-danger bg-bg-surface px-3 text-[13px] font-bold text-danger"
                 >
                   {tR("actionDelete")}
                 </button>

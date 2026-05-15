@@ -157,7 +157,7 @@ export default async function AdminBookingsPage({
                 "inline-flex h-9 items-center rounded-pill border-[1.5px] px-3 text-[13px] font-semibold " +
                 (on
                   ? "border-brand bg-brand-soft text-brand"
-                  : "border-border-strong bg-bg-base text-text-primary")
+                  : "border-border-strong bg-bg-surface text-text-primary")
               }
             >
               {f.label}
@@ -182,7 +182,7 @@ export default async function AdminBookingsPage({
           return (
             <li
               key={b.id}
-              className="flex items-center gap-3 rounded-lg border border-border bg-bg-base p-3"
+              className="flex items-center gap-3 rounded-lg border border-border bg-bg-surface p-3"
             >
               {stuck && (
                 <span

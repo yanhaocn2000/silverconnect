@@ -197,7 +197,7 @@ export default async function AdminAnalyticsPage({
                 "inline-flex h-9 items-center rounded-pill border-[1.5px] px-3 text-[13px] font-semibold " +
                 (on
                   ? "border-brand bg-brand-soft text-brand"
-                  : "border-border-strong bg-bg-base text-text-primary")
+                  : "border-border-strong bg-bg-surface text-text-primary")
               }
             >
               {r.label}
@@ -210,7 +210,7 @@ export default async function AdminAnalyticsPage({
         {totalBookings} bookings · {totalCustomers} customers in range
       </p>
 
-      <section className="mt-4 rounded-lg border border-border bg-bg-base p-5">
+      <section className="mt-4 rounded-lg border border-border bg-bg-surface p-5">
         <p className="text-[14px] font-bold">{t("metricOrders")}</p>
         <p className="mt-0.5 text-[12px] text-text-tertiary">
           Last 7 days, by country
@@ -263,7 +263,7 @@ export default async function AdminAnalyticsPage({
         {kpiBlocks.map((k) => (
           <div
             key={k.label}
-            className="rounded-lg border border-border bg-bg-base p-4"
+            className="rounded-lg border border-border bg-bg-surface p-4"
           >
             <p className="text-[12px] text-text-tertiary">{k.label}</p>
             <p className="mt-1 text-[22px] font-extrabold tabular-nums">

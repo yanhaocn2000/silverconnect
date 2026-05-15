@@ -150,7 +150,7 @@ export default async function AdminOverviewPage({
           <div
             key={k.label}
             className={
-              "rounded-lg border bg-bg-base p-4 " +
+              "rounded-lg border bg-bg-surface p-4 " +
               (k.accent ? "border-warning" : "border-border")
             }
           >
@@ -189,7 +189,7 @@ export default async function AdminOverviewPage({
             <li key={q.href}>
               <Link
                 href={q.href}
-                className="flex items-center gap-3 rounded-lg border border-border bg-bg-base p-4 hover:border-brand"
+                className="flex items-center gap-3 rounded-lg border border-border bg-bg-surface p-4 hover:border-brand"
               >
                 <span
                   aria-hidden

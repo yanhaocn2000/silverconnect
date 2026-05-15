@@ -78,7 +78,7 @@ export default async function AdminCustomersPage({
         {customerRows.length === 1 ? "customer" : "customers"}
       </p>
 
-      <div className="mt-2 overflow-hidden rounded-lg border border-border bg-bg-base">
+      <div className="mt-2 overflow-hidden rounded-lg border border-border bg-bg-surface">
         {customerRows.length === 0 ? (
           <p className="px-5 py-8 text-center text-[14px] text-text-tertiary">
             No customers yet
@@ -193,9 +193,9 @@ function CustomerDrawer({
         role="dialog"
         aria-modal="true"
         aria-label={tC("drawer")}
-        className="fixed inset-y-0 right-0 z-50 flex w-full max-w-[480px] flex-col overflow-y-auto border-l border-border bg-bg-base shadow-xl"
+        className="fixed inset-y-0 right-0 z-50 flex w-full max-w-[480px] flex-col overflow-y-auto border-l border-border bg-bg-surface shadow-xl"
       >
-        <header className="sticky top-0 flex items-center justify-between border-b border-border bg-bg-base px-5 py-3">
+        <header className="sticky top-0 flex items-center justify-between border-b border-border bg-bg-surface px-5 py-3">
           <p className="text-[16px] font-bold">{dispName}</p>
           <Link
             href="/admin/customers"
@@ -236,7 +236,7 @@ function CustomerDrawer({
 
           <Link
             href={`/admin/customers/${item.id}`}
-            className="mt-5 inline-flex h-10 items-center rounded-sm border-[1.5px] border-brand bg-bg-base px-3 text-[13px] font-semibold text-brand"
+            className="mt-5 inline-flex h-10 items-center rounded-sm border-[1.5px] border-brand bg-bg-surface px-3 text-[13px] font-semibold text-brand"
           >
             {tC("viewFull")}
           </Link>

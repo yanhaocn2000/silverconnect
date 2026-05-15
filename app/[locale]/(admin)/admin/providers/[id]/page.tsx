@@ -372,6 +372,9 @@ export default async function AdminProviderDetailPage({
   searchParams: Promise<Record<string, string | string[] | undefined>>;
 }) {
   const { locale, id } = await params;
+  if (!/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(id)) {
+    notFound();
+  }
   const sp = await searchParams;
   setRequestLocale(locale);
   const admin = await getAdmin();
@@ -579,7 +582,7 @@ export default async function AdminProviderDetailPage({
         </div>
       )}
 
-      <header className="mt-3 flex flex-wrap items-start gap-4 rounded-lg border border-border bg-bg-base p-5">
+      <header className="mt-3 flex flex-wrap items-start gap-4 rounded-lg border border-border bg-bg-surface p-5">
         <ProviderAvatar size={72} hue={1} initials={initials} />
         <div className="min-w-0 flex-1">
           <div className="flex flex-wrap items-center gap-2">
@@ -644,7 +647,7 @@ export default async function AdminProviderDetailPage({
         <Stat label="Disputes" value={String(disputeCount[0]?.n ?? 0)} />
       </section>
 
-      <section className="mt-5 rounded-lg border border-border bg-bg-base p-5">
+      <section className="mt-5 rounded-lg border border-border bg-bg-surface p-5">
         <p className="text-[14px] font-bold">Wallet</p>
         {wallet[0] ? (
           <p className="mt-2 grid grid-cols-2 gap-4 text-[14px]">
@@ -668,7 +671,7 @@ export default async function AdminProviderDetailPage({
         )}
       </section>
 
-      <section className="mt-5 rounded-lg border border-border bg-bg-base p-5">
+      <section className="mt-5 rounded-lg border border-border bg-bg-surface p-5">
         <p className="text-[14px] font-bold">Compliance documents</p>
         {docs.length === 0 ? (
           <p className="mt-2 text-[13px] text-text-tertiary">None uploaded</p>
@@ -726,7 +729,7 @@ export default async function AdminProviderDetailPage({
                     name="note"
                     placeholder="Reason (required to reject)"
                     defaultValue=""
-                    className="h-8 min-w-0 flex-1 rounded-sm border border-border bg-bg-base px-2 text-[12px]"
+                    className="h-8 min-w-0 flex-1 rounded-sm border border-border bg-bg-surface px-2 text-[12px]"
                   />
                   <button
                     type="submit"
@@ -751,7 +754,7 @@ export default async function AdminProviderDetailPage({
         )}
       </section>
 
-      <section className="mt-5 rounded-lg border border-border bg-bg-base p-5">
+      <section className="mt-5 rounded-lg border border-border bg-bg-surface p-5">
         <p className="text-[14px] font-bold">Compliance &amp; verification</p>
         <dl className="mt-2 grid grid-cols-1 gap-x-6 gap-y-2 text-[13px] sm:grid-cols-2">
           {(row.providerCountry === "AU" || row.abn) && (
@@ -876,7 +879,7 @@ export default async function AdminProviderDetailPage({
         )}
       </section>
 
-      <section className="mt-5 rounded-lg border border-border bg-bg-base p-5">
+      <section className="mt-5 rounded-lg border border-border bg-bg-surface p-5">
         <p className="text-[14px] font-bold">Recent bookings</p>
         {recentBookings.length === 0 ? (
           <p className="mt-2 text-[13px] text-text-tertiary">—</p>
@@ -905,7 +908,7 @@ export default async function AdminProviderDetailPage({
         )}
       </section>
 
-      <section className="mt-5 rounded-lg border border-border bg-bg-base p-5">
+      <section className="mt-5 rounded-lg border border-border bg-bg-surface p-5">
         <p className="text-[14px] font-bold">Recent reviews</p>
         {recentReviews.length === 0 ? (
           <p className="mt-2 text-[13px] text-text-tertiary">—</p>
@@ -935,7 +938,7 @@ export default async function AdminProviderDetailPage({
 
       <form
         action={providerDecisionAction}
-        className="mt-6 flex flex-col gap-4 rounded-lg border border-border bg-bg-base p-5"
+        className="mt-6 flex flex-col gap-4 rounded-lg border border-border bg-bg-surface p-5"
       >
         <input type="hidden" name="locale" value={locale} />
         <input type="hidden" name="id" value={row.id} />
@@ -956,7 +959,7 @@ export default async function AdminProviderDetailPage({
               .filter((a) => a.show)
               .map((a, i) => (
                 <li key={a.key}>
-                  <label className="flex cursor-pointer items-center gap-3 rounded-md border-[1.5px] border-border bg-bg-base p-3 has-[:checked]:border-2 has-[:checked]:border-brand">
+                  <label className="flex cursor-pointer items-center gap-3 rounded-md border-[1.5px] border-border bg-bg-surface p-3 has-[:checked]:border-2 has-[:checked]:border-brand">
                     <input
                       type="radio"
                       name="action"
@@ -982,7 +985,7 @@ export default async function AdminProviderDetailPage({
             id="note"
             name="note"
             rows={3}
-            className="block w-full rounded-md border-[1.5px] border-border-strong bg-bg-base p-3 text-[14px] focus:border-brand focus:outline-none"
+            className="block w-full rounded-md border-[1.5px] border-border-strong bg-bg-surface p-3 text-[14px] focus:border-brand focus:outline-none"
           />
         </div>
 
@@ -1004,7 +1007,7 @@ function Stat({
   sub?: string;
 }) {
   return (
-    <div className="rounded-lg border border-border bg-bg-base p-4">
+    <div className="rounded-lg border border-border bg-bg-surface p-4">
       <p className="text-[12px] text-text-tertiary">{label}</p>
       <p className="mt-1 text-[22px] font-extrabold tabular-nums">{value}</p>
       {sub && (

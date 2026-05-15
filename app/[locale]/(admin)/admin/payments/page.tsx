@@ -67,14 +67,14 @@ export default async function AdminPaymentsPage({
           <button
             type="button"
             disabled
-            className="inline-flex h-10 items-center gap-2 rounded-md border-[1.5px] border-border-strong bg-bg-base px-3 text-[13px] font-semibold text-text-tertiary opacity-60"
+            className="inline-flex h-10 items-center gap-2 rounded-md border-[1.5px] border-border-strong bg-bg-surface px-3 text-[13px] font-semibold text-text-tertiary opacity-60"
           >
             <Download size={14} aria-hidden /> {t("exportCsv")}
           </button>
           <button
             type="button"
             disabled
-            className="inline-flex h-10 items-center gap-2 rounded-md border-[1.5px] border-border-strong bg-bg-base px-3 text-[13px] font-semibold text-text-tertiary opacity-60"
+            className="inline-flex h-10 items-center gap-2 rounded-md border-[1.5px] border-border-strong bg-bg-surface px-3 text-[13px] font-semibold text-text-tertiary opacity-60"
           >
             <Download size={14} aria-hidden /> {t("exportPdf")}
           </button>
@@ -85,7 +85,7 @@ export default async function AdminPaymentsPage({
         {cards.map((c) => (
           <div
             key={c.label}
-            className="rounded-lg border border-border bg-bg-base p-4"
+            className="rounded-lg border border-border bg-bg-surface p-4"
           >
             <p className="text-[12px] text-text-tertiary">{c.label}</p>
             <p className="mt-1 text-[22px] font-extrabold tabular-nums">
@@ -95,7 +95,7 @@ export default async function AdminPaymentsPage({
         ))}
       </section>
 
-      <section className="mt-5 rounded-lg border border-border bg-bg-base p-4">
+      <section className="mt-5 rounded-lg border border-border bg-bg-surface p-4">
         <p className="text-[14px] font-bold">{t("platformFee")}</p>
         <p className="mt-1 text-[13px] text-text-secondary">
           {PLATFORM_FEE_PERCENT}% — set via{" "}
@@ -112,7 +112,7 @@ export default async function AdminPaymentsPage({
         </p>
       </section>
 
-      <section className="mt-5 rounded-lg border border-border bg-bg-base p-4">
+      <section className="mt-5 rounded-lg border border-border bg-bg-surface p-4">
         <p className="text-[14px] font-bold">{t("suspicious")}</p>
         <p className="mt-2 text-[13px] text-text-tertiary">{t("none")}</p>
       </section>

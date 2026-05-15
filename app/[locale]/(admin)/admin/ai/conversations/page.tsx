@@ -88,7 +88,7 @@ export default async function AdminAiConversationsPage({
       <h1 className="text-h2">{tA("convTitle")}</h1>
       <p className="mt-1 text-[15px] text-text-secondary">{tA("convSub")}</p>
 
-      <div className="mt-5 overflow-hidden rounded-lg border border-border bg-bg-base">
+      <div className="mt-5 overflow-hidden rounded-lg border border-border bg-bg-surface">
         <table className="w-full text-left text-[13px]">
           <thead className="border-b border-border bg-bg-surface-2 text-text-secondary">
             <tr>
@@ -173,9 +173,9 @@ export default async function AdminAiConversationsPage({
             role="dialog"
             aria-modal="true"
             aria-label={tA("drawer")}
-            className="fixed inset-y-0 right-0 z-50 flex w-full max-w-[480px] flex-col overflow-y-auto border-l border-border bg-bg-base shadow-xl"
+            className="fixed inset-y-0 right-0 z-50 flex w-full max-w-[480px] flex-col overflow-y-auto border-l border-border bg-bg-surface shadow-xl"
           >
-            <header className="sticky top-0 flex items-center justify-between border-b border-border bg-bg-base px-5 py-3">
+            <header className="sticky top-0 flex items-center justify-between border-b border-border bg-bg-surface px-5 py-3">
               <p className="text-[16px] font-bold tabular-nums">
                 {drawer.id.slice(0, 8)}
               </p>

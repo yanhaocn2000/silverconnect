@@ -219,6 +219,9 @@ export default async function AdminDisputeDetailPage({
   searchParams: Promise<Record<string, string | string[] | undefined>>;
 }) {
   const { locale, id } = await params;
+  if (!/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(id)) {
+    notFound();
+  }
   const sp = await searchParams;
   setRequestLocale(locale);
   const admin = await getAdmin();
@@ -343,21 +346,21 @@ export default async function AdminDisputeDetailPage({
       )}
 
       <section className="mt-5 grid grid-cols-1 gap-3 md:grid-cols-2">
-        <div className="rounded-lg border border-border bg-bg-base p-4">
+        <div className="rounded-lg border border-border bg-bg-surface p-4">
           <p className="text-[12px] text-text-tertiary">{t("colCustomer")}</p>
           <p className="mt-0.5 text-[15px] font-bold">{customerName}</p>
           {customer && (
             <p className="text-[12px] text-text-tertiary">{customer.email}</p>
           )}
         </div>
-        <div className="rounded-lg border border-border bg-bg-base p-4">
+        <div className="rounded-lg border border-border bg-bg-surface p-4">
           <p className="text-[12px] text-text-tertiary">{t("colProvider")}</p>
           <p className="mt-0.5 text-[15px] font-bold">{providerName}</p>
           {provider && (
             <p className="text-[12px] text-text-tertiary">{provider.email}</p>
           )}
         </div>
-        <div className="rounded-lg border border-border bg-bg-base p-4">
+        <div className="rounded-lg border border-border bg-bg-surface p-4">
           <p className="text-[12px] text-text-tertiary">Booking</p>
           <Link
             href={`/admin/bookings?id=${row.bookingId}`}
@@ -369,7 +372,7 @@ export default async function AdminDisputeDetailPage({
             {row.bookingStatus}
           </p>
         </div>
-        <div className="rounded-lg border border-border bg-bg-base p-4">
+        <div className="rounded-lg border border-border bg-bg-surface p-4">
           <p className="text-[12px] text-text-tertiary">{t("colAmount")}</p>
           <p className="mt-0.5 text-[15px] font-bold tabular-nums">
             {row.bookingCurrency} {total.toFixed(2)}
@@ -382,7 +385,7 @@ export default async function AdminDisputeDetailPage({
         </div>
       </section>
 
-      <section className="mt-5 rounded-lg border border-border bg-bg-base p-5">
+      <section className="mt-5 rounded-lg border border-border bg-bg-surface p-5">
         <p className="text-[14px] font-bold">{t("disputeTimeline")}</p>
         <p className="mt-2 whitespace-pre-line rounded-md border border-border bg-bg-surface-2 p-3 text-[14px] text-text-primary">
           {row.reason}
@@ -390,7 +393,7 @@ export default async function AdminDisputeDetailPage({
       </section>
 
       {messages.length > 0 && (
-        <section className="mt-5 rounded-lg border border-border bg-bg-base p-5">
+        <section className="mt-5 rounded-lg border border-border bg-bg-surface p-5">
           <p className="text-[14px] font-bold">Conversation</p>
           <ul className="mt-2 flex flex-col gap-2">
             {messages.map((m) => (
@@ -398,7 +401,7 @@ export default async function AdminDisputeDetailPage({
                 key={m.id}
                 className={
                   "rounded-md border border-border p-3 text-[13px] " +
-                  (m.isAdminOnly ? "bg-warning-soft" : "bg-bg-base")
+                  (m.isAdminOnly ? "bg-warning-soft" : "bg-bg-surface")
                 }
               >
                 <p className="text-[12px] text-text-tertiary">
@@ -415,7 +418,7 @@ export default async function AdminDisputeDetailPage({
       )}
 
       {evidence.length > 0 && (
-        <section className="mt-5 rounded-lg border border-border bg-bg-base p-5">
+        <section className="mt-5 rounded-lg border border-border bg-bg-surface p-5">
           <p className="text-[14px] font-bold">Evidence</p>
           <ul className="mt-2 flex flex-col gap-2 text-[13px]">
             {evidence.map((e) => (
@@ -449,7 +452,7 @@ export default async function AdminDisputeDetailPage({
       {!isClosed ? (
         <form
           action={disputeDecisionAction}
-          className="mt-6 flex flex-col gap-4 rounded-lg border border-border bg-bg-base p-5"
+          className="mt-6 flex flex-col gap-4 rounded-lg border border-border bg-bg-surface p-5"
         >
           <input type="hidden" name="locale" value={locale} />
           <input type="hidden" name="id" value={row.id} />
@@ -467,7 +470,7 @@ export default async function AdminDisputeDetailPage({
                 ] as const
               ).map((a) => (
                 <li key={a.key}>
-                  <label className="flex cursor-pointer items-center gap-3 rounded-md border-[1.5px] border-border bg-bg-base p-3 has-[:checked]:border-2 has-[:checked]:border-brand">
+                  <label className="flex cursor-pointer items-center gap-3 rounded-md border-[1.5px] border-border bg-bg-surface p-3 has-[:checked]:border-2 has-[:checked]:border-brand">
                     <input
                       type="radio"
                       name="action"
@@ -507,7 +510,7 @@ export default async function AdminDisputeDetailPage({
               name="note"
               rows={3}
               aria-describedby="note-hint"
-              className="block w-full rounded-md border-[1.5px] border-border-strong bg-bg-base p-3 text-[14px] focus:border-brand focus:outline-none"
+              className="block w-full rounded-md border-[1.5px] border-border-strong bg-bg-surface p-3 text-[14px] focus:border-brand focus:outline-none"
             />
             <p
               id="note-hint"

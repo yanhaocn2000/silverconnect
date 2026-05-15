@@ -86,6 +86,9 @@ export default async function AdminSafetyDetailPage({
   searchParams: Promise<Record<string, string | string[] | undefined>>;
 }) {
   const { locale, id } = await params;
+  if (!/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(id)) {
+    notFound();
+  }
   const sp = await searchParams;
   setRequestLocale(locale);
   const admin = await getAdmin();
@@ -163,14 +166,14 @@ export default async function AdminSafetyDetailPage({
       )}
 
       <section className="mt-5 grid grid-cols-1 gap-3 md:grid-cols-2">
-        <div className="rounded-lg border border-border bg-bg-base p-4">
+        <div className="rounded-lg border border-border bg-bg-surface p-4">
           <p className="text-[12px] text-text-tertiary">{t("colReporter")}</p>
           <p className="mt-0.5 text-[15px] font-bold">{reporterName}</p>
           {reporter && (
             <p className="text-[12px] text-text-tertiary">{reporter.email}</p>
           )}
         </div>
-        <div className="rounded-lg border border-border bg-bg-base p-4">
+        <div className="rounded-lg border border-border bg-bg-surface p-4">
           <p className="text-[12px] text-text-tertiary">Booking</p>
           {row.bookingId ? (
             <Link
@@ -183,7 +186,7 @@ export default async function AdminSafetyDetailPage({
             <p className="mt-0.5 text-[15px] text-text-tertiary">—</p>
           )}
         </div>
-        <div className="rounded-lg border border-border bg-bg-base p-4">
+        <div className="rounded-lg border border-border bg-bg-surface p-4">
           <p className="text-[12px] text-text-tertiary">{t("colSubmitted")}</p>
           <p className="mt-0.5 text-[14px] font-semibold tabular-nums">
             {row.createdAt.toLocaleString(
@@ -191,7 +194,7 @@ export default async function AdminSafetyDetailPage({
             )}
           </p>
         </div>
-        <div className="rounded-lg border border-border bg-bg-base p-4">
+        <div className="rounded-lg border border-border bg-bg-surface p-4">
           <p className="text-[12px] text-text-tertiary">{t("colStatus")}</p>
           {reviewed ? (
             <p className="mt-0.5 text-[14px] font-semibold text-success">
@@ -206,7 +209,7 @@ export default async function AdminSafetyDetailPage({
         </div>
       </section>
 
-      <section className="mt-5 rounded-lg border border-border bg-bg-base p-5">
+      <section className="mt-5 rounded-lg border border-border bg-bg-surface p-5">
         <p className="text-[14px] font-bold">{t("disputeTimeline")}</p>
         <p className="mt-2 whitespace-pre-line rounded-md border border-border bg-bg-surface-2 p-3 text-[14px]">
           {row.body}
@@ -214,7 +217,7 @@ export default async function AdminSafetyDetailPage({
       </section>
 
       {row.photos && row.photos.length > 0 && (
-        <section className="mt-5 rounded-lg border border-border bg-bg-base p-5">
+        <section className="mt-5 rounded-lg border border-border bg-bg-surface p-5">
           <p className="text-[14px] font-bold">Photos</p>
           <ul className="mt-2 grid grid-cols-2 gap-2 sm:grid-cols-3">
             {row.photos.map((url, i) => (
@@ -239,7 +242,7 @@ export default async function AdminSafetyDetailPage({
       {!reviewed ? (
         <form
           action={safetyDecisionAction}
-          className="mt-6 flex flex-col gap-4 rounded-lg border border-border bg-bg-base p-5"
+          className="mt-6 flex flex-col gap-4 rounded-lg border border-border bg-bg-surface p-5"
         >
           <input type="hidden" name="locale" value={locale} />
           <input type="hidden" name="id" value={row.id} />
@@ -258,7 +261,7 @@ export default async function AdminSafetyDetailPage({
                 ] as const
               ).map((a) => (
                 <li key={a.key}>
-                  <label className="flex cursor-pointer items-center gap-3 rounded-md border-[1.5px] border-border bg-bg-base p-3 has-[:checked]:border-2 has-[:checked]:border-brand">
+                  <label className="flex cursor-pointer items-center gap-3 rounded-md border-[1.5px] border-border bg-bg-surface p-3 has-[:checked]:border-2 has-[:checked]:border-brand">
                     <input
                       type="radio"
                       name="action"
@@ -284,7 +287,7 @@ export default async function AdminSafetyDetailPage({
               id="note"
               name="note"
               rows={3}
-              className="block w-full rounded-md border-[1.5px] border-border-strong bg-bg-base p-3 text-[14px] focus:border-brand focus:outline-none"
+              className="block w-full rounded-md border-[1.5px] border-border-strong bg-bg-surface p-3 text-[14px] focus:border-brand focus:outline-none"
             />
           </div>
 
