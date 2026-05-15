@@ -1,20 +1,20 @@
 "use client";
 
 import * as React from "react";
-import { MessageCircleHeart, AlertTriangle } from "lucide-react";
+import { MessageCircleHeart } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/navigation";
 import { cn } from "@/components/ui/cn";
 
 /**
- * Routes where the floating AI button should be hidden:
+ * Routes where the floating "Ask AI" button is hidden:
  * - /chat (the chat IS the AI)
  * - /pay/* and /bookings/[id]/success (sticky payment / success CTAs)
  * - /providers/[id], /bookings/[id], /bookings/new (sticky CTA bars)
  * - /dev/* internal preview routes
  *
- * Anything else (home, services, services/[cat], bookings list,
- * notifications, etc.) shows the FAB.
+ * Hidden on tablet/desktop too (md:hidden) — those breakpoints surface
+ * the "Ask AI" entry inside the Header navigation instead.
  */
 const HIDE_PATTERNS: RegExp[] = [
   /^\/chat(\/|$|\?)/,
@@ -29,35 +29,26 @@ function shouldHide(pathname: string): boolean {
   return HIDE_PATTERNS.some((re) => re.test(pathname));
 }
 
-export function AIFloatButton({
-  emergency = false,
-  className,
-}: {
-  emergency?: boolean;
-  className?: string;
-}) {
+export function AIFloatButton({ className }: { className?: string }) {
   const t = useTranslations("common");
   const pathname = usePathname();
-  const Icon = emergency ? AlertTriangle : MessageCircleHeart;
 
   if (shouldHide(pathname ?? "")) return null;
 
   return (
     <Link
       href="/chat"
-      aria-label={emergency ? "SOS" : t("askAI")}
+      aria-label={t("askAI")}
       className={cn(
-        "fixed bottom-[100px] right-5 z-30 flex h-16 w-16 flex-col items-center justify-center gap-0.5 rounded-pill text-white shadow-card-hover sm:hidden",
-        emergency
-          ? "bg-danger shadow-[0_8px_24px_rgba(220,38,38,0.5)]"
-          : "bg-brand shadow-[0_8px_24px_rgba(31,111,235,0.4)]",
-        className
+        "fixed bottom-[200px] right-4 z-30 inline-flex items-center gap-1.5",
+        "rounded-pill bg-brand px-[18px] py-3 text-[14px] font-bold text-white",
+        "shadow-[0_8px_24px_-6px_color-mix(in_oklab,var(--brand-primary)_50%,transparent)]",
+        "md:hidden",
+        className,
       )}
     >
-      <Icon size={24} aria-hidden />
-      <span className="text-[11px] font-bold leading-none">
-        {emergency ? "SOS" : t("askAI")}
-      </span>
+      <MessageCircleHeart size={16} aria-hidden />
+      {t("askAI")}
     </Link>
   );
 }

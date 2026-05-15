@@ -12,7 +12,7 @@ const g = globalThis as unknown as { __scPg?: PgClient };
 const client: PgClient =
   g.__scPg ??
   postgres(url, {
-    ssl: "require",
+    ssl: process.env.DATABASE_SSL === "disable" ? false : "require",
     prepare: false,
     max: 10,
   });

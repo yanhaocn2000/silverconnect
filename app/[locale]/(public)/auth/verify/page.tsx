@@ -121,7 +121,7 @@ export default async function VerifyEmailPage({
 
   if (state === "success") {
     return (
-      <AuthCard title={t("verifySuccess")} subtitle={t("verifySuccessHint")}>
+      <AuthCard title={t("verifySuccess")} subtitle={t("verifySuccessHint")} hideHero>
         <div className="flex flex-col items-center gap-4 py-2 text-center">
           <span
             aria-hidden
@@ -158,6 +158,7 @@ export default async function VerifyEmailPage({
     <AuthCard
       title={state === "resent" ? t("verifyResent") : t("verifyTitle")}
       subtitle={t("verifySub", { email })}
+      hideHero
     >
       {errorMsg && (
         <div

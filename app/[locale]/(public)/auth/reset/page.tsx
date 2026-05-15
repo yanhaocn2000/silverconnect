@@ -45,13 +45,13 @@ async function resetAction(formData: FormData) {
     .update(users)
     .set({ passwordHash, updatedAt: new Date() })
     .where(eq(users.id, user.id));
-  nextRedirect(`/${locale}/auth/reset?sent=1`);
+  nextRedirect(`/${locale}/auth/reset?state=success`);
 }
 
 type ResetState = "default" | "success" | "expired";
 
-function parseState(raw: string | undefined, sent: string | undefined): ResetState {
-  if (sent === "1") return "success";
+function parseState(raw: string | undefined): ResetState {
+  if (raw === "success") return "success";
   if (raw === "expired") return "expired";
   return "default";
 }
@@ -72,7 +72,6 @@ export default async function ResetPasswordPage({
   const tCommon = await getTranslations("common");
   const state = parseState(
     typeof sp.state === "string" ? sp.state : undefined,
-    typeof sp.sent === "string" ? sp.sent : undefined,
   );
   const error = typeof sp.error === "string" ? sp.error : undefined;
   const errorMsg =
@@ -93,11 +92,11 @@ export default async function ResetPasswordPage({
       : null;
   const email =
     typeof sp.email === "string" && sp.email.includes("@") ? sp.email : "";
-  const justSentNotice = sp.sent === "1" && state !== "success";
+  const justSentNotice = sp.sent === "1" && state === "default";
 
   if (state === "success") {
     return (
-      <AuthCard title={t("resetSuccess")} subtitle={t("resetSuccessHint")}>
+      <AuthCard title={t("resetSuccess")} subtitle={t("resetSuccessHint")} hideHero>
         <div className="flex flex-col items-center gap-4 py-2 text-center">
           <span className="flex h-20 w-20 items-center justify-center rounded-full bg-success-soft text-success">
             <CheckCircle2 size={48} aria-hidden />

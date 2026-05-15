@@ -15,4 +15,15 @@ export { Checkbox } from "./Checkbox";
 export { RadioGroup, RadioItem } from "./RadioGroup";
 export { Label } from "./Label";
 export { Skeleton } from "./Skeleton";
+export { Chip, type ChipProps, type ChipTone } from "./Chip";
+export { Banner, type BannerProps, type BannerTone } from "./Banner";
+export {
+  StatBadge,
+  type StatBadgeProps,
+  type StatBadgeTone,
+} from "./StatBadge";
+export { SearchBar, type SearchBarProps } from "./SearchBar";
+export { CategoryTile, type CategoryTileProps } from "./CategoryTile";
+export { ProviderCard, type ProviderCardProps } from "./ProviderCard";
+export { DottedCTA } from "./DottedCTA";
 export { cn } from "./cn";

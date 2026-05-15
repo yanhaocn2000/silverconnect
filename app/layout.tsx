@@ -1,19 +1,20 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Noto_Sans_SC } from "next/font/google";
+import { Plus_Jakarta_Sans, Noto_Sans_SC } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./providers";
 
-const inter = Inter({
-  variable: "--font-inter",
+const jakarta = Plus_Jakarta_Sans({
+  variable: "--font-jakarta",
   subsets: ["latin"],
   display: "swap",
+  weight: ["400", "500", "600", "700", "800"],
 });
 
 const notoSansSc = Noto_Sans_SC({
   variable: "--font-noto-sc",
   subsets: ["latin"],
   display: "swap",
-  weight: ["400", "500", "700"],
+  weight: ["400", "500", "700", "800"],
 });
 
 export const metadata: Metadata = {
@@ -33,8 +34,8 @@ export const viewport: Viewport = {
   initialScale: 1,
   maximumScale: 5,
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#FFFFFF" },
-    { media: "(prefers-color-scheme: dark)", color: "#1E293B" },
+    { media: "(prefers-color-scheme: light)", color: "#FBF7F2" },
+    { media: "(prefers-color-scheme: dark)", color: "#15110D" },
   ],
 };
 
@@ -47,7 +48,7 @@ export default function RootLayout({
     // differs from the client's first render of this attribute.
     <html
       lang="en"
-      className={`${inter.variable} ${notoSansSc.variable}`}
+      className={`${jakarta.variable} ${notoSansSc.variable}`}
       suppressHydrationWarning
     >
       <body className="min-h-dvh bg-bg-base text-text-primary antialiased">

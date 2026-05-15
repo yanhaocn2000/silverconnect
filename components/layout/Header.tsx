@@ -39,7 +39,7 @@ export function Header({
   return (
     <header
       role="banner"
-      className="sticky top-0 z-40 flex h-16 items-center justify-between border-b border-border bg-bg-base px-4 sm:h-20 sm:px-8"
+      className="sticky top-0 z-40 flex h-16 items-center justify-between border-b border-border bg-bg-surface px-4 md:h-20 md:px-8"
     >
       <div className="flex min-w-0 items-center gap-2">
         {back ? (
@@ -54,10 +54,16 @@ export function Header({
         ) : (
           <Link
             href="/home"
-            className="text-[20px] font-extrabold tracking-tight text-brand sm:text-[24px]"
+            className="inline-flex items-center gap-2 font-extrabold tracking-tight text-text-primary"
             aria-label="SilverConnect home"
           >
-            SilverConnect
+            <span
+              aria-hidden
+              className="inline-flex h-[22px] w-[22px] items-center justify-center rounded-[8px] bg-brand text-[13px] font-extrabold text-white"
+            >
+              S
+            </span>
+            <span className="text-[19px] md:text-[22px]">SilverConnect</span>
           </Link>
         )}
         <DesktopNav />
@@ -67,7 +73,7 @@ export function Header({
         <Link
           href="/donate"
           aria-label={tNav("donate")}
-          className="inline-flex h-12 items-center gap-1.5 rounded-md bg-brand-soft px-2.5 text-[13px] font-bold text-brand transition-colors hover:bg-brand hover:text-white sm:px-4 sm:text-[14px]"
+          className="inline-flex h-9 items-center gap-1.5 rounded-pill bg-brand-soft px-3.5 text-[14px] font-semibold text-brand-ink transition-colors hover:bg-brand hover:text-white"
         >
           <Heart size={16} aria-hidden className="fill-current" />
           <span className="hidden sm:inline">{tNav("donate")}</span>
@@ -76,27 +82,29 @@ export function Header({
           <Link
             href="/provider"
             aria-label={tNav("providerMode")}
-            className="inline-flex h-12 items-center gap-1.5 rounded-md px-2.5 text-[13px] font-bold text-text-secondary transition-colors hover:bg-bg-surface-2 sm:px-4 sm:text-[14px]"
+            className="hidden h-12 items-center gap-1.5 rounded-md px-4 text-[14px] font-bold text-text-secondary transition-colors hover:bg-bg-surface-2 md:inline-flex"
           >
             <Briefcase size={16} aria-hidden />
-            <span className="hidden sm:inline">{tNav("providerMode")}</span>
+            <span>{tNav("providerMode")}</span>
           </Link>
         )}
-        <ThemeToggle />
-        <CountrySwitcher value={country} />
-        <LanguageChip />
+        <div className="hidden items-center gap-1.5 md:flex">
+          <ThemeToggle />
+          <CountrySwitcher value={country} />
+          <LanguageChip />
+        </div>
         {signedIn ? (
           <Link
             href="/profile"
             aria-label={tNav("profile")}
-            className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-brand-accent-soft text-[14px] font-bold text-[#92590A] dark:text-[var(--brand-accent)]"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-brand-accent-soft text-[14px] font-bold text-[var(--brand-accent)]"
           >
-            {initials ?? <User size={22} aria-hidden />}
+            {initials ?? <User size={20} aria-hidden />}
           </Link>
         ) : (
           <Link
             href="/auth/login"
-            className="inline-flex h-12 items-center rounded-md bg-brand px-4 text-[14px] font-bold text-white hover:bg-brand-hover"
+            className="inline-flex h-10 items-center rounded-md bg-brand px-4 text-[14px] font-bold text-white hover:bg-brand-hover"
           >
             {t("signIn")}
           </Link>

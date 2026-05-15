@@ -11,87 +11,91 @@
   :root {
     color-scheme: light;
 
-    /* Brand */
-    --brand-primary: #1858C4;
-    --brand-primary-hover: #0F47A6;
-    --brand-accent: #F59E0B;
+    /* Brand — SilverConnect 新设计：蓝绿（TWEAK_DEFAULTS.brand = #2E86AB） */
+    --brand-primary: #2E86AB;
+    --brand-primary-hover: #277291;
+    --brand-primary-soft: #DCE9F0;
+    --brand-ink: #1E5670;
+    --brand-accent: #B57A12;
 
-    /* Semantic — calibrated to pass WCAG AA (≥4.5:1) on their *-soft
-       backgrounds. Original Tailwind 500/600 shades fail when paired
-       with light tints, so we use the 700/800 shade family. */
-    --success: #15803D;
-    --warning: #92400E;
-    --danger: #B91C1C;
+    /* Semantic */
+    --success: #2E8B57;
+    --warning: #B57A12;
+    --danger: #C44A3F;
 
-    /* Surfaces */
-    --bg-base: #FFFFFF;
-    --bg-surface: #F8FAFC;
-    --border: #E2E8F0;
+    /* Surfaces — 暖米白底 + 奶油面 */
+    --bg-base: #FBF7F2;
+    --bg-surface: #FFFFFF;
+    --bg-surface-2: #F6F1EA;
+    --border: #ECE2D2;
+    --border-strong: #D8CAB3;
 
     /* Text */
-    --text-primary: #0F172A;
-    --text-secondary: #475569;
-    --text-placeholder: #64748B;
-    --text-link: #1858C4;
+    --text-primary: #1E1B17;
+    --text-secondary: #5C544A;
+    --text-tertiary: #8E8678;
+    --text-placeholder: #8E8678;
+    --text-link: #1E5670;
 
-    /* Status badges — light surface */
-    --badge-pending-bg: #FEF3C7;
-    --badge-pending-fg: #92400E;
-    --badge-confirmed-bg: #DBEAFE;
-    --badge-confirmed-fg: #1E40AF;
-    --badge-inprogress-bg: #E0E7FF;
-    --badge-inprogress-fg: #3730A3;
-    --badge-completed-bg: #DCFCE7;
-    --badge-completed-fg: #166534;
-    --badge-cancelled-bg: #F1F5F9;
-    --badge-cancelled-fg: #475569;
-    --badge-refunded-bg: #FEE2E2;
-    --badge-refunded-fg: #991B1B;
+    /* Status badges — 套用新调色到现有 badge token 命名 */
+    --badge-pending-bg: #FBEFD4;
+    --badge-pending-fg: #B57A12;
+    --badge-confirmed-bg: #DCE9F0;
+    --badge-confirmed-fg: #1E5670;
+    --badge-inprogress-bg: #FBEFD4;
+    --badge-inprogress-fg: #B57A12;
+    --badge-completed-bg: #E5F3EA;
+    --badge-completed-fg: #2E8B57;
+    --badge-cancelled-bg: #F2EAE0;
+    --badge-cancelled-fg: #5C544A;
+    --badge-refunded-bg: #FBE3DF;
+    --badge-refunded-fg: #C44A3F;
 
-    /* Decorative chip color pairs (donate story tags, impact tiles, etc.) —
-       light: pale tint bg + dark text; dark variants below mirror the
-       --badge-* approach (translucent bg + light text). */
-    --chip-blue-bg: #E8F0FE;
-    --chip-blue-fg: #1F6FEB;
-    --chip-amber-bg: #FEF3C7;
-    --chip-amber-fg: #92400E;
-    --chip-green-bg: #DCFCE7;
-    --chip-green-fg: #15803D;
-    --chip-red-bg: #FEE2E2;
-    --chip-red-fg: #B91C1C;
-    --chip-pink-bg: #FCE7F3;
-    --chip-pink-fg: #DB2777;
-    --chip-purple-bg: #EDE9FE;
-    --chip-purple-fg: #7C3AED;
+    /* Decorative chip color pairs */
+    --chip-blue-bg: #DCE9F0;
+    --chip-blue-fg: #1E5670;
+    --chip-amber-bg: #FBEFD4;
+    --chip-amber-fg: #B57A12;
+    --chip-green-bg: #E5F3EA;
+    --chip-green-fg: #2E8B57;
+    --chip-red-bg: #FBE3DF;
+    --chip-red-fg: #C44A3F;
+    --chip-pink-bg: #FCEBE3;
+    --chip-pink-fg: #C44A3F;
+    --chip-purple-bg: #EDE5F4;
+    --chip-purple-fg: #6F4E9C;
 
-    /* Soft tints (used on category chips, recently-booked rows, etc.) */
-    --brand-primary-soft: #E8F0FE;
-    --brand-accent-soft: #FEF3C7;
-    --success-soft: #DCFCE7;
-    --warning-soft: #FEF3C7;
-    --danger-soft: #FEE2E2;
+    /* 新设计中性 chip（来自 tokens.css：.chip 默认底色） */
+    --chip-bg: #F2EAE0;
+    --chip-fg: #5C544A;
 
-    /* Surface stack — bg-base / bg-surface / bg-surface-2 / border / border-strong */
-    --bg-surface-2: #F1F5F9;
-    --border-strong: #CBD5E1;
+    /* Soft tints */
+    --brand-accent-soft: #FBEFD4;
+    --success-soft: #E5F3EA;
+    --warning-soft: #FBEFD4;
+    --danger-soft: #FBE3DF;
 
     /* Illustration stroke colour (flips per theme) */
-    --illu-stroke: #1F2937;
+    --illu-stroke: #1E1B17;
 
-    /* Tertiary text (used for timestamps, captions in design) */
-    --text-tertiary: #64748B;
-
-    /* Geometry — warm variant per design (doc 16/12, warm 20/14) */
-    --radius-sm: 10px;
-    --radius-md: 14px;
-    --radius-lg: 20px;
+    /* Geometry — 对齐新设计 tokens.css */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 18px;
     --radius-pill: 999px;
-    --shadow-card: 0 2px 8px rgba(15, 23, 42, 0.06);
-    --shadow-card-hover: 0 4px 16px rgba(15, 23, 42, 0.08);
-    --shadow-popover: 0 12px 32px rgba(15, 23, 42, 0.12);
 
-    --font-sans: var(--font-inter), var(--font-noto-sc), system-ui, -apple-system,
+    /* Shadows — 暖色调棕底 */
+    --shadow-sm: 0 1px 2px rgba(60, 40, 20, 0.06);
+    --shadow-md: 0 6px 24px -8px rgba(60, 40, 20, 0.10), 0 2px 6px rgba(60, 40, 20, 0.04);
+    --shadow-lg: 0 24px 48px -16px rgba(60, 40, 20, 0.18);
+    /* 历史命名：card 用于一般容器，比 shadow-sm 更柔和、比 shadow-md 更克制 */
+    --shadow-card: 0 2px 8px rgba(60, 40, 20, 0.06);
+    --shadow-card-hover: 0 4px 16px rgba(60, 40, 20, 0.10);
+    --shadow-popover: var(--shadow-lg);
+
+    --font-sans: var(--font-jakarta), var(--font-noto-sc), system-ui, -apple-system,
       "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --font-display: var(--font-jakarta), var(--font-noto-sc), system-ui, sans-serif;
   }
 
   /* Dark — JS-fail fallback only. next-themes' pre-paint inline script normally
@@ -102,95 +106,109 @@
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
       color-scheme: dark;
-      --brand-primary: #5B9CFF;
-      --brand-primary-hover: #3B82F6;
-      --brand-primary-soft: #1B2B4A;
-      --brand-accent-soft: #3A2E14;
-      --success-soft: #14331E;
-      --warning-soft: #3A2E14;
-      --danger-soft: #3A1A1A;
-      --bg-base: #1E293B;
-      --bg-surface: #334155;
-      --bg-surface-2: #475569;
-      --border: #475569;
-      --border-strong: #64748B;
-      --illu-stroke: #F1F5F9;
-      --text-primary: #F1F5F9;
-      --text-secondary: #CBD5E1;
-      --text-tertiary: #94A3B8;
-      --text-placeholder: #64748B;
-      --text-link: #93C5FD;
-      --badge-pending-bg: rgba(245, 158, 11, 0.18);
-      --badge-pending-fg: #FCD34D;
-      --badge-confirmed-bg: rgba(59, 130, 246, 0.18);
-      --badge-confirmed-fg: #93C5FD;
-      --badge-inprogress-bg: rgba(99, 102, 241, 0.18);
-      --badge-inprogress-fg: #A5B4FC;
-      --badge-completed-bg: rgba(34, 197, 94, 0.18);
-      --badge-completed-fg: #86EFAC;
-      --badge-cancelled-bg: rgba(255, 255, 255, 0.12);
-      --badge-cancelled-fg: #CBD5E1;
-      --badge-refunded-bg: rgba(239, 68, 68, 0.18);
-      --badge-refunded-fg: #FCA5A5;
-      --chip-blue-bg: rgba(59, 130, 246, 0.18);
-      --chip-blue-fg: #93C5FD;
-      --chip-amber-bg: rgba(245, 158, 11, 0.18);
-      --chip-amber-fg: #FCD34D;
-      --chip-green-bg: rgba(34, 197, 94, 0.18);
-      --chip-green-fg: #86EFAC;
-      --chip-red-bg: rgba(239, 68, 68, 0.18);
-      --chip-red-fg: #FCA5A5;
-      --chip-pink-bg: rgba(236, 72, 153, 0.18);
-      --chip-pink-fg: #F9A8D4;
-      --chip-purple-bg: rgba(139, 92, 246, 0.18);
-      --chip-purple-fg: #C4B5FD;
+      --brand-primary: #2E86AB;
+      --brand-primary-hover: #4FA0C7;
+      --brand-primary-soft: #15303F;
+      --brand-ink: #9EC8DD;
+      --brand-accent: #E6B45A;
+      --brand-accent-soft: #332514;
+      --success: #6BCB8C;
+      --success-soft: #1B2E22;
+      --warning: #E6B45A;
+      --warning-soft: #332514;
+      --danger: #E97468;
+      --danger-soft: #321A17;
+      --bg-base: #15110D;
+      --bg-surface: #1F1813;
+      --bg-surface-2: #2A2018;
+      --border: #382C22;
+      --border-strong: #4A3A2C;
+      --illu-stroke: #F2EDE5;
+      --text-primary: #F2EDE5;
+      --text-secondary: #B8AE9F;
+      --text-tertiary: #7E7466;
+      --text-placeholder: #7E7466;
+      --text-link: #F4B59E;
+      --chip-bg: #2A2018;
+      --chip-fg: #B8AE9F;
+      --badge-pending-bg: #332514;
+      --badge-pending-fg: #E6B45A;
+      --badge-confirmed-bg: #3A1F15;
+      --badge-confirmed-fg: #F4B59E;
+      --badge-inprogress-bg: #332514;
+      --badge-inprogress-fg: #E6B45A;
+      --badge-completed-bg: #1B2E22;
+      --badge-completed-fg: #6BCB8C;
+      --badge-cancelled-bg: #2A2018;
+      --badge-cancelled-fg: #B8AE9F;
+      --badge-refunded-bg: #321A17;
+      --badge-refunded-fg: #E97468;
+      --chip-blue-bg: rgba(46, 107, 160, 0.22);
+      --chip-blue-fg: #9CC2E0;
+      --chip-amber-bg: rgba(230, 180, 90, 0.22);
+      --chip-amber-fg: #E6B45A;
+      --chip-green-bg: rgba(107, 203, 140, 0.22);
+      --chip-green-fg: #6BCB8C;
+      --chip-red-bg: rgba(233, 116, 104, 0.22);
+      --chip-red-fg: #F4B59E;
+      --chip-pink-bg: rgba(233, 116, 104, 0.18);
+      --chip-pink-fg: #F4B59E;
+      --chip-purple-bg: rgba(155, 124, 192, 0.22);
+      --chip-purple-fg: #C9B6E2;
     }
   }
 
   :root[data-theme="dark"] {
     color-scheme: dark;
-    --brand-primary: #5B9CFF;
-    --brand-primary-hover: #3B82F6;
-    --brand-primary-soft: #1B2B4A;
-    --brand-accent-soft: #3A2E14;
-    --success-soft: #14331E;
-    --warning-soft: #3A2E14;
-    --danger-soft: #3A1A1A;
-    --bg-base: #1E293B;
-    --bg-surface: #334155;
-    --bg-surface-2: #475569;
-    --border: #475569;
-    --border-strong: #64748B;
-    --illu-stroke: #F1F5F9;
-    --text-primary: #F1F5F9;
-    --text-secondary: #CBD5E1;
-    --text-tertiary: #94A3B8;
-    --text-placeholder: #64748B;
-    --text-link: #93C5FD;
-    --badge-pending-bg: rgba(245, 158, 11, 0.18);
-    --badge-pending-fg: #FCD34D;
-    --badge-confirmed-bg: rgba(59, 130, 246, 0.18);
-    --badge-confirmed-fg: #93C5FD;
-    --badge-inprogress-bg: rgba(99, 102, 241, 0.18);
-    --badge-inprogress-fg: #A5B4FC;
-    --badge-completed-bg: rgba(34, 197, 94, 0.18);
-    --badge-completed-fg: #86EFAC;
-    --badge-cancelled-bg: rgba(255, 255, 255, 0.12);
-    --badge-cancelled-fg: #CBD5E1;
-    --badge-refunded-bg: rgba(239, 68, 68, 0.18);
-    --badge-refunded-fg: #FCA5A5;
-    --chip-blue-bg: rgba(59, 130, 246, 0.18);
-    --chip-blue-fg: #93C5FD;
-    --chip-amber-bg: rgba(245, 158, 11, 0.18);
-    --chip-amber-fg: #FCD34D;
-    --chip-green-bg: rgba(34, 197, 94, 0.18);
-    --chip-green-fg: #86EFAC;
-    --chip-red-bg: rgba(239, 68, 68, 0.18);
-    --chip-red-fg: #FCA5A5;
-    --chip-pink-bg: rgba(236, 72, 153, 0.18);
-    --chip-pink-fg: #F9A8D4;
-    --chip-purple-bg: rgba(139, 92, 246, 0.18);
-    --chip-purple-fg: #C4B5FD;
+    --brand-primary: #2E86AB;
+    --brand-primary-hover: #4FA0C7;
+    --brand-primary-soft: #15303F;
+    --brand-ink: #9EC8DD;
+    --brand-accent: #E6B45A;
+    --brand-accent-soft: #332514;
+    --success: #6BCB8C;
+    --success-soft: #1B2E22;
+    --warning: #E6B45A;
+    --warning-soft: #332514;
+    --danger: #E97468;
+    --danger-soft: #321A17;
+    --bg-base: #15110D;
+    --bg-surface: #1F1813;
+    --bg-surface-2: #2A2018;
+    --border: #382C22;
+    --border-strong: #4A3A2C;
+    --illu-stroke: #F2EDE5;
+    --text-primary: #F2EDE5;
+    --text-secondary: #B8AE9F;
+    --text-tertiary: #7E7466;
+    --text-placeholder: #7E7466;
+    --text-link: #9EC8DD;
+    --chip-bg: #2A2018;
+    --chip-fg: #B8AE9F;
+    --badge-pending-bg: #332514;
+    --badge-pending-fg: #E6B45A;
+    --badge-confirmed-bg: #15303F;
+    --badge-confirmed-fg: #9EC8DD;
+    --badge-inprogress-bg: #332514;
+    --badge-inprogress-fg: #E6B45A;
+    --badge-completed-bg: #1B2E22;
+    --badge-completed-fg: #6BCB8C;
+    --badge-cancelled-bg: #2A2018;
+    --badge-cancelled-fg: #B8AE9F;
+    --badge-refunded-bg: #321A17;
+    --badge-refunded-fg: #E97468;
+    --chip-blue-bg: rgba(46, 107, 160, 0.22);
+    --chip-blue-fg: #9CC2E0;
+    --chip-amber-bg: rgba(230, 180, 90, 0.22);
+    --chip-amber-fg: #E6B45A;
+    --chip-green-bg: rgba(107, 203, 140, 0.22);
+    --chip-green-fg: #6BCB8C;
+    --chip-red-bg: rgba(233, 116, 104, 0.22);
+    --chip-red-fg: #F4B59E;
+    --chip-pink-bg: rgba(233, 116, 104, 0.18);
+    --chip-pink-fg: #F4B59E;
+    --chip-purple-bg: rgba(155, 124, 192, 0.22);
+    --chip-purple-fg: #C9B6E2;
   }
 
   /*
@@ -205,52 +223,55 @@
    * audit (theme-system-plan §3) checks for unsanctioned uses.
    */
   [data-theme="light"] {
-    --brand-primary: #1858C4;
-    --brand-primary-hover: #0F47A6;
-    --brand-primary-soft: #E8F0FE;
-    --brand-accent: #F59E0B;
-    --brand-accent-soft: #FEF3C7;
-    --success: #15803D;
-    --success-soft: #DCFCE7;
-    --warning: #92400E;
-    --warning-soft: #FEF3C7;
-    --danger: #B91C1C;
-    --danger-soft: #FEE2E2;
-    --bg-base: #FFFFFF;
-    --bg-surface: #F8FAFC;
-    --bg-surface-2: #F1F5F9;
-    --border: #E2E8F0;
-    --border-strong: #CBD5E1;
-    --illu-stroke: #1F2937;
-    --text-primary: #0F172A;
-    --text-secondary: #475569;
-    --text-tertiary: #64748B;
-    --text-placeholder: #64748B;
-    --text-link: #1858C4;
-    --badge-pending-bg: #FEF3C7;
-    --badge-pending-fg: #92400E;
-    --badge-confirmed-bg: #DBEAFE;
-    --badge-confirmed-fg: #1E40AF;
-    --badge-inprogress-bg: #E0E7FF;
-    --badge-inprogress-fg: #3730A3;
-    --badge-completed-bg: #DCFCE7;
-    --badge-completed-fg: #166534;
-    --badge-cancelled-bg: #F1F5F9;
-    --badge-cancelled-fg: #475569;
-    --badge-refunded-bg: #FEE2E2;
-    --badge-refunded-fg: #991B1B;
-    --chip-blue-bg: #E8F0FE;
-    --chip-blue-fg: #1F6FEB;
-    --chip-amber-bg: #FEF3C7;
-    --chip-amber-fg: #92400E;
-    --chip-green-bg: #DCFCE7;
-    --chip-green-fg: #15803D;
-    --chip-red-bg: #FEE2E2;
-    --chip-red-fg: #B91C1C;
-    --chip-pink-bg: #FCE7F3;
-    --chip-pink-fg: #DB2777;
-    --chip-purple-bg: #EDE9FE;
-    --chip-purple-fg: #7C3AED;
+    --brand-primary: #2E86AB;
+    --brand-primary-hover: #277291;
+    --brand-primary-soft: #DCE9F0;
+    --brand-ink: #1E5670;
+    --brand-accent: #B57A12;
+    --brand-accent-soft: #FBEFD4;
+    --success: #2E8B57;
+    --success-soft: #E5F3EA;
+    --warning: #B57A12;
+    --warning-soft: #FBEFD4;
+    --danger: #C44A3F;
+    --danger-soft: #FBE3DF;
+    --bg-base: #FBF7F2;
+    --bg-surface: #FFFFFF;
+    --bg-surface-2: #F6F1EA;
+    --border: #ECE2D2;
+    --border-strong: #D8CAB3;
+    --illu-stroke: #1E1B17;
+    --text-primary: #1E1B17;
+    --text-secondary: #5C544A;
+    --text-tertiary: #8E8678;
+    --text-placeholder: #8E8678;
+    --text-link: #1E5670;
+    --chip-bg: #F2EAE0;
+    --chip-fg: #5C544A;
+    --badge-pending-bg: #FBEFD4;
+    --badge-pending-fg: #B57A12;
+    --badge-confirmed-bg: #DCE9F0;
+    --badge-confirmed-fg: #1E5670;
+    --badge-inprogress-bg: #FBEFD4;
+    --badge-inprogress-fg: #B57A12;
+    --badge-completed-bg: #E5F3EA;
+    --badge-completed-fg: #2E8B57;
+    --badge-cancelled-bg: #F2EAE0;
+    --badge-cancelled-fg: #5C544A;
+    --badge-refunded-bg: #FBE3DF;
+    --badge-refunded-fg: #C44A3F;
+    --chip-blue-bg: #DCE9F0;
+    --chip-blue-fg: #1E5670;
+    --chip-amber-bg: #FBEFD4;
+    --chip-amber-fg: #B57A12;
+    --chip-green-bg: #E5F3EA;
+    --chip-green-fg: #2E8B57;
+    --chip-red-bg: #FBE3DF;
+    --chip-red-fg: #C44A3F;
+    --chip-pink-bg: #FCEBE3;
+    --chip-pink-fg: #C44A3F;
+    --chip-purple-bg: #EDE5F4;
+    --chip-purple-fg: #6F4E9C;
     color-scheme: light;
   }
 

@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SilverConnect — Pages</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="tokens.css" />
+<style>
+  html, body { height: 100%; background: #2a221b; }
+  body { color: var(--text-primary); }
+  .canvas-host { width: 100vw; height: 100vh; }
+</style>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="design-canvas.jsx"></script>
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+<script type="text/babel" src="chrome.jsx"></script>
+<script type="text/babel" src="pages.jsx"></script>
+<script type="text/babel" src="customer-pages.jsx"></script>
+<script type="text/babel" src="provider-pages.jsx"></script>
+<script type="text/babel" src="admin-pages.jsx"></script>
+<script type="text/babel" src="marketing-pages.jsx"></script>
+</head>
+<body>
+<div id="root" class="canvas-host"></div>
+
+<script type="text/babel" data-presets="react">
+const { useEffect } = React;
+
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "brand": "#2E86AB",
+  "fontScale": 1,
+  "showProviderReview": false
+}/*EDITMODE-END*/;
+
+function App() {
+  const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
+
+  useEffect(() => {
+    const r = document.documentElement;
+    r.setAttribute("data-theme", t.theme);
+    r.style.setProperty("--brand", t.brand);
+    // derived
+    const softFor = (hex) => {
+      // simple soft tint
+      return hex + "22";
+    };
+    r.style.setProperty("--brand-soft", t.theme === "dark"
+      ? `color-mix(in oklab, ${t.brand} 22%, #15110d)`
+      : `color-mix(in oklab, ${t.brand} 14%, #fff)`);
+    r.style.setProperty("--brand-hover", `color-mix(in oklab, ${t.brand} 85%, #000)`);
+    r.style.setProperty("--brand-ink", t.theme === "dark"
+      ? `color-mix(in oklab, ${t.brand} 70%, #fff)`
+      : `color-mix(in oklab, ${t.brand} 60%, #2a1408)`);
+    r.style.setProperty("--base-fs", (16 * t.fontScale) + "px");
+    document.body.style.background = t.theme === "dark" ? "#0e0a07" : "#2a221b";
+  }, [t.theme, t.brand, t.fontScale]);
+
+  return (
+    <>
+      <DesignCanvas defaultZoom={0.42}>
+        <DCSection id="public" title="① 公共外壳 / 认证" subtitle="无导航 · 仅角落主题切换 · 居中 AuthCard">
+          <DCArtboard id="login-mobile" label="登录 · 移动端" width={390} height={844}>
+            <LoginPage desktop={false} />
+          </DCArtboard>
+          <DCArtboard id="login-desktop" label="登录 · 桌面端" width={1280} height={820}>
+            <LoginPage desktop={true} />
+          </DCArtboard>
+        </DCSection>
+
+        <DCSection id="customer" title="② 顾客外壳 / 首页" subtitle="Header + 底部 tab · 问候 + 搜索 + 品类 + 推荐 · SOS + 问 AI">
+          <DCArtboard id="home-mobile" label="顾客首页 · 移动端" width={390} height={844}>
+            <CustomerHome desktop={false} />
+          </DCArtboard>
+          <DCArtboard id="home-desktop" label="顾客首页 · 桌面端" width={1280} height={820}>
+            <CustomerHome desktop={true} />
+          </DCArtboard>
+        </DCSection>
+
+        <DCSection id="customer-discover" title="② · 发现 & 找服务" subtitle="搜索结果 · 品类列表 · 按品类找服务者 · 服务者详情">
+          <DCArtboard id="search-results" label="搜索结果" width={390} height={844}><SearchPage /></DCArtboard>
+          <DCArtboard id="services-list" label="所有服务品类" width={390} height={844}><ServicesList /></DCArtboard>
+          <DCArtboard id="category" label="保洁 · 服务者列表" width={390} height={844}><CategoryPage /></DCArtboard>
+          <DCArtboard id="provider-detail" label="服务者详情" width={390} height={844}><ProviderDetail /></DCArtboard>
+        </DCSection>
+
+        <DCSection id="customer-booking" title="② · 预订流程" subtitle="4 步预订向导 · 预订列表 · 详情 · 周期性预订">
+          <DCArtboard id="booking-1" label="预订 · 第 1 步 / 选服务" width={390} height={844}><BookStep1 /></DCArtboard>
+          <DCArtboard id="booking-2" label="预订 · 第 2 步 / 选时间" width={390} height={844}><BookStep2 /></DCArtboard>
+          <DCArtboard id="booking-3" label="预订 · 第 3 步 / 地址说明" width={390} height={844}><BookStep3 /></DCArtboard>
+          <DCArtboard id="booking-4" label="预订 · 第 4 步 / 复核" width={390} height={844}><BookStep4 /></DCArtboard>
+          <DCArtboard id="bookings-list" label="我的预约" width={390} height={844}><BookingsList /></DCArtboard>
+          <DCArtboard id="booking-detail" label="预约详情" width={390} height={844}><BookingDetail /></DCArtboard>
+          <DCArtboard id="recurring" label="周期性预订设置" width={390} height={844}><RecurringPage /></DCArtboard>
+        </DCSection>
+
+        <DCSection id="customer-pay" title="② · 支付 & 完结" subtitle="支付 · 成功 · 反馈 · 发起纠纷">
+          <DCArtboard id="payment" label="支付" width={390} height={844}><PaymentPage /></DCArtboard>
+          <DCArtboard id="success" label="支付成功" width={390} height={844}><PaymentSuccess /></DCArtboard>
+          <DCArtboard id="feedback" label="服务反馈" width={390} height={844}><FeedbackPage /></DCArtboard>
+          <DCArtboard id="dispute" label="发起纠纷" width={390} height={844}><DisputePage /></DCArtboard>
+        </DCSection>
+
+        <DCSection id="customer-comm" title="② · 通信 & 通知" subtitle="AI 聊天 · 含 SOS 紧急态 · 通知中心">
+          <DCArtboard id="chat" label="AI 聊天" width={390} height={844}><ChatPage /></DCArtboard>
+          <DCArtboard id="chat-sos" label="AI 聊天 · SOS 紧急态" width={390} height={844}><ChatEmergency /></DCArtboard>
+          <DCArtboard id="notifications" label="通知中心" width={390} height={844}><NotificationsPage /></DCArtboard>
+        </DCSection>
+
+        <DCSection id="customer-profile" title="② · 个人中心" subtitle="我的 · 资料 · 安全 · 地址 · 支付方式 · 紧急联系人 · 收藏 · 通知偏好 · 家庭成员">
+          <DCArtboard id="profile-menu" label="我的（菜单）" width={390} height={844}><ProfileMenu /></DCArtboard>
+          <DCArtboard id="profile-edit" label="编辑资料" width={390} height={844}><ProfileEdit /></DCArtboard>
+          <DCArtboard id="profile-security" label="安全" width={390} height={844}><SecurityPage /></DCArtboard>
+          <DCArtboard id="profile-addr" label="地址" width={390} height={844}><AddressesPage /></DCArtboard>
+          <DCArtboard id="profile-addr-new" label="新增地址" width={390} height={844}><AddressNewPage /></DCArtboard>
+          <DCArtboard id="profile-pay" label="支付方式" width={390} height={844}><PaymentMethodsPage /></DCArtboard>
+          <DCArtboard id="profile-pay-add" label="添加卡片" width={390} height={844}><AddCardPage /></DCArtboard>
+          <DCArtboard id="profile-emergency" label="紧急联系人" width={390} height={844}><EmergencyContactsPage /></DCArtboard>
+          <DCArtboard id="profile-fav" label="收藏" width={390} height={844}><FavouritesPage /></DCArtboard>
+          <DCArtboard id="profile-notif" label="通知偏好" width={390} height={844}><NotifPrefsPage /></DCArtboard>
+          <DCArtboard id="profile-family" label="家庭成员" width={390} height={844}><FamilyPage /></DCArtboard>
+        </DCSection>
+
+        <DCSection id="customer-safety" title="② · 安全 & 设置" subtitle="报告事件 · 账户设置 · 隐私与数据">
+          <DCArtboard id="safety-report" label="报告事件" width={390} height={844}><SafetyReportPage /></DCArtboard>
+          <DCArtboard id="account-settings" label="账户设置" width={390} height={844}><AccountSettings /></DCArtboard>
+          <DCArtboard id="privacy" label="隐私与数据" width={390} height={844}><PrivacyPage /></DCArtboard>
+        </DCSection>
+
+        <DCSection id="provider" title="③ 服务者外壳 / 工作台" subtitle="收益横幅 + 4 项 KPI + 今日派单 · 含合规审核态">
+          <DCArtboard id="provider-mobile" label="工作台 · 移动端" width={390} height={844}>
+            <ProviderWorkbench desktop={false} reviewState={t.showProviderReview ? "review" : "active"} />
+          </DCArtboard>
+          <DCArtboard id="provider-desktop" label="工作台 · 桌面端" width={1280} height={820}>
+            <ProviderWorkbench desktop={true} reviewState={t.showProviderReview ? "review" : "active"} />
+          </DCArtboard>
+        </DCSection>
+
+        <DCSection id="provider-onboard" title="③ · 服务者入驻" subtitle="5 步向导 · 申请进度 · 证件库">
+          <DCArtboard id="onb-1" label="入驻 1/5 · 基本资料" width={390} height={844}><OnboardStep1 /></DCArtboard>
+          <DCArtboard id="onb-2" label="入驻 2/5 · 技能与定价" width={390} height={844}><OnboardStep2 /></DCArtboard>
+          <DCArtboard id="onb-3" label="入驻 3/5 · 证件资料" width={390} height={844}><OnboardStep3 /></DCArtboard>
+          <DCArtboard id="onb-4" label="入驻 4/5 · 收款账号" width={390} height={844}><OnboardStep4 /></DCArtboard>
+          <DCArtboard id="onb-5" label="入驻 5/5 · 提交审核" width={390} height={844}><OnboardStep5 /></DCArtboard>
+          <DCArtboard id="status" label="申请进度时间线" width={390} height={844}><StatusTimeline /></DCArtboard>
+          <DCArtboard id="compliance" label="证件资料库" width={390} height={844}><CompliancePage /></DCArtboard>
+        </DCSection>
+
+        <DCSection id="provider-jobs" title="③ · 派单 & 日程" subtitle="派单列表 · 详情 3 态 · 月历 · 可用时间 · 休息">
+          <DCArtboard id="jobs-list" label="派单列表" width={390} height={844}><JobsListPage /></DCArtboard>
+          <DCArtboard id="job-confirmed" label="派单详情 · 已确认" width={390} height={844}><JobDetailPage state="confirmed" /></DCArtboard>
+          <DCArtboard id="job-enroute" label="派单详情 · 出发中" width={390} height={844}><JobDetailPage state="enroute" /></DCArtboard>
+          <DCArtboard id="job-completed" label="派单详情 · 已完成" width={390} height={844}><JobDetailPage state="completed" /></DCArtboard>
+          <DCArtboard id="calendar" label="月历" width={390} height={844}><CalendarPage /></DCArtboard>
+          <DCArtboard id="availability" label="可用时间" width={390} height={844}><AvailabilityPage /></DCArtboard>
+          <DCArtboard id="timeoff" label="休息时间" width={390} height={844}><TimeOffPage /></DCArtboard>
+        </DCSection>
+
+        <DCSection id="provider-money" title="③ · 收益 & 档案" subtitle="收益详情 · 收款 · 公开档案 · 价格 · 评价回复">
+          <DCArtboard id="earnings" label="收益详情" width={390} height={844}><EarningsPage /></DCArtboard>
+          <DCArtboard id="payouts" label="收款记录" width={390} height={844}><PayoutsPage /></DCArtboard>
+          <DCArtboard id="public-profile" label="公开档案" width={390} height={844}><PublicProfilePage /></DCArtboard>
+          <DCArtboard id="services-prices" label="服务与价格" width={390} height={844}><ServicesPricesPage /></DCArtboard>
+          <DCArtboard id="review-reply" label="评价 & 回复" width={390} height={844}><ReviewReplyPage /></DCArtboard>
+        </DCSection>
+
+        <DCSection id="admin" title="④ 后台外壳 / 纠纷处理" subtitle="顶栏 + 左侧栏 + 列表 + 右滑入式裁决抽屉">
+          <DCArtboard id="admin-desktop" label="纠纷 · 桌面端（含抽屉）" width={1440} height={900}>
+            <AdminDisputes desktop={true} />
+          </DCArtboard>
+          <DCArtboard id="admin-mobile" label="纠纷 · 移动端" width={390} height={844}>
+            <AdminDisputes desktop={false} />
+          </DCArtboard>
+        </DCSection>
+
+        <DCSection id="admin-overview" title="④ · 运营总览 & 分析" subtitle="实时仪表盘 · 数据分析 · 后台登录">
+          <DCArtboard id="admin-login" label="后台登录" width={520} height={720}><AdminLoginPage /></DCArtboard>
+          <DCArtboard id="admin-overview" label="运营概览仪表盘" width={1440} height={900}><AdminOverview /></DCArtboard>
+          <DCArtboard id="admin-analytics" label="数据分析" width={1440} height={900}><AnalyticsPage /></DCArtboard>
+        </DCSection>
+
+        <DCSection id="admin-trust" title="④ · 信任 & 安全" subtitle="纠纷详情 · 安全列表 · 安全详情（含 SOS 地图）">
+          <DCArtboard id="dispute-detail" label="纠纷详情" width={1440} height={900}><DisputeDetailPage /></DCArtboard>
+          <DCArtboard id="safety-list" label="安全事件列表" width={1440} height={900}><SafetyListPage /></DCArtboard>
+          <DCArtboard id="safety-detail" label="SOS 处置详情" width={1440} height={900}><SafetyDetailPage /></DCArtboard>
+        </DCSection>
+
+        <DCSection id="admin-people" title="④ · 用户管理" subtitle="服务者列表 + 合规工作台 · 顾客列表 + 详情">
+          <DCArtboard id="providers-list" label="服务者列表" width={1440} height={900}><ProvidersListPage /></DCArtboard>
+          <DCArtboard id="provider-compliance" label="服务者审批工作台" width={1440} height={900}><ProviderComplianceWB /></DCArtboard>
+          <DCArtboard id="customers-list" label="顾客列表" width={1440} height={900}><CustomersListPage /></DCArtboard>
+          <DCArtboard id="customer-detail" label="顾客详情" width={1440} height={900}><CustomerDetailPage /></DCArtboard>
+        </DCSection>
+
+        <DCSection id="admin-ops" title="④ · 运营 & 财务" subtitle="退款 · 财务 · 评价审核 · 预订监控">
+          <DCArtboard id="refunds" label="退款" width={1440} height={900}><RefundsPage /></DCArtboard>
+          <DCArtboard id="finance" label="财务" width={1440} height={900}><FinancePage /></DCArtboard>
+          <DCArtboard id="reviews-mod" label="评价审核" width={1440} height={900}><ReviewsModerationPage /></DCArtboard>
+          <DCArtboard id="bookings-mon" label="预订监控（实时）" width={1440} height={900}><BookingsMonitorPage /></DCArtboard>
+        </DCSection>
+
+        <DCSection id="admin-ai" title="④ · AI & 设置" subtitle="对话审计 · 知识库 · 平台设置">
+          <DCArtboard id="ai-audit" label="AI 对话审计" width={1440} height={900}><AIAuditPage /></DCArtboard>
+          <DCArtboard id="ai-kb" label="AI 知识库" width={1440} height={900}><AIKnowledgePage /></DCArtboard>
+          <DCArtboard id="admin-settings" label="平台设置" width={1440} height={900}><AdminSettingsPage /></DCArtboard>
+        </DCSection>
+
+        <DCSection id="public-auth" title="⑤ 公共 · 认证全套" subtitle="注册 · 邮箱验证 · 忘记 · 重置 · 404">
+          <DCArtboard id="signup-mobile" label="注册 · 移动端" width={390} height={844}><SignupPage desktop={false} /></DCArtboard>
+          <DCArtboard id="signup-desktop" label="注册 · 桌面端" width={1280} height={820}><SignupPage desktop={true} /></DCArtboard>
+          <DCArtboard id="verify-email" label="验证邮箱" width={390} height={844}><VerifyEmailPage /></DCArtboard>
+          <DCArtboard id="forgot-pw" label="忘记密码" width={390} height={844}><ForgotPasswordPage /></DCArtboard>
+          <DCArtboard id="reset-pw" label="重置密码" width={390} height={844}><ResetPasswordPage /></DCArtboard>
+          <DCArtboard id="404" label="404 · 走丢了" width={1280} height={720}><Error404Page desktop={true} /></DCArtboard>
+        </DCSection>
+
+        <DCSection id="public-donate" title="⑤ 公共 · 捐款" subtitle="落地页 · 致谢">
+          <DCArtboard id="donate-landing" label="捐款落地页" width={1280} height={1400}><DonateLandingPage desktop={true} /></DCArtboard>
+          <DCArtboard id="donate-mobile" label="捐款 · 移动端" width={390} height={1400}><DonateLandingPage desktop={false} /></DCArtboard>
+          <DCArtboard id="donate-thanks" label="致谢页" width={1280} height={720}><DonateThankYouPage /></DCArtboard>
+        </DCSection>
+
+        <DCSection id="public-help" title="⑤ 公共 · 帮助中心" subtitle="帮助首页 · 文章详情">
+          <DCArtboard id="help-center" label="帮助中心" width={1280} height={1100}><HelpCenterPage desktop={true} /></DCArtboard>
+          <DCArtboard id="help-article" label="帮助文章" width={1280} height={1300}><HelpArticlePage desktop={true} /></DCArtboard>
+        </DCSection>
+
+        <DCSection id="dark" title="⑥ 暗色主题 · 同样四个外壳" subtitle="夜间使用场景 · 弱光环境对长者更舒适">
+          <DCArtboard id="dark-login" label="登录 · 暗色" width={390} height={844}>
+            <div data-theme="dark" style={{ width: "100%", height: "100%" }}><LoginPage desktop={false} /></div>
+          </DCArtboard>
+          <DCArtboard id="dark-home" label="顾客首页 · 暗色" width={390} height={844}>
+            <div data-theme="dark" style={{ width: "100%", height: "100%" }}><CustomerHome desktop={false} /></div>
+          </DCArtboard>
+          <DCArtboard id="dark-provider" label="服务者工作台 · 暗色" width={390} height={844}>
+            <div data-theme="dark" style={{ width: "100%", height: "100%" }}><ProviderWorkbench desktop={false} /></div>
+          </DCArtboard>
+          <DCArtboard id="dark-admin" label="后台纠纷 · 暗色" width={1440} height={900}>
+            <div data-theme="dark" style={{ width: "100%", height: "100%" }}><AdminDisputes desktop={true} /></div>
+          </DCArtboard>
+        </DCSection>
+      </DesignCanvas>
+
+      <TweaksPanel title="Tweaks">
+        <TweakSection title="主题">
+          <TweakRadio label="模式" value={t.theme} onChange={(v) => setTweak("theme", v)} options={[["light", "亮色"], ["dark", "暗色"]]} />
+          <TweakColor
+            label="品牌色"
+            value={t.brand}
+            onChange={(v) => setTweak("brand", v)}
+            options={["#E96A4A", "#D5453E", "#2E86AB", "#3D8A5C"]}
+          />
+        </TweakSection>
+        <TweakSection title="可访问性">
+          <TweakSlider label="字号倍数" value={t.fontScale} onChange={(v) => setTweak("fontScale", v)} min={0.9} max={1.2} step={0.05} format={(v) => v.toFixed(2) + "×"} />
+        </TweakSection>
+        <TweakSection title="状态">
+          <TweakToggle label="服务者审核中横幅" value={t.showProviderReview} onChange={(v) => setTweak("showProviderReview", v)} />
+        </TweakSection>
+      </TweaksPanel>
+    </>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+</script>
+</body>
+</html>

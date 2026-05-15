@@ -1,11 +1,9 @@
 import { setRequestLocale } from "next-intl/server";
-import { PublicThemeCorner } from "@/components/layout/PublicThemeCorner";
 
 /**
- * Auth-only layout: adds the fixed top-right theme toggle. Auth pages render
- * a centered card with their own vertical centering, so the corner button
- * doesn't collide with content; if a specific auth page ever gets a top-edge
- * title, give that page `pt-16`.
+ * Auth-only layout: the theme toggle is rendered inside AuthCard's
+ * top-right corner (Phase 1 design), so this layout just plumbs the
+ * locale through to its server children.
  */
 export default async function AuthLayout({
   children,
@@ -16,10 +14,5 @@ export default async function AuthLayout({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
-  return (
-    <>
-      <PublicThemeCorner />
-      {children}
-    </>
-  );
+  return <>{children}</>;
 }

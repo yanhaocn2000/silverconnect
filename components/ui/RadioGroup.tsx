@@ -14,7 +14,7 @@ export const RadioItem = React.forwardRef<
   <RadioPrimitive.Item
     ref={ref}
     className={cn(
-      "inline-flex h-6 w-6 items-center justify-center rounded-full border-[1.5px] border-border bg-bg-base",
+      "inline-flex h-6 w-6 items-center justify-center rounded-full border-[1.5px] border-border bg-bg-surface",
       "data-[state=checked]:border-brand",
       className
     )}

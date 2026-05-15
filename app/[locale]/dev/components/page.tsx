@@ -5,6 +5,14 @@ import { Input } from "@/components/ui/Input";
 import { Card, CardTitle, CardBody } from "@/components/ui/Card";
 import { Badge, type BadgeStatus } from "@/components/ui/Badge";
 import { Skeleton } from "@/components/ui/Skeleton";
+import { Chip } from "@/components/ui/Chip";
+import { Banner } from "@/components/ui/Banner";
+import { StatBadge } from "@/components/ui/StatBadge";
+import { SearchBar } from "@/components/ui/SearchBar";
+import { CategoryTile } from "@/components/ui/CategoryTile";
+import { ProviderCard } from "@/components/ui/ProviderCard";
+import { DottedCTA } from "@/components/ui/DottedCTA";
+import { Plus, Sparkles } from "lucide-react";
 import { Header } from "@/components/layout/Header";
 import { AIFloatButton } from "@/components/layout/AIFloatButton";
 import {
@@ -84,6 +92,87 @@ export default async function DevComponentsPage({
               Cards use --bg-surface, --border, --shadow-card per UI_DESIGN §1.3.
             </CardBody>
           </Card>
+        </Section>
+
+        <Section title="Chips">
+          <div className="flex flex-wrap gap-2">
+            <Chip>Neutral</Chip>
+            <Chip tone="brand">Brand</Chip>
+            <Chip tone="success">Success</Chip>
+            <Chip tone="warn">Warn</Chip>
+            <Chip tone="danger">Danger</Chip>
+          </div>
+        </Section>
+
+        <Section title="StatBadges">
+          <div className="flex flex-wrap gap-2">
+            <StatBadge tone="brand" dot>
+              Active
+            </StatBadge>
+            <StatBadge tone="success" dot>
+              Confirmed
+            </StatBadge>
+            <StatBadge tone="warn" dot>
+              Pending
+            </StatBadge>
+            <StatBadge tone="danger" dot>
+              Cancelled
+            </StatBadge>
+          </div>
+        </Section>
+
+        <Section title="Banners">
+          <div className="grid gap-3">
+            <Banner tone="info">Information banner — uses brand soft.</Banner>
+            <Banner tone="warn">Warning banner — used by provider review state.</Banner>
+            <Banner tone="success">Success banner — payment completed.</Banner>
+            <Banner tone="danger">Danger banner — booking dispute opened.</Banner>
+          </div>
+        </Section>
+
+        <Section title="Search bar">
+          <SearchBar placeholder="搜索服务、服务者…" />
+        </Section>
+
+        <Section title="Category tiles">
+          <div className="grid grid-cols-2 gap-3">
+            <CategoryTile icon={<span>🧹</span>} label="保洁" description="家居清洁" />
+            <CategoryTile icon={<span>🍲</span>} label="陪餐" description="买菜煮饭" />
+            <CategoryTile icon={<span>💊</span>} label="送药" description="按时取药" />
+            <CategoryTile icon={<span>🚶</span>} label="陪诊" description="陪同就医" />
+          </div>
+        </Section>
+
+        <Section title="Provider card">
+          <div className="grid gap-3">
+            <ProviderCard
+              avatar={
+                <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-brand-soft text-brand-ink font-bold">
+                  梅
+                </span>
+              }
+              name="梅阿姨"
+              service="保洁 · 朝阳区"
+              rating={4.9}
+              reviewCount={128}
+              price="¥80/小时"
+            />
+          </div>
+        </Section>
+
+        <Section title="Dotted CTA">
+          <DottedCTA>
+            <Plus size={16} aria-hidden />
+            添加新地址
+          </DottedCTA>
+        </Section>
+
+        <Section title="Brand-ink showcase">
+          <div className="rounded-lg bg-brand-soft p-6 text-brand-ink">
+            <Sparkles size={20} aria-hidden className="mb-2" />
+            <p className="text-h3">brand-soft / brand-ink 组合</p>
+            <p className="text-small">用于推荐、捐款 pill 等强调区。</p>
+          </div>
         </Section>
 
         <Section title="Skeleton">

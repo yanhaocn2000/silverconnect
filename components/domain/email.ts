@@ -61,6 +61,16 @@ export async function sendEmail(opts: {
 }): Promise<SendResult> {
   const t = getTransport();
   if (!t) {
+    // Dev convenience: SMTP often isn't configured locally. Print the
+    // would-be email body to the console so verification / reset codes
+    // are usable without standing up Gmail. Never runs in production.
+    if (process.env.NODE_ENV !== "production") {
+      const banner = "═".repeat(60);
+
+      console.log(
+        `\n${banner}\n[DEV MAIL]  → ${opts.to}\n  ${opts.subject}\n  ${opts.text}\n${banner}\n`,
+      );
+    }
     return { ok: false, reason: "smtp-not-configured" };
   }
   const from =

@@ -89,11 +89,13 @@ export function EmergencyOverlay({ country = "AU" }: { country?: CountryCode }) 
           setOpen(true);
         }}
         className={cn(
-          "fixed bottom-[180px] right-5 z-30 flex h-12 w-12 items-center justify-center rounded-full bg-danger text-white shadow-card-hover",
-          "sm:bottom-[88px]"
+          "fixed bottom-[280px] right-4 z-30 flex h-14 w-14 items-center justify-center rounded-full",
+          "border-[3px] border-bg-base bg-danger text-white",
+          "shadow-[0_8px_24px_-6px_color-mix(in_oklab,var(--danger)_50%,transparent)]",
+          "md:hidden",
         )}
       >
-        <span aria-hidden className="text-[16px] font-extrabold leading-none">
+        <span aria-hidden className="text-[13px] font-extrabold leading-none">
           SOS
         </span>
       </button>

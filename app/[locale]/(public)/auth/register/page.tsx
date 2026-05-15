@@ -137,20 +137,13 @@ export default async function RegisterPage({
       </div>
 
       <div className="flex flex-col gap-2.5">
-        <button
-          type="button"
-          className="flex h-14 items-center justify-center gap-2 rounded-md border-[1.5px] border-border-strong bg-bg-base text-[16px] font-semibold text-text-primary"
+        <a
+          href={`/${locale}/auth/google/start?mode=register`}
+          className="flex h-14 items-center justify-center gap-2 rounded-md border-[1.5px] border-border-strong bg-bg-surface text-[16px] font-semibold text-text-primary hover:bg-bg-surface-2"
         >
           <span aria-hidden>G</span>
           {t("google")}
-        </button>
-        <button
-          type="button"
-          className="flex h-14 items-center justify-center gap-2 rounded-md border-[1.5px] border-border-strong bg-bg-base text-[16px] font-semibold text-text-primary"
-        >
-          <span aria-hidden></span>
-          {t("apple")}
-        </button>
+        </a>
       </div>
 
       <p className="mt-6 text-center text-[15px] text-text-secondary">

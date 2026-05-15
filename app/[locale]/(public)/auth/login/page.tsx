@@ -56,6 +56,8 @@ export default async function LoginPage({
   const errorMsg =
     error === "credentials"
       ? t("errorInvalidCreds")
+      : error?.startsWith("google_")
+      ? t("errorGoogleSignIn")
       : error
       ? t("errorGeneric")
       : null;
@@ -84,7 +86,17 @@ export default async function LoginPage({
           />
         </div>
         <div>
-          <Label htmlFor="password">{tCommon("password")}</Label>
+          <div className="mb-2 flex items-baseline justify-between">
+            <Label htmlFor="password" className="mb-0">
+              {tCommon("password")}
+            </Label>
+            <Link
+              href="/auth/forgot"
+              className="text-[13px] font-semibold text-brand-ink hover:underline"
+            >
+              {t("forgot")}
+            </Link>
+          </div>
           <Input
             id="password"
             name="password"
@@ -103,13 +115,6 @@ export default async function LoginPage({
         </Button>
       </form>
 
-      <Link
-        href="/auth/forgot"
-        className="mt-3 inline-flex h-12 items-center justify-center text-[15px] font-semibold text-brand"
-      >
-        {t("forgot")}
-      </Link>
-
       <div className="my-5 flex items-center gap-3">
         <span className="h-px flex-1 bg-border" aria-hidden />
         <span className="text-[13px] text-text-tertiary">{tCommon("or")}</span>
@@ -117,20 +122,13 @@ export default async function LoginPage({
       </div>
 
       <div className="flex flex-col gap-2.5">
-        <button
-          type="button"
-          className="flex h-14 items-center justify-center gap-2 rounded-md border-[1.5px] border-border-strong bg-bg-base text-[16px] font-semibold text-text-primary"
+        <a
+          href={`/${locale}/auth/google/start`}
+          className="flex h-14 items-center justify-center gap-2 rounded-md border-[1.5px] border-border-strong bg-bg-surface text-[16px] font-semibold text-text-primary hover:bg-bg-surface-2"
         >
           <span aria-hidden>G</span>
           {t("google")}
-        </button>
-        <button
-          type="button"
-          className="flex h-14 items-center justify-center gap-2 rounded-md border-[1.5px] border-border-strong bg-bg-base text-[16px] font-semibold text-text-primary"
-        >
-          <span aria-hidden></span>
-          {t("apple")}
-        </button>
+        </a>
       </div>
 
       <p className="mt-6 text-center text-[15px] text-text-secondary">

@@ -25,8 +25,13 @@ const config: Config = {
           DEFAULT: "var(--brand-primary)",
           hover: "var(--brand-primary-hover)",
           soft: "var(--brand-primary-soft)",
+          ink: "var(--brand-ink)",
           accent: "var(--brand-accent)",
           "accent-soft": "var(--brand-accent-soft)",
+        },
+        chip: {
+          DEFAULT: "var(--chip-bg)",
+          fg: "var(--chip-fg)",
         },
         success: { DEFAULT: "var(--success)", soft: "var(--success-soft)" },
         warning: { DEFAULT: "var(--warning)", soft: "var(--warning-soft)" },
@@ -101,9 +106,16 @@ const config: Config = {
         pill: "var(--radius-pill)",
       },
       boxShadow: {
+        sm: "var(--shadow-sm)",
+        md: "var(--shadow-md)",
+        lg: "var(--shadow-lg)",
         card: "var(--shadow-card)",
         "card-hover": "var(--shadow-card-hover)",
         popover: "var(--shadow-popover)",
+      },
+      fontFamily: {
+        sans: ["var(--font-sans)"],
+        display: ["var(--font-display)"],
       },
       maxWidth: {
         content: "720px",
