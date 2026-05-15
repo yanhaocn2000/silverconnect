@@ -227,6 +227,12 @@ export default async function BookingDetailPage({
 }) {
   const { locale, id } = await params;
   setRequestLocale(locale);
+  // Validate UUID before hitting the DB so malformed ids surface as 404
+  // (not 500 from a Postgres uuid-cast error). pre-existing /[id] pages
+  // crashed on garbage input — caught during Phase 4 E2E.
+  if (!/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(id)) {
+    notFound();
+  }
   const me = await getCurrentUser();
   if (!me) nextRedirect(`/${locale}/auth/login`);
   const t = await getTranslations("booking");

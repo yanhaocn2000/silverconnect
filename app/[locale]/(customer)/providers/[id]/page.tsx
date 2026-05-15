@@ -76,6 +76,10 @@ export default async function ProviderDetailPage({
   const { locale, id } = await params;
   const sp = await searchParams;
   setRequestLocale(locale);
+  // Guard against malformed UUIDs — same fix as bookings/[id]
+  if (!/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(id)) {
+    notFound();
+  }
   const t = await getTranslations("provider");
   const tCategories = await getTranslations("categories");
   const tCommon = await getTranslations("common");
