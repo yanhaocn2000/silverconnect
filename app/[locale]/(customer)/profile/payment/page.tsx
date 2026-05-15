@@ -104,7 +104,7 @@ export default async function ProfilePaymentPage({
             {items.map((c) => (
               <li
                 key={c.id}
-                className="flex items-center gap-3 rounded-lg border border-border bg-bg-base p-4"
+                className="flex items-center gap-3 rounded-lg border border-border bg-bg-surface p-4"
               >
                 <span
                   aria-hidden
@@ -138,7 +138,7 @@ export default async function ProfilePaymentPage({
                     <input type="hidden" name="id" value={c.id} />
                     <button
                       type="submit"
-                      className="inline-flex h-10 items-center rounded-sm border-[1.5px] border-border-strong bg-bg-base px-3 text-[14px] font-semibold text-text-primary"
+                      className="inline-flex h-10 items-center rounded-sm border-[1.5px] border-border-strong bg-bg-surface px-3 text-[14px] font-semibold text-text-primary"
                     >
                       {t("setDefault")}
                     </button>

@@ -62,7 +62,7 @@ export default async function NotifPrefsPage({
         <form action="/profile/notifications?saved=1" method="get" className="mt-6 flex flex-col gap-6">
           <fieldset>
             <legend className="text-[18px] font-bold">{t("channels")}</legend>
-            <ul className="mt-3 overflow-hidden rounded-lg border border-border bg-bg-base">
+            <ul className="mt-3 overflow-hidden rounded-lg border border-border bg-bg-surface">
               {CHANNELS.map((c, i) => (
                 <li
                   key={c.name}
@@ -81,7 +81,7 @@ export default async function NotifPrefsPage({
 
           <fieldset>
             <legend className="text-[18px] font-bold">{t("topics")}</legend>
-            <ul className="mt-3 overflow-hidden rounded-lg border border-border bg-bg-base">
+            <ul className="mt-3 overflow-hidden rounded-lg border border-border bg-bg-surface">
               {TOPICS.map((c, i) => (
                 <li
                   key={c.name}

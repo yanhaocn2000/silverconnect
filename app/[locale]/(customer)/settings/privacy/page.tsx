@@ -128,7 +128,7 @@ export default async function PrivacySettingsPage({
           {opts.map((o) => (
             <label
               key={o.name}
-              className="flex cursor-pointer items-start gap-3 rounded-lg border border-border bg-bg-base p-4 has-[:checked]:border-brand"
+              className="flex cursor-pointer items-start gap-3 rounded-lg border border-border bg-bg-surface p-4 has-[:checked]:border-brand"
             >
               <input
                 type="checkbox"
@@ -155,7 +155,7 @@ export default async function PrivacySettingsPage({
           </Button>
         </form>
 
-        <section className="mt-8 rounded-lg border border-border bg-bg-base p-5">
+        <section className="mt-8 rounded-lg border border-border bg-bg-surface p-5">
           <h2 className="flex items-center gap-2 text-[16px] font-bold">
             <Download size={18} className="text-brand" aria-hidden />
             {t("download")}
@@ -179,7 +179,7 @@ export default async function PrivacySettingsPage({
             <input type="hidden" name="locale" value={locale} />
             <button
               type="submit"
-              className="inline-flex h-12 items-center rounded-md border-[1.5px] border-brand bg-bg-base px-5 text-[15px] font-bold text-brand"
+              className="inline-flex h-12 items-center rounded-md border-[1.5px] border-brand bg-bg-surface px-5 text-[15px] font-bold text-brand"
             >
               {t("download")}
             </button>
@@ -204,12 +204,12 @@ export default async function PrivacySettingsPage({
                 required
                 pattern="DELETE"
                 autoComplete="off"
-                className="mt-1 block w-full rounded-md border-[1.5px] border-danger bg-bg-base px-3 py-2 text-[15px] font-bold uppercase text-danger focus:outline-none"
+                className="mt-1 block w-full rounded-md border-[1.5px] border-danger bg-bg-surface px-3 py-2 text-[15px] font-bold uppercase text-danger focus:outline-none"
               />
             </label>
             <button
               type="submit"
-              className="inline-flex h-12 items-center justify-center rounded-md border-[1.5px] border-danger bg-bg-base px-5 text-[15px] font-bold text-danger"
+              className="inline-flex h-12 items-center justify-center rounded-md border-[1.5px] border-danger bg-bg-surface px-5 text-[15px] font-bold text-danger"
             >
               {t("deleteAccount")}
             </button>

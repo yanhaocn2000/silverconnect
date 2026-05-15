@@ -32,7 +32,7 @@ export default async function AccountSettingsPage({
   const tCountry = await getTranslations("country");
   const saved = sp.saved === "1";
 
-  const fieldClass = "block h-touch-btn w-full rounded-md border-[1.5px] border-border bg-bg-base px-4 text-body text-text-primary focus:border-brand focus:outline-none";
+  const fieldClass = "block h-touch-btn w-full rounded-md border-[1.5px] border-border bg-bg-surface px-4 text-body text-text-primary focus:border-brand focus:outline-none";
 
   return (
     <>

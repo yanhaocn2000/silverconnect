@@ -96,7 +96,7 @@ export default async function ProfileEditPage({
               id="lang"
               name="lang"
               defaultValue={locale}
-              className="block h-touch-btn w-full rounded-md border-[1.5px] border-border bg-bg-base px-4 text-body text-text-primary focus:border-brand focus:outline-none"
+              className="block h-touch-btn w-full rounded-md border-[1.5px] border-border bg-bg-surface px-4 text-body text-text-primary focus:border-brand focus:outline-none"
             >
               <option value="en">English</option>
               <option value="zh-CN">简体中文</option>

@@ -70,7 +70,7 @@ export default async function ProfilePage({
         </section>
 
         {/* List items */}
-        <ul className="mt-6 overflow-hidden rounded-lg border border-border bg-bg-base">
+        <ul className="mt-6 overflow-hidden rounded-lg border border-border bg-bg-surface">
           {ITEMS.map((it, i) => (
             <li
               key={it.key}
@@ -107,7 +107,7 @@ export default async function ProfilePage({
         <form action="/auth/logout" method="POST">
           <button
             type="submit"
-            className="mt-4 flex min-h-[72px] w-full items-center gap-4 overflow-hidden rounded-lg border border-border bg-bg-base px-4 py-3 text-left"
+            className="mt-4 flex min-h-[72px] w-full items-center gap-4 overflow-hidden rounded-lg border border-border bg-bg-surface px-4 py-3 text-left"
           >
             <span
               aria-hidden

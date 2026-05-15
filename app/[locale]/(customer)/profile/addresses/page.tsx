@@ -100,7 +100,7 @@ export default async function AddressesPage({
             {items.map((a) => (
               <li
                 key={a.id}
-                className="rounded-lg border border-border bg-bg-base p-4"
+                className="rounded-lg border border-border bg-bg-surface p-4"
               >
                 <div className="flex items-start gap-3">
                   <span
@@ -130,7 +130,7 @@ export default async function AddressesPage({
                 <div className="mt-3 flex flex-wrap gap-2">
                   <button
                     type="button"
-                    className="inline-flex h-10 items-center gap-1.5 rounded-sm border-[1.5px] border-border-strong bg-bg-base px-3 text-[14px] font-semibold text-text-primary opacity-50"
+                    className="inline-flex h-10 items-center gap-1.5 rounded-sm border-[1.5px] border-border-strong bg-bg-surface px-3 text-[14px] font-semibold text-text-primary opacity-50"
                     disabled
                     title="Edit not yet wired"
                   >
@@ -142,7 +142,7 @@ export default async function AddressesPage({
                       <input type="hidden" name="id" value={a.id} />
                       <button
                         type="submit"
-                        className="inline-flex h-10 items-center rounded-sm border-[1.5px] border-border-strong bg-bg-base px-3 text-[14px] font-semibold text-text-primary"
+                        className="inline-flex h-10 items-center rounded-sm border-[1.5px] border-border-strong bg-bg-surface px-3 text-[14px] font-semibold text-text-primary"
                       >
                         {t("setDefault")}
                       </button>
@@ -154,7 +154,7 @@ export default async function AddressesPage({
                     <button
                       type="submit"
                       aria-label={t("delete")}
-                      className="inline-flex h-10 w-10 items-center justify-center rounded-sm border-[1.5px] border-danger bg-bg-base text-danger"
+                      className="inline-flex h-10 w-10 items-center justify-center rounded-sm border-[1.5px] border-danger bg-bg-surface text-danger"
                     >
                       <Trash2 size={16} aria-hidden />
                     </button>

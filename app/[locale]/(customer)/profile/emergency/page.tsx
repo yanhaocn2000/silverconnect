@@ -150,7 +150,7 @@ export default async function EmergencyContactsPage({
               return (
                 <li
                   key={c.id}
-                  className="rounded-lg border border-border bg-bg-base p-4"
+                  className="rounded-lg border border-border bg-bg-surface p-4"
                 >
                   <div className="flex items-start gap-3">
                     <span
@@ -180,7 +180,7 @@ export default async function EmergencyContactsPage({
                         <input type="hidden" name="id" value={c.id} />
                         <button
                           type="submit"
-                          className="inline-flex h-10 items-center rounded-sm border-[1.5px] border-border-strong bg-bg-base px-3 text-[14px] font-semibold text-text-primary"
+                          className="inline-flex h-10 items-center rounded-sm border-[1.5px] border-border-strong bg-bg-surface px-3 text-[14px] font-semibold text-text-primary"
                         >
                           {t("setPrimary")}
                         </button>
@@ -192,7 +192,7 @@ export default async function EmergencyContactsPage({
                       <button
                         type="submit"
                         aria-label={t("delete")}
-                        className="inline-flex h-10 w-10 items-center justify-center rounded-sm border-[1.5px] border-danger bg-bg-base text-danger"
+                        className="inline-flex h-10 w-10 items-center justify-center rounded-sm border-[1.5px] border-danger bg-bg-surface text-danger"
                       >
                         <Trash2 size={16} aria-hidden />
                       </button>
@@ -216,7 +216,7 @@ export default async function EmergencyContactsPage({
         {adding && (
           <form
             action={addContactAction}
-            className="mt-5 flex flex-col gap-4 rounded-lg border-2 border-brand bg-bg-base p-5"
+            className="mt-5 flex flex-col gap-4 rounded-lg border-2 border-brand bg-bg-surface p-5"
           >
             <input type="hidden" name="locale" value={locale} />
             <h2 className="text-h3">{t("addContact")}</h2>
@@ -250,7 +250,7 @@ export default async function EmergencyContactsPage({
                 id="relationship"
                 name="relationship"
                 required
-                className="block h-touch-btn w-full rounded-md border-[1.5px] border-border bg-bg-base px-4 text-body text-text-primary focus:border-brand focus:outline-none"
+                className="block h-touch-btn w-full rounded-md border-[1.5px] border-border bg-bg-surface px-4 text-body text-text-primary focus:border-brand focus:outline-none"
               >
                 <option value="daughter">{t("relDaughter")}</option>
                 <option value="spouse">{t("relSpouse")}</option>

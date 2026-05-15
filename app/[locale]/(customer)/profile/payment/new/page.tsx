@@ -39,7 +39,7 @@ export default async function NewPaymentMethodPage({
           <p>{t("secureNote")}</p>
         </div>
 
-        <div className="mt-6 flex flex-col items-center gap-3 rounded-lg border-2 border-dashed border-border-strong bg-bg-base px-5 py-12 text-center">
+        <div className="mt-6 flex flex-col items-center gap-3 rounded-lg border-2 border-dashed border-border-strong bg-bg-surface px-5 py-12 text-center">
           <span
             aria-hidden
             className="flex h-14 w-14 items-center justify-center rounded-md bg-brand-soft text-brand"
@@ -56,7 +56,7 @@ export default async function NewPaymentMethodPage({
           </p>
           <Link
             href="/profile/payment"
-            className="mt-3 inline-flex h-12 items-center rounded-md border-[1.5px] border-border-strong bg-bg-base px-5 text-[15px] font-semibold text-text-primary"
+            className="mt-3 inline-flex h-12 items-center rounded-md border-[1.5px] border-border-strong bg-bg-surface px-5 text-[15px] font-semibold text-text-primary"
           >
             {locale.startsWith("zh") ? "返回" : "Back"}
           </Link>

@@ -105,7 +105,7 @@ export default async function FamilyPage({
         <h2 className="mt-6 text-[18px] font-bold">{t("members")}</h2>
         <ul className="mt-3 flex flex-col gap-2">
           {/* Self entry — the current user */}
-          <li className="flex items-center gap-3 rounded-lg border border-border bg-bg-base p-3">
+          <li className="flex items-center gap-3 rounded-lg border border-border bg-bg-surface p-3">
             <ProviderAvatar size={44} hue={1} initials={me.initials} />
             <div className="min-w-0 flex-1">
               <p className="text-[15px] font-bold">
@@ -128,7 +128,7 @@ export default async function FamilyPage({
           {members.map((m) => (
             <li
               key={m.id}
-              className="flex items-center gap-3 rounded-lg border border-border bg-bg-base p-3"
+              className="flex items-center gap-3 rounded-lg border border-border bg-bg-surface p-3"
             >
               <ProviderAvatar
                 size={44}
@@ -166,7 +166,7 @@ export default async function FamilyPage({
 
         <form
           action={inviteAction}
-          className="mt-6 flex flex-col gap-4 rounded-lg border-2 border-dashed border-border-strong bg-bg-base p-5"
+          className="mt-6 flex flex-col gap-4 rounded-lg border-2 border-dashed border-border-strong bg-bg-surface p-5"
         >
           <input type="hidden" name="locale" value={locale} />
           <h3 className="flex items-center gap-2 text-[16px] font-bold">

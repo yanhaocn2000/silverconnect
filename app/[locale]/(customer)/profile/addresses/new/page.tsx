@@ -80,7 +80,7 @@ export default async function NewAddressPage({
 
         <form
           action={addAddressAction}
-          className="mt-5 flex flex-col gap-4 rounded-lg border border-border bg-bg-base p-5"
+          className="mt-5 flex flex-col gap-4 rounded-lg border border-border bg-bg-surface p-5"
         >
           <input type="hidden" name="locale" value={locale} />
           <input type="hidden" name="country" value={country} />

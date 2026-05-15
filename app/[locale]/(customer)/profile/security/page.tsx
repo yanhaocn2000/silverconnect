@@ -119,7 +119,7 @@ export default async function ProfileSecurityPage({
         </section>
 
         {/* 2FA */}
-        <section className="mt-8 flex items-start gap-4 rounded-lg border border-border bg-bg-base p-4">
+        <section className="mt-8 flex items-start gap-4 rounded-lg border border-border bg-bg-surface p-4">
           <span
             aria-hidden
             className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-brand-soft text-brand"
@@ -133,7 +133,7 @@ export default async function ProfileSecurityPage({
             </p>
             <button
               type="button"
-              className="mt-3 inline-flex h-12 items-center rounded-md border-2 border-brand bg-bg-base px-5 text-[15px] font-bold text-brand"
+              className="mt-3 inline-flex h-12 items-center rounded-md border-2 border-brand bg-bg-surface px-5 text-[15px] font-bold text-brand"
             >
               {t("twoFactorEnable")}
             </button>
@@ -143,7 +143,7 @@ export default async function ProfileSecurityPage({
         {/* Sessions */}
         <section className="mt-6">
           <h2 className="text-[18px] font-bold">{t("sessions")}</h2>
-          <ul className="mt-3 overflow-hidden rounded-lg border border-border bg-bg-base">
+          <ul className="mt-3 overflow-hidden rounded-lg border border-border bg-bg-surface">
             <li className="flex items-center gap-3 px-4 py-3.5">
               <span
                 aria-hidden
@@ -162,7 +162,7 @@ export default async function ProfileSecurityPage({
           <form action={`/${locale}/auth/logout`} method="POST">
             <button
               type="submit"
-              className="mt-3 inline-flex h-12 w-full items-center justify-center rounded-md border-[1.5px] border-danger bg-bg-base text-[15px] font-bold text-danger"
+              className="mt-3 inline-flex h-12 w-full items-center justify-center rounded-md border-[1.5px] border-danger bg-bg-surface text-[15px] font-bold text-danger"
             >
               {t("signOutAll")}
             </button>
