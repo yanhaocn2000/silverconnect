@@ -233,7 +233,7 @@ export default async function NotificationsPage({
         >
           <nav
             aria-label={tNav("messages")}
-            className="flex h-14 items-center justify-between border-b border-border bg-bg-base px-4"
+            className="flex h-14 items-center justify-between border-b border-border bg-bg-surface px-4"
           >
             <div className="flex gap-3">
               {TABS.map((k) => {

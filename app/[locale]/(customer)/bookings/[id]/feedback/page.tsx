@@ -112,6 +112,9 @@ export default async function FeedbackPage({
   searchParams: Promise<Record<string, string | string[] | undefined>>;
 }) {
   const { locale, id } = await params;
+  if (!/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(id)) {
+    notFound();
+  }
   const sp = await searchParams;
   setRequestLocale(locale);
   const me = await getCurrentUser();
@@ -229,7 +232,7 @@ export default async function FeedbackPage({
           </div>
         )}
 
-        <section className="mt-5 flex items-center gap-3 rounded-md border border-border bg-bg-base p-4">
+        <section className="mt-5 flex items-center gap-3 rounded-md border border-border bg-bg-surface p-4">
           <ProviderAvatar size={56} hue={0} initials={initials} />
           <div>
             <p className="text-[16px] font-bold">{providerName}</p>
@@ -252,7 +255,7 @@ export default async function FeedbackPage({
               {[1, 2, 3, 4, 5].map((n) => (
                 <label
                   key={n}
-                  className="flex h-16 w-16 cursor-pointer items-center justify-center rounded-md border-[1.5px] border-border-strong bg-bg-base hover:border-brand has-[:checked]:border-brand has-[:checked]:bg-brand-soft"
+                  className="flex h-16 w-16 cursor-pointer items-center justify-center rounded-md border-[1.5px] border-border-strong bg-bg-surface hover:border-brand has-[:checked]:border-brand has-[:checked]:bg-brand-soft"
                 >
                   <input
                     type="radio"
@@ -284,7 +287,7 @@ export default async function FeedbackPage({
               {TAG_KEYS.map((k) => (
                 <label
                   key={k}
-                  className="inline-flex cursor-pointer items-center gap-1 rounded-pill border-[1.5px] border-border-strong bg-bg-base px-4 py-2 text-[14px] font-semibold text-text-primary hover:border-brand has-[:checked]:border-brand has-[:checked]:bg-brand-soft has-[:checked]:text-brand"
+                  className="inline-flex cursor-pointer items-center gap-1 rounded-pill border-[1.5px] border-border-strong bg-bg-surface px-4 py-2 text-[14px] font-semibold text-text-primary hover:border-brand has-[:checked]:border-brand has-[:checked]:bg-brand-soft has-[:checked]:text-brand"
                 >
                   <input
                     type="checkbox"
@@ -306,7 +309,7 @@ export default async function FeedbackPage({
               placeholder={t("commentPh")}
               rows={4}
               maxLength={2000}
-              className="block w-full rounded-md border-[1.5px] border-border-strong bg-bg-base p-3.5 text-[16px] text-text-primary placeholder:text-text-placeholder focus:border-brand focus:outline-none"
+              className="block w-full rounded-md border-[1.5px] border-border-strong bg-bg-surface p-3.5 text-[16px] text-text-primary placeholder:text-text-placeholder focus:border-brand focus:outline-none"
             />
           </div>
 
@@ -320,7 +323,7 @@ export default async function FeedbackPage({
               multiple
               disabled
               title="Photo upload ships with file storage"
-              className="block w-full text-[14px] text-text-secondary opacity-50 file:mr-3 file:inline-flex file:h-12 file:items-center file:rounded-md file:border-[1.5px] file:border-border-strong file:bg-bg-base file:px-4 file:text-[14px] file:font-semibold file:text-text-primary"
+              className="block w-full text-[14px] text-text-secondary opacity-50 file:mr-3 file:inline-flex file:h-12 file:items-center file:rounded-md file:border-[1.5px] file:border-border-strong file:bg-bg-surface file:px-4 file:text-[14px] file:font-semibold file:text-text-primary"
             />
             <p className="mt-1.5 flex items-center gap-1 text-[13px] text-text-tertiary">
               <Camera size={14} aria-hidden /> {t("photosHint")}

@@ -227,7 +227,7 @@ export default async function ChatPage({
       >
         <header
           role="banner"
-          className="flex h-16 shrink-0 items-center gap-2 border-b border-border bg-bg-base pl-1 pr-3"
+          className="flex h-16 shrink-0 items-center gap-2 border-b border-border bg-bg-surface pl-1 pr-3"
         >
           <Link
             href={backHref}
@@ -300,7 +300,7 @@ export default async function ChatPage({
 
         <form
           action={sendMessageAction}
-          className="flex shrink-0 items-center gap-2 border-t border-border bg-bg-base p-2.5"
+          className="flex shrink-0 items-center gap-2 border-t border-border bg-bg-surface p-2.5"
         >
           <input type="hidden" name="locale" value={locale} />
           <button

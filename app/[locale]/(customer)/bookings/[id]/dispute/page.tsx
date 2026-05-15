@@ -123,6 +123,9 @@ export default async function DisputePage({
   searchParams: Promise<Record<string, string | string[] | undefined>>;
 }) {
   const { locale, id } = await params;
+  if (!/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(id)) {
+    notFound();
+  }
   const sp = await searchParams;
   setRequestLocale(locale);
   const me = await getCurrentUser();
@@ -247,7 +250,7 @@ export default async function DisputePage({
             <ul className="mt-3 flex flex-col gap-2.5">
               {TYPE_KEYS.map((k) => (
                 <li key={k}>
-                  <label className="flex cursor-pointer items-center gap-3 rounded-md border-[1.5px] border-border bg-bg-base p-4 has-[:checked]:border-2 has-[:checked]:border-brand">
+                  <label className="flex cursor-pointer items-center gap-3 rounded-md border-[1.5px] border-border bg-bg-surface p-4 has-[:checked]:border-2 has-[:checked]:border-brand">
                     <input
                       type="radio"
                       name="type"
@@ -276,7 +279,7 @@ export default async function DisputePage({
               maxLength={2000}
               rows={5}
               aria-describedby="describe-hint"
-              className="block w-full rounded-md border-[1.5px] border-border-strong bg-bg-base p-3.5 text-[16px] text-text-primary placeholder:text-text-placeholder focus:border-brand focus:outline-none"
+              className="block w-full rounded-md border-[1.5px] border-border-strong bg-bg-surface p-3.5 text-[16px] text-text-primary placeholder:text-text-placeholder focus:border-brand focus:outline-none"
             />
             <p
               id="describe-hint"
@@ -294,7 +297,7 @@ export default async function DisputePage({
               type="file"
               accept="image/jpeg,image/png,image/webp,image/heic,application/pdf"
               multiple
-              className="block w-full text-[14px] text-text-secondary file:mr-3 file:inline-flex file:h-12 file:items-center file:rounded-md file:border-[1.5px] file:border-border-strong file:bg-bg-base file:px-4 file:text-[14px] file:font-semibold file:text-text-primary"
+              className="block w-full text-[14px] text-text-secondary file:mr-3 file:inline-flex file:h-12 file:items-center file:rounded-md file:border-[1.5px] file:border-border-strong file:bg-bg-surface file:px-4 file:text-[14px] file:font-semibold file:text-text-primary"
             />
             <p className="mt-1.5 flex items-center gap-1 text-[13px] text-text-tertiary">
               <Camera size={14} aria-hidden /> {t("evidenceHint")} · JPG / PNG /
@@ -309,7 +312,7 @@ export default async function DisputePage({
             <ul className="mt-3 flex flex-col gap-2.5">
               {OUTCOME_KEYS.map((k) => (
                 <li key={k}>
-                  <label className="flex cursor-pointer items-center gap-3 rounded-md border-[1.5px] border-border bg-bg-base p-4 has-[:checked]:border-2 has-[:checked]:border-brand">
+                  <label className="flex cursor-pointer items-center gap-3 rounded-md border-[1.5px] border-border bg-bg-surface p-4 has-[:checked]:border-2 has-[:checked]:border-brand">
                     <input
                       type="radio"
                       name="outcome"

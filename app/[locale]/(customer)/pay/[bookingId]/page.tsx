@@ -32,6 +32,9 @@ export default async function PaymentPage({
   searchParams: Promise<Record<string, string | string[] | undefined>>;
 }) {
   const { locale, bookingId } = await params;
+  if (!/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(bookingId)) {
+    notFound();
+  }
   const sp = await searchParams;
   setRequestLocale(locale);
   const t = await getTranslations("payment");
@@ -100,7 +103,7 @@ export default async function PaymentPage({
           </button>
           <button
             type="button"
-            className="flex h-14 items-center justify-center gap-1.5 rounded-md border-[1.5px] border-border bg-bg-base text-[16px] font-bold text-text-primary"
+            className="flex h-14 items-center justify-center gap-1.5 rounded-md border-[1.5px] border-border bg-bg-surface text-[16px] font-bold text-text-primary"
           >
             G Pay · {t("googlePay")}
           </button>
@@ -110,7 +113,7 @@ export default async function PaymentPage({
             <span className="h-[1px] flex-1 bg-border" aria-hidden />
           </div>
 
-          <fieldset className="rounded-md border-2 border-brand bg-bg-base p-3.5">
+          <fieldset className="rounded-md border-2 border-brand bg-bg-surface p-3.5">
             <legend className="mb-2.5 flex items-center gap-2.5 text-[16px] font-bold">
               <CreditCard size={22} className="text-brand" aria-hidden />
               <span>{t("card")}</span>
@@ -121,7 +124,7 @@ export default async function PaymentPage({
               inputMode="numeric"
               placeholder={t("cardNumber")}
               defaultValue="4242 4242 4242 4242"
-              className="block h-12 w-full rounded-sm border-[1.5px] border-border-strong bg-bg-base px-3.5 font-mono text-[16px] text-text-primary"
+              className="block h-12 w-full rounded-sm border-[1.5px] border-border-strong bg-bg-surface px-3.5 font-mono text-[16px] text-text-primary"
             />
             <div className="mt-2.5 grid grid-cols-2 gap-2.5">
               <input
@@ -130,7 +133,7 @@ export default async function PaymentPage({
                 inputMode="numeric"
                 placeholder={t("expLabel")}
                 defaultValue="12 / 28"
-                className="block h-12 w-full rounded-sm border-[1.5px] border-border-strong bg-bg-base px-3.5 font-mono text-[16px] text-text-primary"
+                className="block h-12 w-full rounded-sm border-[1.5px] border-border-strong bg-bg-surface px-3.5 font-mono text-[16px] text-text-primary"
               />
               <input
                 aria-label={t("cvvLabel")}
@@ -138,7 +141,7 @@ export default async function PaymentPage({
                 inputMode="numeric"
                 placeholder={t("cvvLabel")}
                 defaultValue="123"
-                className="block h-12 w-full rounded-sm border-[1.5px] border-border-strong bg-bg-base px-3.5 font-mono text-[16px] text-text-primary"
+                className="block h-12 w-full rounded-sm border-[1.5px] border-border-strong bg-bg-surface px-3.5 font-mono text-[16px] text-text-primary"
               />
             </div>
             <input
@@ -146,7 +149,7 @@ export default async function PaymentPage({
               autoComplete="cc-name"
               placeholder={t("cardName")}
               defaultValue="MARGARET WANG"
-              className="mt-2.5 block h-12 w-full rounded-sm border-[1.5px] border-border-strong bg-bg-base px-3.5 text-[16px] text-text-primary"
+              className="mt-2.5 block h-12 w-full rounded-sm border-[1.5px] border-border-strong bg-bg-surface px-3.5 text-[16px] text-text-primary"
             />
           </fieldset>
         </div>
@@ -174,7 +177,7 @@ export default async function PaymentPage({
           </div>
         )}
 
-        <section className="mt-4 rounded-md border border-border bg-bg-base p-3.5">
+        <section className="mt-4 rounded-md border border-border bg-bg-surface p-3.5">
           <div className="flex justify-between text-[14px] text-text-secondary">
             <span>{t("subtotal")}</span>
             <span>{sym}{fmt(subtotal)}</span>
@@ -192,7 +195,7 @@ export default async function PaymentPage({
         </section>
       </main>
 
-      <div className="sticky bottom-[84px] z-10 border-t border-border bg-bg-base p-3 sm:bottom-0">
+      <div className="sticky bottom-[84px] z-10 border-t border-border bg-bg-surface p-3 sm:bottom-0">
         {state === "loading" || state === "threeDS" ? (
           <button
             type="button"

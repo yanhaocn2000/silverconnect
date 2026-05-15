@@ -29,6 +29,9 @@ export default async function PaymentSuccessPage({
   params: Promise<{ locale: string; id: string }>;
 }) {
   const { locale, id } = await params;
+  if (!/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(id)) {
+    notFound();
+  }
   setRequestLocale(locale);
   const t = await getTranslations("success");
   const country = await getCountry();
@@ -104,7 +107,7 @@ export default async function PaymentSuccessPage({
         <h1 className="mt-2 text-[28px] font-extrabold">{headline}</h1>
         <p className="mt-1.5 text-[16px] text-text-secondary">{subline}</p>
 
-        <section className="mt-5 w-full rounded-lg border border-border bg-bg-base p-4 text-left">
+        <section className="mt-5 w-full rounded-lg border border-border bg-bg-surface p-4 text-left">
           <div className="flex items-center gap-2.5">
             <ProviderAvatar
               size={48}
@@ -146,7 +149,7 @@ export default async function PaymentSuccessPage({
           </button>
           <button
             type="button"
-            className="h-14 rounded-md border-[1.5px] border-border-strong bg-bg-base text-[16px] font-semibold text-text-primary"
+            className="h-14 rounded-md border-[1.5px] border-border-strong bg-bg-surface text-[16px] font-semibold text-text-primary"
           >
             {t("downloadIcs")}
           </button>
