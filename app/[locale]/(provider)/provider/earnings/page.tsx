@@ -153,7 +153,7 @@ export default async function ProviderEarningsPage({
                   "inline-flex h-10 items-center rounded-pill border-[1.5px] px-4 text-[14px] font-semibold " +
                   (on
                     ? "border-brand bg-brand-soft text-brand"
-                    : "border-border-strong bg-bg-base text-text-primary")
+                    : "border-border-strong bg-bg-surface text-text-primary")
                 }
               >
                 {r.label}
@@ -169,7 +169,7 @@ export default async function ProviderEarningsPage({
           <Card label={t("earnPaid")} value={priceCountry(country, paid)} />
         </section>
 
-        <section className="mt-5 rounded-lg border border-border bg-bg-base p-4">
+        <section className="mt-5 rounded-lg border border-border bg-bg-surface p-4">
           <p className="text-[14px] font-bold">{t("earnFee")}</p>
           <p className="mt-1 text-[15px] tabular-nums">
             {priceCountry(country, fee)}{" "}
@@ -179,7 +179,7 @@ export default async function ProviderEarningsPage({
           </p>
         </section>
 
-        <section className="mt-5 rounded-lg border border-border bg-bg-base p-4">
+        <section className="mt-5 rounded-lg border border-border bg-bg-surface p-4">
           <p className="text-[14px] font-bold">{t("earnRangeWeek")}</p>
           <div className="mt-4 grid h-24 grid-cols-7 items-end gap-2">
             {dayTotals.map((v, i) => {
@@ -205,7 +205,7 @@ export default async function ProviderEarningsPage({
         </section>
 
         <section className="mt-5">
-          <ul className="overflow-hidden rounded-lg border border-border bg-bg-base">
+          <ul className="overflow-hidden rounded-lg border border-border bg-bg-surface">
             {myBookings.length === 0 ? (
               <li className="p-5 text-[14px] text-text-tertiary">
                 {t("payoutsEmpty")}
@@ -254,7 +254,7 @@ export default async function ProviderEarningsPage({
           type="button"
           disabled
           title="CSV export ships when payouts are wired"
-          className="mt-5 inline-flex h-12 w-full items-center justify-center gap-2 rounded-md border-[1.5px] border-border-strong bg-bg-base text-[15px] font-semibold text-text-primary opacity-60"
+          className="mt-5 inline-flex h-12 w-full items-center justify-center gap-2 rounded-md border-[1.5px] border-border-strong bg-bg-surface text-[15px] font-semibold text-text-primary opacity-60"
         >
           <Download size={18} aria-hidden />
           {t("earnExport")}
@@ -276,7 +276,7 @@ function Card({
   return (
     <div
       className={
-        "rounded-lg border bg-bg-base p-4 " +
+        "rounded-lg border bg-bg-surface p-4 " +
         (accent ? "border-brand bg-brand-soft" : "border-border")
       }
     >

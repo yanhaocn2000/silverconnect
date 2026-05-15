@@ -196,7 +196,7 @@ export default async function ProviderJobsPage({
                   "inline-flex h-10 items-center rounded-pill border-[1.5px] px-4 text-[14px] font-semibold " +
                   (on
                     ? "border-brand bg-brand-soft text-brand"
-                    : "border-border-strong bg-bg-base text-text-primary")
+                    : "border-border-strong bg-bg-surface text-text-primary")
                 }
               >
                 {tb.label}
@@ -241,7 +241,7 @@ export default async function ProviderJobsPage({
                 <li key={j.id}>
                   <Link
                     href={`/provider/jobs/${j.id}`}
-                    className="flex items-start gap-3 rounded-lg border border-border bg-bg-base p-4"
+                    className="flex items-start gap-3 rounded-lg border border-border bg-bg-surface p-4"
                   >
                     <ProviderAvatar size={48} hue={2} initials={initials} />
                     <div className="min-w-0 flex-1">

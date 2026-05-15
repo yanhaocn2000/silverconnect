@@ -158,7 +158,7 @@ export default async function ProviderAvailabilityPage({
           </div>
         )}
 
-        <section className="mt-5 rounded-lg border border-border bg-bg-base p-4">
+        <section className="mt-5 rounded-lg border border-border bg-bg-surface p-4">
           <p className="text-[14px] font-bold">{t("availabilityApply")}</p>
           <div className="mt-3 flex flex-wrap gap-2">
             <TemplateForm
@@ -187,14 +187,14 @@ export default async function ProviderAvailabilityPage({
           {DAYS.map((d) => (
             <div
               key={d}
-              className="grid grid-cols-[60px_1fr] items-center gap-3 rounded-lg border border-border bg-bg-base p-3"
+              className="grid grid-cols-[60px_1fr] items-center gap-3 rounded-lg border border-border bg-bg-surface p-3"
             >
               <span className="text-[15px] font-bold">{t(DAY_KEYS[d])}</span>
               <div className="grid grid-cols-3 gap-2">
                 {SLOTS.map((s) => (
                   <label
                     key={s}
-                    className="inline-flex h-12 cursor-pointer items-center justify-center rounded-sm border-[1.5px] border-border-strong bg-bg-base px-2 text-[14px] font-semibold text-text-primary has-[:checked]:border-brand has-[:checked]:bg-brand-soft has-[:checked]:text-brand"
+                    className="inline-flex h-12 cursor-pointer items-center justify-center rounded-sm border-[1.5px] border-border-strong bg-bg-surface px-2 text-[14px] font-semibold text-text-primary has-[:checked]:border-brand has-[:checked]:bg-brand-soft has-[:checked]:text-brand"
                   >
                     <input
                       type="checkbox"
@@ -234,7 +234,7 @@ function TemplateForm({
       <input type="hidden" name="tpl" value={tpl} />
       <button
         type="submit"
-        className="inline-flex h-10 items-center rounded-pill border-[1.5px] border-brand bg-bg-base px-4 text-[14px] font-semibold text-brand"
+        className="inline-flex h-10 items-center rounded-pill border-[1.5px] border-brand bg-bg-surface px-4 text-[14px] font-semibold text-brand"
       >
         {label}
       </button>

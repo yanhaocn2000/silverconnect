@@ -89,7 +89,7 @@ export default async function ProviderPayoutsPage({
         )}
 
         {/* Stripe account */}
-        <section className="mt-5 flex items-start gap-3 rounded-lg border border-border bg-bg-base p-4">
+        <section className="mt-5 flex items-start gap-3 rounded-lg border border-border bg-bg-surface p-4">
           <span
             aria-hidden
             className="flex h-12 w-12 shrink-0 items-center justify-center rounded-md bg-success-soft text-success"
@@ -103,7 +103,7 @@ export default async function ProviderPayoutsPage({
             </p>
             <button
               type="button"
-              className="mt-2 inline-flex h-10 items-center rounded-sm border-[1.5px] border-border-strong bg-bg-base px-3 text-[13px] font-semibold text-text-primary"
+              className="mt-2 inline-flex h-10 items-center rounded-sm border-[1.5px] border-border-strong bg-bg-surface px-3 text-[13px] font-semibold text-text-primary"
             >
               {t("payoutsReverify")}
             </button>
@@ -113,7 +113,7 @@ export default async function ProviderPayoutsPage({
         {/* Frequency */}
         <form
           action={saveFrequency}
-          className="mt-5 rounded-lg border border-border bg-bg-base p-4"
+          className="mt-5 rounded-lg border border-border bg-bg-surface p-4"
         >
           <input type="hidden" name="locale" value={locale} />
           <fieldset>
@@ -121,7 +121,7 @@ export default async function ProviderPayoutsPage({
             <ul className="mt-3 flex flex-col gap-2">
               {(["daily", "weekly", "manual"] as const).map((f) => (
                 <li key={f}>
-                  <label className="flex cursor-pointer items-center gap-3 rounded-md border-[1.5px] border-border bg-bg-base p-3.5 has-[:checked]:border-2 has-[:checked]:border-brand">
+                  <label className="flex cursor-pointer items-center gap-3 rounded-md border-[1.5px] border-border bg-bg-surface p-3.5 has-[:checked]:border-2 has-[:checked]:border-brand">
                     <input
                       type="radio"
                       name="freq"
@@ -157,7 +157,7 @@ export default async function ProviderPayoutsPage({
         {/* History */}
         <section className="mt-5">
           <p className="text-[15px] font-bold">{t("payoutsHistory")}</p>
-          <ul className="mt-3 overflow-hidden rounded-lg border border-border bg-bg-base">
+          <ul className="mt-3 overflow-hidden rounded-lg border border-border bg-bg-surface">
             {MOCK_PAYOUTS.map((p, i) => (
               <li
                 key={p.id}

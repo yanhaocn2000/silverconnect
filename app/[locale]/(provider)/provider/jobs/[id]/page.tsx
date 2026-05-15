@@ -187,6 +187,9 @@ export default async function ProviderJobDetailPage({
   params: Promise<{ locale: string; id: string }>;
 }) {
   const { locale, id } = await params;
+  if (!/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(id)) {
+    notFound();
+  }
   setRequestLocale(locale);
   const me = await getCurrentUser();
   if (!me) nextRedirect(`/${locale}/auth/login`);
@@ -300,7 +303,7 @@ export default async function ProviderJobDetailPage({
           </div>
         )}
 
-        <section className="mt-5 flex items-center gap-3 rounded-lg border border-border bg-bg-base p-4">
+        <section className="mt-5 flex items-center gap-3 rounded-lg border border-border bg-bg-surface p-4">
           <ProviderAvatar size={56} hue={3} initials={initials} />
           <div className="min-w-0 flex-1">
             <p className="text-[16px] font-bold">{dispName}</p>
@@ -322,7 +325,7 @@ export default async function ProviderJobDetailPage({
         </section>
 
         {addressStr && (
-          <section className="mt-3 flex items-start gap-3 rounded-lg border border-border bg-bg-base p-4">
+          <section className="mt-3 flex items-start gap-3 rounded-lg border border-border bg-bg-surface p-4">
             <span
               aria-hidden
               className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-brand-soft text-brand"
@@ -336,7 +339,7 @@ export default async function ProviderJobDetailPage({
               href={`https://maps.google.com/?q=${encodeURIComponent(addressStr)}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex h-10 items-center rounded-sm border-[1.5px] border-brand bg-bg-base px-3 text-[14px] font-bold text-brand"
+              className="inline-flex h-10 items-center rounded-sm border-[1.5px] border-brand bg-bg-surface px-3 text-[14px] font-bold text-brand"
             >
               {t("jobNavigate")}
             </a>
@@ -344,13 +347,13 @@ export default async function ProviderJobDetailPage({
         )}
 
         {row.notes && (
-          <section className="mt-3 rounded-lg border border-border bg-bg-base p-4">
+          <section className="mt-3 rounded-lg border border-border bg-bg-surface p-4">
             <p className="text-[14px] font-bold">{t("jobNotes")}</p>
             <p className="mt-1 text-[15px] text-text-primary">{row.notes}</p>
           </section>
         )}
 
-        <section className="mt-3 rounded-lg border border-border bg-bg-base p-4">
+        <section className="mt-3 rounded-lg border border-border bg-bg-surface p-4">
           <p className="text-[14px] font-bold">{t("priceBreakdown")}</p>
           <dl className="mt-3 flex flex-col gap-1.5 text-[14px]">
             <Row label={t("priceBase")} value={priceCountry(country, Number(row.basePrice))} />
@@ -366,7 +369,7 @@ export default async function ProviderJobDetailPage({
 
         <Link
           href={`/safety/report?bookingId=${row.id}`}
-          className="mt-5 inline-flex h-12 w-full items-center justify-center rounded-md border-[1.5px] border-danger bg-bg-base text-[15px] font-bold text-danger"
+          className="mt-5 inline-flex h-12 w-full items-center justify-center rounded-md border-[1.5px] border-danger bg-bg-surface text-[15px] font-bold text-danger"
         >
           {t("reportProblem")}
         </Link>
@@ -445,7 +448,7 @@ function ActionBar({
   };
 
   return (
-    <div className="fixed inset-x-0 bottom-[84px] z-20 border-t border-border bg-bg-base px-5 py-3 sm:bottom-0">
+    <div className="fixed inset-x-0 bottom-[84px] z-20 border-t border-border bg-bg-surface px-5 py-3 sm:bottom-0">
       <div className="mx-auto flex max-w-content gap-3">
         {showDecline && (
           <DeclineJobModal
@@ -466,7 +469,7 @@ function ActionBar({
                 "inline-flex h-12 w-full items-center justify-center rounded-md text-[15px] font-bold " +
                 (a.primary
                   ? "bg-brand text-white"
-                  : "border-[1.5px] border-border-strong bg-bg-base text-text-primary")
+                  : "border-[1.5px] border-border-strong bg-bg-surface text-text-primary")
               }
             >
               {a.label}

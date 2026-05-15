@@ -72,10 +72,10 @@ export default async function ProviderServicesPage({
           {MOCK.map((it) => {
             const [minR, maxR] = RECOMMENDED[it.key];
             return (
-              <div key={it.key} className="rounded-lg border border-border bg-bg-base p-4">
+              <div key={it.key} className="rounded-lg border border-border bg-bg-surface p-4">
                 <div className="flex items-center justify-between">
                   <p className="text-[16px] font-bold">{tCategories(it.key)}</p>
-                  <button type="button" aria-label={t("remove")} className="inline-flex h-9 w-9 items-center justify-center rounded-sm border-[1.5px] border-danger bg-bg-base text-danger">
+                  <button type="button" aria-label={t("remove")} className="inline-flex h-9 w-9 items-center justify-center rounded-sm border-[1.5px] border-danger bg-bg-surface text-danger">
                     <Trash2 size={14} aria-hidden />
                   </button>
                 </div>

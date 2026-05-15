@@ -165,7 +165,7 @@ export default async function ProviderReviewsPage({
           <Stat label={t("reviewsRate", { pct })} />
         </section>
 
-        <section className="mt-5 rounded-lg border border-border bg-bg-base p-4">
+        <section className="mt-5 rounded-lg border border-border bg-bg-surface p-4">
           <ul className="flex flex-col gap-2.5">
             {DIM_KEYS.map((k) => (
               <li
@@ -208,7 +208,7 @@ export default async function ProviderReviewsPage({
                   "inline-flex h-10 items-center gap-1 rounded-pill border-[1.5px] px-4 text-[14px] font-semibold tabular-nums " +
                   (on
                     ? "border-brand bg-brand-soft text-brand"
-                    : "border-border-strong bg-bg-base text-text-primary")
+                    : "border-border-strong bg-bg-surface text-text-primary")
                 }
               >
                 {f === 0 ? t("reviewsAll") : `${f}★`}
@@ -218,7 +218,7 @@ export default async function ProviderReviewsPage({
         </nav>
 
         {rows.length === 0 ? (
-          <p className="mt-6 rounded-lg border border-border bg-bg-base px-5 py-8 text-center text-[14px] text-text-tertiary">
+          <p className="mt-6 rounded-lg border border-border bg-bg-surface px-5 py-8 text-center text-[14px] text-text-tertiary">
             —
           </p>
         ) : (
@@ -232,7 +232,7 @@ export default async function ProviderReviewsPage({
               return (
                 <li
                   key={r.id}
-                  className="rounded-lg border border-border bg-bg-base p-4"
+                  className="rounded-lg border border-border bg-bg-surface p-4"
                 >
                   <div className="flex items-start gap-3">
                     <ProviderAvatar
@@ -319,7 +319,7 @@ function Stat({
   children?: React.ReactNode;
 }) {
   return (
-    <div className="rounded-lg border border-border bg-bg-base p-3 text-center">
+    <div className="rounded-lg border border-border bg-bg-surface p-3 text-center">
       <p
         className={
           "flex items-center justify-center gap-1 tabular-nums font-extrabold " +

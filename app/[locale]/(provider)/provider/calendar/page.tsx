@@ -145,7 +145,7 @@ export default async function ProviderCalendarPage({
           <Link
             href={`?ym=${fmtYM(prev)}`}
             aria-label={t("calendarPrev")}
-            className="inline-flex h-12 w-12 items-center justify-center rounded-md border-[1.5px] border-border-strong bg-bg-base text-text-primary"
+            className="inline-flex h-12 w-12 items-center justify-center rounded-md border-[1.5px] border-border-strong bg-bg-surface text-text-primary"
           >
             <ChevronLeft size={20} aria-hidden />
           </Link>
@@ -155,7 +155,7 @@ export default async function ProviderCalendarPage({
           <Link
             href={`?ym=${fmtYM(next)}`}
             aria-label={t("calendarNext")}
-            className="inline-flex h-12 w-12 items-center justify-center rounded-md border-[1.5px] border-border-strong bg-bg-base text-text-primary"
+            className="inline-flex h-12 w-12 items-center justify-center rounded-md border-[1.5px] border-border-strong bg-bg-surface text-text-primary"
           >
             <ChevronRight size={20} aria-hidden />
           </Link>
@@ -204,11 +204,11 @@ export default async function ProviderCalendarPage({
 function cellClass(k: DayKind) {
   const base =
     "flex h-12 flex-col items-center justify-center rounded-md text-[14px] font-semibold tabular-nums";
-  if (k === "muted") return `${base} bg-bg-base text-text-tertiary`;
+  if (k === "muted") return `${base} bg-bg-surface text-text-tertiary`;
   if (k === "booked") return `${base} bg-brand-soft text-brand`;
   if (k === "blocked")
     return `${base} bg-bg-surface-2 text-text-tertiary line-through`;
-  return `${base} bg-bg-base text-text-primary border border-border`;
+  return `${base} bg-bg-surface text-text-primary border border-border`;
 }
 
 function Legend({ color, label }: { color: string; label: string }) {

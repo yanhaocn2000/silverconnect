@@ -168,7 +168,7 @@ export default async function BlockedTimesPage({
               return (
                 <li
                   key={b.id}
-                  className="flex items-center gap-3 rounded-lg border border-border bg-bg-base p-4"
+                  className="flex items-center gap-3 rounded-lg border border-border bg-bg-surface p-4"
                 >
                   <div className="min-w-0 flex-1">
                     <p className="text-[15px] font-bold tabular-nums">
@@ -184,7 +184,7 @@ export default async function BlockedTimesPage({
                     <button
                       type="submit"
                       aria-label={tCommon("delete")}
-                      className="inline-flex h-10 w-10 items-center justify-center rounded-sm border-[1.5px] border-danger bg-bg-base text-danger"
+                      className="inline-flex h-10 w-10 items-center justify-center rounded-sm border-[1.5px] border-danger bg-bg-surface text-danger"
                     >
                       <Trash2 size={16} aria-hidden />
                     </button>
@@ -207,7 +207,7 @@ export default async function BlockedTimesPage({
         {adding && (
           <form
             action={addBlockAction}
-            className="mt-5 flex flex-col gap-4 rounded-lg border-2 border-brand bg-bg-base p-5"
+            className="mt-5 flex flex-col gap-4 rounded-lg border-2 border-brand bg-bg-surface p-5"
           >
             <input type="hidden" name="locale" value={locale} />
             <h2 className="text-h3">{t("addBlock")}</h2>
@@ -219,7 +219,7 @@ export default async function BlockedTimesPage({
                   name="from"
                   type="date"
                   required
-                  className="block h-touch-btn w-full rounded-md border-[1.5px] border-border bg-bg-base px-4 text-body"
+                  className="block h-touch-btn w-full rounded-md border-[1.5px] border-border bg-bg-surface px-4 text-body"
                 />
               </div>
               <div>
@@ -229,7 +229,7 @@ export default async function BlockedTimesPage({
                   name="to"
                   type="date"
                   required
-                  className="block h-touch-btn w-full rounded-md border-[1.5px] border-border bg-bg-base px-4 text-body"
+                  className="block h-touch-btn w-full rounded-md border-[1.5px] border-border bg-bg-surface px-4 text-body"
                 />
               </div>
             </div>
@@ -239,7 +239,7 @@ export default async function BlockedTimesPage({
                 id="reason"
                 name="reason"
                 required
-                className="block h-touch-btn w-full rounded-md border-[1.5px] border-border bg-bg-base px-4 text-body"
+                className="block h-touch-btn w-full rounded-md border-[1.5px] border-border bg-bg-surface px-4 text-body"
               >
                 <option value="vacation">{t("reasonVacation")}</option>
                 <option value="training">{t("reasonTraining")}</option>

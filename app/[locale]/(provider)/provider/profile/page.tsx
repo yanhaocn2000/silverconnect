@@ -51,11 +51,11 @@ export default async function ProviderProfilePage({
           </div>
         )}
 
-        <div className="mt-5 flex items-center gap-4 rounded-lg border border-border bg-bg-base p-4">
+        <div className="mt-5 flex items-center gap-4 rounded-lg border border-border bg-bg-surface p-4">
           <ProviderAvatar size={72} hue={2} initials={initials} />
           <div className="min-w-0 flex-1">
             <p className="text-[16px] font-bold">{session.name ?? "—"}</p>
-            <Link href="/provider" className="mt-1 inline-flex h-9 items-center rounded-sm border-[1.5px] border-border-strong bg-bg-base px-3 text-[12px] font-semibold text-text-primary">
+            <Link href="/provider" className="mt-1 inline-flex h-9 items-center rounded-sm border-[1.5px] border-border-strong bg-bg-surface px-3 text-[12px] font-semibold text-text-primary">
               {t("preview")}
             </Link>
           </div>
@@ -71,7 +71,7 @@ export default async function ProviderProfilePage({
               rows={4}
               aria-describedby="bio-hint"
               defaultValue=""
-              className="block w-full rounded-md border-[1.5px] border-border-strong bg-bg-base p-3.5 text-[16px] focus:border-brand focus:outline-none"
+              className="block w-full rounded-md border-[1.5px] border-border-strong bg-bg-surface p-3.5 text-[16px] focus:border-brand focus:outline-none"
             />
             <p id="bio-hint" className="mt-1.5 text-[13px] text-text-tertiary">{t("bioHint")}</p>
           </div>
@@ -80,7 +80,7 @@ export default async function ProviderProfilePage({
             <legend className="text-[15px] font-bold">{t("languages")}</legend>
             <div className="mt-2 flex flex-wrap gap-2">
               {LANGS.map((l) => (
-                <label key={l} className="inline-flex h-10 cursor-pointer items-center rounded-pill border-[1.5px] border-border-strong bg-bg-base px-4 text-[13px] font-semibold text-text-primary has-[:checked]:border-brand has-[:checked]:bg-brand-soft has-[:checked]:text-brand">
+                <label key={l} className="inline-flex h-10 cursor-pointer items-center rounded-pill border-[1.5px] border-border-strong bg-bg-surface px-4 text-[13px] font-semibold text-text-primary has-[:checked]:border-brand has-[:checked]:bg-brand-soft has-[:checked]:text-brand">
                   <input type="checkbox" name="lang" value={l} defaultChecked={l === locale} className="sr-only" />
                   {l === "en" || l === "zh-CN" || l === "zh-TW" || l === "ja" || l === "ko"
                     ? tLanguage(l as "en" | "zh-CN" | "zh-TW" | "ja" | "ko")
@@ -92,7 +92,7 @@ export default async function ProviderProfilePage({
 
           <div>
             <Label htmlFor="gender">{t("gender")}</Label>
-            <select id="gender" name="gender" defaultValue="private" className="block h-touch-btn w-full rounded-md border-[1.5px] border-border bg-bg-base px-4 text-body focus:border-brand focus:outline-none">
+            <select id="gender" name="gender" defaultValue="private" className="block h-touch-btn w-full rounded-md border-[1.5px] border-border bg-bg-surface px-4 text-body focus:border-brand focus:outline-none">
               <option value="private">{t("genderPrivate")}</option>
               <option value="f">F</option>
               <option value="m">M</option>
