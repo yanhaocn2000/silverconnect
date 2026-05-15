@@ -29,7 +29,7 @@ export function DeleteCardConfirm({
         <button
           type="button"
           aria-label={strings.triggerAriaLabel}
-          className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-sm border-[1.5px] border-danger bg-bg-base text-danger"
+          className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-sm border-[1.5px] border-danger bg-bg-surface text-danger"
         >
           <Trash2 size={16} aria-hidden />
         </button>
@@ -41,7 +41,7 @@ export function DeleteCardConfirm({
           <input type="hidden" name="id" value={cardId} />
           <ModalClose
             type="button"
-            className="inline-flex h-12 flex-1 items-center justify-center rounded-md border-[1.5px] border-border-strong bg-bg-base text-[15px] font-semibold text-text-primary"
+            className="inline-flex h-12 flex-1 items-center justify-center rounded-md border-[1.5px] border-border-strong bg-bg-surface text-[15px] font-semibold text-text-primary"
           >
             {strings.cancel}
           </ModalClose>

@@ -52,7 +52,7 @@ export function LanguageChip({ className }: { locale?: Locale; className?: strin
         <Dropdown.Content
           align="end"
           sideOffset={6}
-          className="z-50 min-w-[140px] rounded-md border border-border bg-bg-base p-1 shadow-popover"
+          className="z-50 min-w-[140px] rounded-md border border-border bg-bg-surface p-1 shadow-popover"
         >
           {routing.locales.map((l) => (
             <Dropdown.Item
@@ -87,7 +87,7 @@ export function LanguageSelector({ className }: { className?: string }) {
       <Dropdown.Trigger
         aria-label="Language"
         className={cn(
-          "inline-flex h-touch-btn min-w-[88px] items-center gap-1 rounded-md border border-border bg-bg-base px-3 text-body text-text-primary",
+          "inline-flex h-touch-btn min-w-[88px] items-center gap-1 rounded-md border border-border bg-bg-surface px-3 text-body text-text-primary",
           className
         )}
       >
@@ -98,7 +98,7 @@ export function LanguageSelector({ className }: { className?: string }) {
         <Dropdown.Content
           align="end"
           sideOffset={4}
-          className="z-50 min-w-[140px] rounded-md border border-border bg-bg-base p-1 shadow-card"
+          className="z-50 min-w-[140px] rounded-md border border-border bg-bg-surface p-1 shadow-card"
         >
           {routing.locales.map((l) => (
             <Dropdown.Item

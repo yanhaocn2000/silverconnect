@@ -31,7 +31,7 @@ export function DeclineJobModal({
       <ModalTrigger asChild>
         <button
           type="button"
-          className="inline-flex h-12 flex-1 items-center justify-center rounded-md border-[1.5px] border-danger bg-bg-base text-[15px] font-bold text-danger"
+          className="inline-flex h-12 flex-1 items-center justify-center rounded-md border-[1.5px] border-danger bg-bg-surface text-[15px] font-bold text-danger"
         >
           <X size={18} className="mr-1" aria-hidden />
           {strings.triggerLabel}
@@ -50,7 +50,7 @@ export function DeclineJobModal({
             <ul className="mt-2 flex flex-col gap-2">
               {strings.reasonOptions.map((opt) => (
                 <li key={opt.value}>
-                  <label className="flex cursor-pointer items-center gap-3 rounded-md border-[1.5px] border-border bg-bg-base p-3.5 has-[:checked]:border-2 has-[:checked]:border-danger">
+                  <label className="flex cursor-pointer items-center gap-3 rounded-md border-[1.5px] border-border bg-bg-surface p-3.5 has-[:checked]:border-2 has-[:checked]:border-danger">
                     <input
                       type="radio"
                       name="reason"
@@ -71,7 +71,7 @@ export function DeclineJobModal({
           <div className="mt-2 flex gap-3">
             <ModalClose
               type="button"
-              className="inline-flex h-12 flex-1 items-center justify-center rounded-md border-[1.5px] border-border-strong bg-bg-base text-[15px] font-semibold text-text-primary"
+              className="inline-flex h-12 flex-1 items-center justify-center rounded-md border-[1.5px] border-border-strong bg-bg-surface text-[15px] font-semibold text-text-primary"
             >
               {strings.cancel}
             </ModalClose>

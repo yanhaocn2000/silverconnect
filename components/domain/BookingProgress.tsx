@@ -13,7 +13,7 @@ export function BookingProgress({ step }: { step: 1 | 2 | 3 | 4 }) {
   return (
     <ol
       aria-label="Booking progress"
-      className="flex items-center justify-center gap-1 bg-bg-base px-4 py-3"
+      className="flex items-center justify-center gap-1 bg-bg-surface px-4 py-3"
     >
       {STEP_KEYS.map((key, i) => {
         const idx = i + 1;

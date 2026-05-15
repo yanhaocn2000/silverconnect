@@ -39,7 +39,7 @@ export function ProviderCard({
       : `${CURRENCY_SYMBOL[country]}${provider.pricePerHour}`;
 
   return (
-    <article className="rounded-lg border border-border bg-bg-base p-5 shadow-card">
+    <article className="rounded-lg border border-border bg-bg-surface p-5 shadow-card">
       <div className="flex items-start gap-4">
         <ProviderAvatar
           size={compact ? 64 : 80}
@@ -90,7 +90,7 @@ export function ProviderCard({
           <div className="mt-3.5 flex gap-2">
             <Link
               href={`/providers/${provider.id}`}
-              className="inline-flex h-12 flex-1 items-center justify-center rounded-md border-2 border-brand bg-bg-base text-[16px] font-semibold text-brand"
+              className="inline-flex h-12 flex-1 items-center justify-center rounded-md border-2 border-brand bg-bg-surface text-[16px] font-semibold text-brand"
             >
               {t("view")}
             </Link>

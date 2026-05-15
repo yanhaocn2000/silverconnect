@@ -26,7 +26,7 @@ export function BookingTimeline({ status }: { status: BookingStatus }) {
   const currentIdx = STATUS_INDEX[status];
 
   return (
-    <div className="rounded-lg border border-border bg-bg-base p-4">
+    <div className="rounded-lg border border-border bg-bg-surface p-4">
       {FLOW_KEYS.map((key, i) => {
         const done = !cancelled && i <= currentIdx;
         const isCurrent = !cancelled && i === currentIdx;

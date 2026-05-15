@@ -41,7 +41,7 @@ export function RescheduleModal({
       <ModalTrigger asChild>
         <button
           type="button"
-          className="inline-flex h-14 items-center justify-center gap-2 rounded-md border-[1.5px] border-brand bg-bg-base px-4 text-[15px] font-bold text-brand"
+          className="inline-flex h-14 items-center justify-center gap-2 rounded-md border-[1.5px] border-brand bg-bg-surface px-4 text-[15px] font-bold text-brand"
         >
           <Calendar size={18} aria-hidden /> {strings.triggerLabel}
         </button>
@@ -77,7 +77,7 @@ export function RescheduleModal({
           <div className="mt-2 flex gap-3">
             <ModalClose
               type="button"
-              className="inline-flex h-12 flex-1 items-center justify-center rounded-md border-[1.5px] border-border-strong bg-bg-base text-[15px] font-semibold text-text-primary"
+              className="inline-flex h-12 flex-1 items-center justify-center rounded-md border-[1.5px] border-border-strong bg-bg-surface text-[15px] font-semibold text-text-primary"
             >
               {strings.cancel}
             </ModalClose>

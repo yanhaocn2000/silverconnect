@@ -32,7 +32,7 @@ export async function ImpactStats() {
         {TILES.map((tile) => (
           <div
             key={tile.labelKey}
-            className="rounded-lg bg-bg-base border border-border shadow-card p-6"
+            className="rounded-lg bg-bg-surface border border-border shadow-card p-6"
           >
             <div
               className="w-12 h-12 rounded-md flex items-center justify-center text-2xl"

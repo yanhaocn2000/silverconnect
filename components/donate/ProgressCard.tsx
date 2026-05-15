@@ -27,7 +27,7 @@ export async function ProgressCard({
   const pct = goalCents > 0 ? Math.round((raisedCents / goalCents) * 100) : 0;
   const avg = avgCents ?? (donorCount > 0 ? Math.round(raisedCents / donorCount) : 0);
   return (
-    <div className="bg-bg-base rounded-lg shadow-card border border-border p-7">
+    <div className="bg-bg-surface rounded-lg shadow-card border border-border p-7">
       <div className="flex items-baseline justify-between">
         <div>
           <div className="text-sm text-text-tertiary">{t("raised")}</div>

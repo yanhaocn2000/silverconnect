@@ -54,7 +54,7 @@ export default async function DonatePage({
         >
           <div className="max-w-6xl mx-auto px-5 py-16 md:py-24 grid md:grid-cols-2 gap-10 items-center">
             <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-bg-base border border-border text-sm text-text-secondary shadow-sm mb-5">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-bg-surface border border-border text-sm text-text-secondary shadow-sm mb-5">
                 <span
                   className="w-2 h-2 rounded-full"
                   style={{ background: "var(--success)" }}
@@ -77,7 +77,7 @@ export default async function DonatePage({
                 </a>
                 <a
                   href="#allocation"
-                  className="inline-flex items-center justify-center min-h-touch-btn px-6 rounded-md bg-bg-base text-brand font-semibold border-2 border-brand hover:bg-bg-surface transition"
+                  className="inline-flex items-center justify-center min-h-touch-btn px-6 rounded-md bg-bg-surface text-brand font-semibold border-2 border-brand hover:bg-bg-surface transition"
                 >
                   {t("ctaSecondary")}
                 </a>

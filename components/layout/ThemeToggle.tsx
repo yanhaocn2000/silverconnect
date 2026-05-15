@@ -56,7 +56,7 @@ export function ThemeToggle({ className }: { className?: string }) {
         <Dropdown.Content
           align="end"
           sideOffset={6}
-          className="z-50 min-w-[160px] rounded-md border border-border bg-bg-base p-1 shadow-popover"
+          className="z-50 min-w-[160px] rounded-md border border-border bg-bg-surface p-1 shadow-popover"
         >
           {OPTIONS.map(({ value, Icon }) => (
             <Dropdown.Item

@@ -74,7 +74,7 @@ export function UploadDocModal({
           </div>
           <div>
             <Label htmlFor={fileId}>
-              <span className="inline-flex h-10 w-full cursor-pointer items-center justify-center gap-1.5 rounded-md border-[1.5px] border-border-strong bg-bg-base px-3 text-[13px] font-semibold text-text-primary">
+              <span className="inline-flex h-10 w-full cursor-pointer items-center justify-center gap-1.5 rounded-md border-[1.5px] border-border-strong bg-bg-surface px-3 text-[13px] font-semibold text-text-primary">
                 <Upload size={14} aria-hidden /> {strings.chooseFileLabel}
               </span>
             </Label>
@@ -96,7 +96,7 @@ export function UploadDocModal({
           <div className="mt-2 flex gap-3">
             <ModalClose
               type="button"
-              className="inline-flex h-10 flex-1 items-center justify-center rounded-md border-[1.5px] border-border-strong bg-bg-base text-[14px] font-semibold text-text-primary"
+              className="inline-flex h-10 flex-1 items-center justify-center rounded-md border-[1.5px] border-border-strong bg-bg-surface text-[14px] font-semibold text-text-primary"
             >
               {strings.cancel}
             </ModalClose>

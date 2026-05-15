@@ -49,7 +49,7 @@ export async function AllocationDonut() {
             <Block icon="🌱" color="green" title={t("block3Title")} body={t("block3Body")} />
           </div>
         </div>
-        <div className="rounded-lg bg-bg-base border border-border shadow-card p-8">
+        <div className="rounded-lg bg-bg-surface border border-border shadow-card p-8">
           <div className="flex items-center justify-center">
             <svg
               role="img"

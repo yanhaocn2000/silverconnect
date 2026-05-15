@@ -67,7 +67,7 @@ export default async function HelpHubPage({
             placeholder={t("searchPh")}
             aria-label={t("searchAria")}
             defaultValue={typeof q === "string" ? q : ""}
-            className="block h-14 w-full rounded-md border-[1.5px] border-border-strong bg-bg-base px-4 text-[17px] text-text-primary placeholder:text-text-tertiary focus:border-brand focus:outline-none"
+            className="block h-14 w-full rounded-md border-[1.5px] border-border-strong bg-bg-surface px-4 text-[17px] text-text-primary placeholder:text-text-tertiary focus:border-brand focus:outline-none"
           />
         </form>
 
@@ -78,7 +78,7 @@ export default async function HelpHubPage({
             <li key={c.key}>
               <Link
                 href={`/help#${c.key}`}
-                className="flex h-[100px] flex-col justify-between rounded-lg border border-border bg-bg-base p-4 shadow-card hover:shadow-card-hover"
+                className="flex h-[100px] flex-col justify-between rounded-lg border border-border bg-bg-surface p-4 shadow-card hover:shadow-card-hover"
               >
                 <span
                   aria-hidden
@@ -96,7 +96,7 @@ export default async function HelpHubPage({
 
         {/* Popular articles */}
         <h2 className="mt-7 text-h3">{t("popular")}</h2>
-        <ul className="mt-3 overflow-hidden rounded-lg border border-border bg-bg-base">
+        <ul className="mt-3 overflow-hidden rounded-lg border border-border bg-bg-surface">
           {HELP_ARTICLES.map((a, i) => (
             <li
               key={a.slug}

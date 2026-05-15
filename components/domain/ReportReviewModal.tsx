@@ -51,7 +51,7 @@ export function ReportReviewModal({
             <ul className="mt-2 flex flex-col gap-2">
               {strings.reasonOptions.map((opt) => (
                 <li key={opt.value}>
-                  <label className="flex cursor-pointer items-center gap-3 rounded-md border-[1.5px] border-border bg-bg-base p-3 has-[:checked]:border-2 has-[:checked]:border-brand">
+                  <label className="flex cursor-pointer items-center gap-3 rounded-md border-[1.5px] border-border bg-bg-surface p-3 has-[:checked]:border-2 has-[:checked]:border-brand">
                     <input
                       type="radio"
                       name="reason"
@@ -76,13 +76,13 @@ export function ReportReviewModal({
               name="details"
               rows={3}
               maxLength={500}
-              className="block w-full rounded-md border-[1.5px] border-border-strong bg-bg-base p-3 text-[15px] text-text-primary focus:border-brand focus:outline-none"
+              className="block w-full rounded-md border-[1.5px] border-border-strong bg-bg-surface p-3 text-[15px] text-text-primary focus:border-brand focus:outline-none"
             />
           </div>
           <div className="mt-2 flex gap-3">
             <ModalClose
               type="button"
-              className="inline-flex h-12 flex-1 items-center justify-center rounded-md border-[1.5px] border-border-strong bg-bg-base text-[15px] font-semibold text-text-primary"
+              className="inline-flex h-12 flex-1 items-center justify-center rounded-md border-[1.5px] border-border-strong bg-bg-surface text-[15px] font-semibold text-text-primary"
             >
               {strings.cancel}
             </ModalClose>

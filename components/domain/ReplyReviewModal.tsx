@@ -28,7 +28,7 @@ export function ReplyReviewModal({
       <ModalTrigger asChild>
         <button
           type="button"
-          className="inline-flex h-10 items-center gap-1 rounded-sm border-[1.5px] border-brand bg-bg-base px-3 text-[13px] font-semibold text-brand"
+          className="inline-flex h-10 items-center gap-1 rounded-sm border-[1.5px] border-brand bg-bg-surface px-3 text-[13px] font-semibold text-brand"
         >
           <Reply size={14} aria-hidden />
           {strings.triggerLabel}
@@ -43,12 +43,12 @@ export function ReplyReviewModal({
             required
             minLength={5}
             rows={4}
-            className="block w-full rounded-md border-[1.5px] border-border-strong bg-bg-base p-3 text-[15px] text-text-primary focus:border-brand focus:outline-none"
+            className="block w-full rounded-md border-[1.5px] border-border-strong bg-bg-surface p-3 text-[15px] text-text-primary focus:border-brand focus:outline-none"
           />
           <div className="mt-2 flex gap-2">
             <ModalClose
               type="button"
-              className="inline-flex h-10 flex-1 items-center justify-center rounded-md border-[1.5px] border-border-strong bg-bg-base text-[14px] font-semibold text-text-primary"
+              className="inline-flex h-10 flex-1 items-center justify-center rounded-md border-[1.5px] border-border-strong bg-bg-surface text-[14px] font-semibold text-text-primary"
             >
               {strings.cancel}
             </ModalClose>

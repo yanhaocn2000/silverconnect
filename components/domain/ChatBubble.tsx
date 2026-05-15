@@ -23,7 +23,7 @@ export function ChatBubble({
           "px-3.5 py-2.5 text-[15px] leading-snug",
           me
             ? "rounded-[18px_18px_4px_18px] bg-brand text-white"
-            : "rounded-[4px_18px_18px_18px] border border-border bg-bg-base text-text-primary"
+            : "rounded-[4px_18px_18px_18px] border border-border bg-bg-surface text-text-primary"
         )}
       >
         {children}

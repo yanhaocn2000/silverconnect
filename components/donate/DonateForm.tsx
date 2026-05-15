@@ -89,7 +89,7 @@ export function DonateForm({ locale }: { locale: DonateLocale }) {
   }
 
   return (
-    <div className="rounded-lg bg-bg-base border border-border shadow-card p-6 md:p-10">
+    <div className="rounded-lg bg-bg-surface border border-border shadow-card p-6 md:p-10">
       {/* once/monthly toggle */}
       <div className="inline-flex p-1 rounded-full bg-bg-surface-2 border border-border text-sm font-semibold">
         <ModeBtn active={mode === "once"} onClick={() => setMode("once")}>
@@ -111,7 +111,7 @@ export function DonateForm({ locale }: { locale: DonateLocale }) {
               aria-pressed={active}
               onClick={() => pickPreset(v)}
               className={cn(
-                "min-h-touch-btn rounded-md border-2 bg-bg-base font-bold text-[20px] transition",
+                "min-h-touch-btn rounded-md border-2 bg-bg-surface font-bold text-[20px] transition",
                 active
                   ? "border-brand text-brand bg-brand-soft"
                   : "border-border hover:border-brand",
@@ -136,7 +136,7 @@ export function DonateForm({ locale }: { locale: DonateLocale }) {
         <label htmlFor="custom" className="text-sm font-semibold text-text-secondary">
           {t("customLabel")}
         </label>
-        <div className="mt-2 flex items-center rounded-md border-2 border-border focus-within:border-brand bg-bg-base overflow-hidden">
+        <div className="mt-2 flex items-center rounded-md border-2 border-border focus-within:border-brand bg-bg-surface overflow-hidden">
           <span className="pl-4 text-text-tertiary font-bold">$</span>
           <input
             id="custom"
@@ -175,7 +175,7 @@ export function DonateForm({ locale }: { locale: DonateLocale }) {
             placeholder={t("messagePlaceholder")}
             value={message}
             onChange={(e) => setMessage(e.target.value)}
-            className="mt-2 w-full px-4 py-3 rounded-md border-2 border-border focus:border-brand focus:outline-none bg-bg-base"
+            className="mt-2 w-full px-4 py-3 rounded-md border-2 border-border focus:border-brand focus:outline-none bg-bg-surface"
           />
         </div>
         <label className="inline-flex items-center gap-2 text-sm text-text-secondary select-none">
@@ -216,7 +216,7 @@ export function DonateForm({ locale }: { locale: DonateLocale }) {
           {["Stripe", "PayPal", "WeChat Pay", "Alipay"].map((p) => (
             <div
               key={p}
-              className="px-3 py-1.5 rounded-md border border-border bg-bg-base text-sm font-semibold"
+              className="px-3 py-1.5 rounded-md border border-border bg-bg-surface text-sm font-semibold"
             >
               {p}
             </div>
@@ -281,7 +281,7 @@ function Field({
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
-        className="mt-2 w-full min-h-touch px-4 rounded-md border-2 border-border focus:border-brand focus:outline-none bg-bg-base"
+        className="mt-2 w-full min-h-touch px-4 rounded-md border-2 border-border focus:border-brand focus:outline-none bg-bg-surface"
       />
     </div>
   );
