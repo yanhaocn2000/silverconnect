@@ -14,7 +14,11 @@ import { campaigns } from "../lib/db/schema/donations";
 
 const url = process.env.DATABASE_URL;
 if (!url) throw new Error("DATABASE_URL not set");
-const client = postgres(url, { ssl: "require", prepare: false, max: 1 });
+const client = postgres(url, {
+  ssl: process.env.DATABASE_SSL === "disable" ? false : "require",
+  prepare: false,
+  max: 1,
+});
 const db = drizzle(client);
 
 async function main() {
