@@ -255,7 +255,7 @@ export default async function FeedbackPage({
               {[1, 2, 3, 4, 5].map((n) => (
                 <label
                   key={n}
-                  className="flex h-16 w-16 cursor-pointer items-center justify-center rounded-md border-[1.5px] border-border-strong bg-bg-surface hover:border-brand has-[:checked]:border-brand has-[:checked]:bg-brand-soft"
+                  className="flex aspect-square flex-1 cursor-pointer items-center justify-center rounded-md border-[1.5px] border-border-strong bg-bg-surface hover:border-brand has-[:checked]:border-brand has-[:checked]:bg-brand-soft"
                 >
                   <input
                     type="radio"

@@ -352,7 +352,7 @@
     },
     "cta": {
       "pending": "立即付款",
-      "confirmed": "改約",
+      "confirmed": "聯絡服務人員",
       "inProgress": "聯絡服務人員",
       "awaitingConfirm": "確認完成 · 釋放押金",
       "completed": "撰寫評價",

@@ -352,8 +352,8 @@
     },
     "cta": {
       "pending": "立即支付",
-      "confirmed": "改约",
-      "inProgress": "联系 Provider",
+      "confirmed": "联系服务者",
+      "inProgress": "联系服务者",
       "awaitingConfirm": "确认完成 · 释放押金",
       "completed": "写评价",
       "cancelledFull": "查看退款详情",

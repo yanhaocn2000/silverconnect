@@ -352,7 +352,7 @@
     },
     "cta": {
       "pending": "Pay now",
-      "confirmed": "Reschedule",
+      "confirmed": "Contact provider",
       "inProgress": "Contact provider",
       "awaitingConfirm": "Confirm completion",
       "completed": "Leave review",

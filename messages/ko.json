@@ -352,7 +352,7 @@
     },
     "cta": {
       "pending": "지금 결제",
-      "confirmed": "일정 변경",
+      "confirmed": "도우미에게 연락",
       "inProgress": "도우미에게 연락",
       "awaitingConfirm": "완료 확인",
       "completed": "리뷰 작성",

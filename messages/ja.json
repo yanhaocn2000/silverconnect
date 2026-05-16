@@ -352,7 +352,7 @@
     },
     "cta": {
       "pending": "今すぐお支払い",
-      "confirmed": "予定変更",
+      "confirmed": "スタッフに連絡",
       "inProgress": "スタッフに連絡",
       "awaitingConfirm": "完了を確認",
       "completed": "レビューを書く",
