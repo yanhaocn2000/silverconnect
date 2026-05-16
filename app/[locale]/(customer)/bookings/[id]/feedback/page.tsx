@@ -75,10 +75,11 @@ async function feedbackAction(formData: FormData) {
   }
 
   // Persist attached photos first so we fail fast on bad mime / size
-  // before touching the reviews row.
+  // before touching the reviews row. Capped at 5 to match the form hint.
   const photoFiles = formData
     .getAll("photos")
-    .filter((v): v is File => v instanceof File && v.size > 0);
+    .filter((v): v is File => v instanceof File && v.size > 0)
+    .slice(0, 5);
   const photoUrls: string[] = [];
   for (const f of photoFiles) {
     const r = await saveUpload(f, `review/${b.id}`);
