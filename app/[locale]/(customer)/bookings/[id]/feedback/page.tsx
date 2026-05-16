@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import { setRequestLocale, getTranslations } from "next-intl/server";
 import { redirect as nextRedirect, notFound } from "next/navigation";
 import { eq, and } from "drizzle-orm";
@@ -15,6 +16,7 @@ import { users } from "@/lib/db/schema/users";
 import { services } from "@/lib/db/schema/services";
 import { reviews } from "@/lib/db/schema/reviews";
 import { getCurrentUser } from "@/lib/auth/server";
+import { saveUpload } from "@/lib/upload/local";
 
 const TAG_KEYS = [
   "tagPunctual",
@@ -23,6 +25,11 @@ const TAG_KEYS = [
   "tagFriendly",
   "tagFair",
 ] as const;
+
+/** Checkbox `value`s the form posts — kept in sync with TAG_KEYS. */
+const TAG_VALUES: readonly string[] = TAG_KEYS.map((k) =>
+  k.replace(/^tag/, "").toLowerCase(),
+);
 
 function initialsOf(name: string | null, fallback: string): string {
   const src = (name || fallback).trim();
@@ -37,6 +44,10 @@ async function feedbackAction(formData: FormData) {
   const id = String(formData.get("id") ?? "");
   const ratingRaw = Number(formData.get("rating") ?? 0);
   const comment = String(formData.get("comment") ?? "").trim();
+  const tags = formData
+    .getAll("tags")
+    .map(String)
+    .filter((tg) => TAG_VALUES.includes(tg));
   const me = await getCurrentUser();
   if (!me) nextRedirect(`/${locale}/auth/login`);
   if (!id) nextRedirect(`/${locale}/bookings`);
@@ -63,6 +74,20 @@ async function feedbackAction(formData: FormData) {
     nextRedirect(`/${locale}/bookings/${id}/feedback?error=no_provider`);
   }
 
+  // Persist attached photos first so we fail fast on bad mime / size
+  // before touching the reviews row.
+  const photoFiles = formData
+    .getAll("photos")
+    .filter((v): v is File => v instanceof File && v.size > 0);
+  const photoUrls: string[] = [];
+  for (const f of photoFiles) {
+    const r = await saveUpload(f, `review/${b.id}`);
+    if ("error" in r) {
+      nextRedirect(`/${locale}/bookings/${id}/feedback?error=photo`);
+    }
+    photoUrls.push(r.url);
+  }
+
   try {
     await db.transaction(async (tx) => {
       await tx.insert(reviews).values({
@@ -71,6 +96,8 @@ async function feedbackAction(formData: FormData) {
         providerId: b.providerId!,
         rating: Math.round(ratingRaw),
         comment: comment || null,
+        tags: tags.length ? tags : null,
+        photos: photoUrls.length ? photoUrls : null,
       });
       // Submitting feedback releases held funds: completed → released.
       // The button copy ("Submit & release payment") commits to this.
@@ -202,9 +229,11 @@ export default async function FeedbackPage({
         ? "You can only review a completed booking."
         : error === "duplicate"
           ? "You've already reviewed this booking."
-          : error === "server"
-            ? "Something went wrong. Please retry."
-            : null;
+          : error === "photo"
+            ? "A photo couldn't be uploaded — use JPG/PNG under 10 MB."
+            : error === "server"
+              ? "Something went wrong. Please retry."
+              : null;
 
   return (
     <>
@@ -232,57 +261,53 @@ export default async function FeedbackPage({
           </div>
         )}
 
-        <section className="mt-5 flex items-center gap-3 rounded-md border border-border bg-bg-surface p-4">
-          <ProviderAvatar size={56} hue={0} initials={initials} />
-          <div>
-            <p className="text-[16px] font-bold">{providerName}</p>
-            <p className="text-[13px] text-text-tertiary">{serviceLabel}</p>
-          </div>
-        </section>
-
         <form className="mt-6 flex flex-col gap-6" action={feedbackAction}>
           <input type="hidden" name="locale" value={locale} />
           <input type="hidden" name="id" value={id} />
-          <fieldset>
-            <legend className="text-[16px] font-bold text-text-primary">
-              {t("rating")}
-            </legend>
+
+          {/* Provider + star rating share one centered card (design artboard
+              "服务反馈"): avatar, service label, then a plain gold-star row. */}
+          <div className="flex flex-col items-center gap-3 rounded-lg border border-border bg-brand-soft p-5 text-center">
+            <ProviderAvatar size={56} hue={0} initials={initials} />
+            <div>
+              <p className="text-[16px] font-bold">{providerName}</p>
+              <p className="text-[13px] text-text-tertiary">{serviceLabel}</p>
+            </div>
+            {/* row-reverse so a `peer-checked` on star N also fills the
+                lower-value stars that follow it in the DOM — cumulative fill. */}
             <div
-              className="mt-3 flex gap-2"
               role="radiogroup"
               aria-required="true"
+              aria-label={t("rating")}
+              className="flex flex-row-reverse justify-center gap-1.5"
             >
-              {[1, 2, 3, 4, 5].map((n) => (
-                <label
-                  key={n}
-                  className="flex aspect-square flex-1 cursor-pointer items-center justify-center rounded-md border-[1.5px] border-border-strong bg-bg-surface hover:border-brand has-[:checked]:border-brand has-[:checked]:bg-brand-soft"
-                >
+              {[5, 4, 3, 2, 1].map((n) => (
+                <Fragment key={n}>
                   <input
                     type="radio"
+                    id={`rating-${n}`}
                     name="rating"
                     value={n}
                     required
-                    className="peer sr-only"
                     defaultChecked={n === 5}
+                    className="peer sr-only"
                   />
-                  <Star
-                    size={32}
-                    className="text-text-tertiary peer-checked:fill-[var(--brand-accent)] peer-checked:text-[var(--brand-accent)]"
+                  <label
+                    htmlFor={`rating-${n}`}
                     aria-label={`${n} star${n === 1 ? "" : "s"}`}
-                  />
-                </label>
+                    className="cursor-pointer text-text-tertiary transition-colors peer-checked:text-[var(--brand-accent)] peer-checked:[&_svg]:fill-[var(--brand-accent)]"
+                  >
+                    <Star size={36} aria-hidden />
+                  </label>
+                </Fragment>
               ))}
             </div>
-          </fieldset>
+          </div>
 
           <fieldset>
             <legend className="text-[16px] font-bold text-text-primary">
               {t("tags")}
             </legend>
-            <p className="mt-1 text-[12px] text-text-tertiary">
-              {/* Tag pills render but submission is currently dropped — schema
-                  has no tags column yet. Shipped with reviews as visual hint. */}
-            </p>
             <div className="mt-3 flex flex-wrap gap-2">
               {TAG_KEYS.map((k) => (
                 <label
@@ -321,9 +346,7 @@ export default async function FeedbackPage({
               type="file"
               accept="image/jpeg,image/png"
               multiple
-              disabled
-              title="Photo upload ships with file storage"
-              className="block w-full text-[14px] text-text-secondary opacity-50 file:mr-3 file:inline-flex file:h-12 file:items-center file:rounded-md file:border-[1.5px] file:border-border-strong file:bg-bg-surface file:px-4 file:text-[14px] file:font-semibold file:text-text-primary"
+              className="block w-full text-[14px] text-text-secondary file:mr-3 file:inline-flex file:h-12 file:items-center file:rounded-md file:border-[1.5px] file:border-border-strong file:bg-bg-surface file:px-4 file:text-[14px] file:font-semibold file:text-text-primary"
             />
             <p className="mt-1.5 flex items-center gap-1 text-[13px] text-text-tertiary">
               <Camera size={14} aria-hidden /> {t("photosHint")}

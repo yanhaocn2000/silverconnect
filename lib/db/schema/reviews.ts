@@ -28,6 +28,10 @@ export const reviews = pgTable(
     /** 1..5 inclusive — enforced at the application layer. */
     rating: integer("rating").notNull(),
     comment: text("comment"),
+    /** Optional praise tags chosen by the customer (punctual, professional, …). */
+    tags: text("tags").array(),
+    /** Optional photo URLs (/uploads/review/…) attached by the customer. */
+    photos: text("photos").array(),
     status: reviewStatusEnum("status").notNull().default("published"),
     createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
     updatedAt: timestamp("updated_at", { withTimezone: true }).defaultNow().notNull(),

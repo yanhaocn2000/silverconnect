@@ -1,6 +1,6 @@
 import { setRequestLocale, getTranslations } from "next-intl/server";
 import { eq, and, or, ilike, sql, inArray } from "drizzle-orm";
-import { Search as SearchIcon } from "lucide-react";
+import { Search as SearchIcon, ChevronRight } from "lucide-react";
 import { Header } from "@/components/layout/Header";
 import { Link } from "@/i18n/navigation";
 import { ProviderAvatar } from "@/components/domain/ProviderAvatar";
@@ -322,6 +322,11 @@ export default async function SearchPage({
                         )}
                       </p>
                     </div>
+                    <ChevronRight
+                      size={18}
+                      className="shrink-0 text-text-tertiary"
+                      aria-hidden
+                    />
                   </Link>
                 </li>
               ))}
@@ -359,9 +364,16 @@ export default async function SearchPage({
                 <li key={a.slug}>
                   <Link
                     href={`/help/${a.slug}`}
-                    className="block rounded-lg border border-border bg-bg-surface p-3 text-[14px] font-semibold text-text-primary"
+                    className="flex items-center gap-3 rounded-lg border border-border bg-bg-surface p-3 text-[14px] font-semibold text-text-primary"
                   >
-                    {isZh ? a.titleZh : a.titleEn}
+                    <span className="min-w-0 flex-1">
+                      {isZh ? a.titleZh : a.titleEn}
+                    </span>
+                    <ChevronRight
+                      size={18}
+                      className="shrink-0 text-text-tertiary"
+                      aria-hidden
+                    />
                   </Link>
                 </li>
               ))}

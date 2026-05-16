@@ -787,19 +787,6 @@
     "loginIpHint": "ログインは許可リストのIPに制限されています。",
     "loginLockHint": "5回失敗するとアカウントは15分ロックされます。",
     "overviewTitle": "概要",
-    "kpiNewOrders": "今日の新規注文",
-    "kpiOpenDisputes": "未解決の紛争",
-    "kpiPendingProviders": "保留中のスタッフ",
-    "kpiSafetyEvents": "安全イベント",
-    "kpiGmv": "GMV（週）",
-    "kpiAi": "AI解決率",
-    "alertWebhookLag": "Stripe Webhook遅延が5秒以上",
-    "alertPaymentFail": "支払い失敗率の上昇",
-    "alertSafetySpike": "安全イベントの急増（過去24時間）",
-    "quickLinks": "クイックリンク",
-    "reviewDisputes": "紛争を確認",
-    "reviewSafety": "安全イベントを確認",
-    "reviewProviders": "スタッフを承認",
     "disputesTitle": "紛争",
     "filterStatus": "ステータス",
     "filterCountry": "国",
@@ -909,7 +896,25 @@
     "navAi": "AI",
     "navSettings": "設定",
     "navReports": "レポート",
-    "alertSafetyOpen": "未解決の安全イベントを確認してください"
+    "overviewLive": "リアルタイム · 30秒ごと更新",
+    "statCustomers": "アクティブ顧客",
+    "statProviders": "認証済みワーカー",
+    "statGmv": "今週の取扱高",
+    "statFee": "プラットフォーム手数料",
+    "statCustomersHint": "今週予約",
+    "statProvidersHint": "審査待ち {pending}",
+    "statGmvHint": "GMV · GST込み",
+    "statFeeHint": "GMVの{pct}%",
+    "chartTitle": "注文量 · 24時間",
+    "attentionTitle": "要対応",
+    "attnDisputes": "未処理の紛争",
+    "attnSafety": "安全イベント",
+    "attnProviders": "審査待ちワーカー",
+    "attnReports": "通報されたレビュー",
+    "attnRefunds": "処理待ちの返金",
+    "topCategoriesTitle": "人気カテゴリ（今週）",
+    "recentEventsTitle": "最近のイベント",
+    "recentEventsEmpty": "表示できるデータがありません"
   },
   "family": {
     "title": "家族の共同管理",
@@ -1210,11 +1215,26 @@
       "block3Body": "$50 で高齢者一人に温かい訪問を一回。$250 で一世帯に1年間の緊急対応を。",
       "centerLabel": "直接支援",
       "items": [
-        { "label": "訪問による寄り添い", "pct": 45 },
-        { "label": "健康モニタリング & 緊急対応", "pct": 25 },
-        { "label": "ボランティア研修", "pct": 15 },
-        { "label": "プラットフォーム運用", "pct": 10 },
-        { "label": "管理費", "pct": 5 }
+        {
+          "label": "訪問による寄り添い",
+          "pct": 45
+        },
+        {
+          "label": "健康モニタリング & 緊急対応",
+          "pct": 25
+        },
+        {
+          "label": "ボランティア研修",
+          "pct": 15
+        },
+        {
+          "label": "プラットフォーム運用",
+          "pct": 10
+        },
+        {
+          "label": "管理費",
+          "pct": 5
+        }
       ],
       "footnote": "資金は第三者預託で管理し、年次で独立した会計事務所による監査を受けています。"
     },

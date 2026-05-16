@@ -1,7 +1,7 @@
 import { setRequestLocale, getTranslations } from "next-intl/server";
 import { redirect as nextRedirect } from "next/navigation";
 import { eq, and, gte, lt, asc, ne } from "drizzle-orm";
-import { ChevronRight, DollarSign } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 import { Header } from "@/components/layout/Header";
 import { Link } from "@/i18n/navigation";
 import { getCountry } from "@/components/domain/countryCookie";
@@ -131,36 +131,31 @@ export default async function ProviderWorkbenchPage({
           </div>
         )}
 
+        {/* Earnings card — teal gradient hero (design artboard "工作台"). */}
         <Link
           href="/provider/earnings"
-          className="mt-5 flex items-center gap-4 rounded-lg border border-border bg-bg-surface p-4"
+          className="mt-5 flex items-center gap-4 rounded-lg bg-gradient-to-br from-brand to-brand-ink p-5 text-white"
         >
-          <span
-            aria-hidden
-            className="flex h-12 w-12 shrink-0 items-center justify-center rounded-md bg-success-soft text-success"
-          >
-            <DollarSign size={22} />
-          </span>
           <div className="min-w-0 flex-1">
-            <p className="text-[14px] text-text-tertiary">{t("weekEarnings")}</p>
-            <p className="mt-0.5 text-[24px] font-extrabold tabular-nums">
+            <p className="text-[13px] text-white/75">{t("weekEarnings")}</p>
+            <p className="mt-1 text-[28px] font-extrabold tabular-nums">
               {priceCountry(country, heldEarnings + paidEarnings)}
             </p>
-            <p className="mt-1 text-[13px] text-text-secondary">
-              <span className="text-warning">{t("held")}</span>{" "}
+            <p className="mt-1.5 text-[13px] text-white/80">
+              {t("held")}{" "}
               <span className="tabular-nums font-semibold">
                 {priceCountry(country, heldEarnings)}
               </span>
-              <span className="mx-2 text-border-strong">·</span>
-              <span className="text-success">{t("paid")}</span>{" "}
+              <span className="mx-2 text-white/40">·</span>
+              {t("paid")}{" "}
               <span className="tabular-nums font-semibold">
                 {priceCountry(country, paidEarnings)}
               </span>
             </p>
           </div>
           <ChevronRight
-            size={20}
-            className="shrink-0 text-text-tertiary"
+            size={22}
+            className="shrink-0 text-white/70"
             aria-hidden
           />
         </Link>

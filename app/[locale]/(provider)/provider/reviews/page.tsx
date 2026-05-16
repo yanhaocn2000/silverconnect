@@ -70,6 +70,7 @@ export default async function ProviderReviewsPage({
   const country = await getCountry();
   const t = await getTranslations("provider");
   const tCommon = await getTranslations("common");
+  const tFeedback = await getTranslations("feedback");
 
   const filterRaw = Array.isArray(sp.stars) ? sp.stars[0] : sp.stars;
   const filter = filterRaw && /^[1-5]$/.test(filterRaw) ? Number(filterRaw) : 0;
@@ -92,6 +93,8 @@ export default async function ProviderReviewsPage({
       id: reviews.id,
       rating: reviews.rating,
       comment: reviews.comment,
+      tags: reviews.tags,
+      photos: reviews.photos,
       createdAt: reviews.createdAt,
       customerId: reviews.customerId,
       customerName: users.name,
@@ -271,6 +274,40 @@ export default async function ProviderReviewsPage({
                         <p className="mt-2 text-[14px] text-text-primary">
                           {r.comment}
                         </p>
+                      )}
+                      {r.photos && r.photos.length > 0 && (
+                        <ul className="mt-2 flex flex-wrap gap-2">
+                          {r.photos.map((src) => (
+                            <li key={src}>
+                              <a href={src} target="_blank" rel="noopener">
+                                {/* eslint-disable-next-line @next/next/no-img-element */}
+                                <img
+                                  src={src}
+                                  alt=""
+                                  className="h-20 w-20 rounded-md border border-border object-cover"
+                                />
+                              </a>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                      {r.tags && r.tags.length > 0 && (
+                        <ul className="mt-2 flex flex-wrap gap-1.5">
+                          {r.tags.map((tg) => (
+                            <li
+                              key={tg}
+                              className="inline-flex items-center rounded-pill border-[1.5px] border-brand bg-brand-soft px-3 py-1 text-[12px] font-semibold text-brand"
+                            >
+                              {tFeedback(
+                                ("tag" +
+                                  tg.charAt(0).toUpperCase() +
+                                  tg.slice(1)) as Parameters<
+                                  typeof tFeedback
+                                >[0],
+                              )}
+                            </li>
+                          ))}
+                        </ul>
                       )}
                     </div>
                   </div>

@@ -294,8 +294,8 @@ export default async function BookingNewPage({
                         )}{" "}
                         · {(s.durationMin / 60).toFixed(1)}h
                       </span>
-                      <span className="mt-0.5 block text-[14px] text-text-secondary tabular-nums">
-                        {s.code}
+                      <span className="mt-0.5 block text-[14px] uppercase tracking-wide text-text-tertiary">
+                        {s.code.replace(/_/g, "-")}
                       </span>
                     </span>
                     <span className="text-[18px] font-bold text-brand tabular-nums">
