@@ -321,6 +321,7 @@
     "step2Title": "选择时间",
     "step3Title": "选择地址",
     "step4Title": "确认并支付",
+    "stepCounter": "第 {step} 步 / {total}",
     "tabsUpcoming": "即将进行",
     "tabsPast": "历史",
     "tabsRecurring": "循环",

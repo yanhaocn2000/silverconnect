@@ -321,6 +321,7 @@
     "step2Title": "時間を選ぶ",
     "step3Title": "住所を選ぶ",
     "step4Title": "確認とお支払い",
+    "stepCounter": "ステップ {step} / {total}",
     "tabsUpcoming": "今後の予定",
     "tabsPast": "過去",
     "tabsRecurring": "定期",

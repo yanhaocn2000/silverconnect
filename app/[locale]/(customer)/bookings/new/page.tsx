@@ -255,6 +255,9 @@ export default async function BookingNewPage({
 
     return (
       <Wizard step={step} country={country} initials={me.initials}>
+        <p className="mb-1 text-[12px] font-semibold uppercase tracking-wide text-text-tertiary">
+          {t("stepCounter", { step: 1, total: 4 })}
+        </p>
         <h1 className="text-[22px] font-bold">{t("step1Title")}</h1>
         {error === "pickService" && (
           <Alert>{isZh ? "请选择一个服务" : "Pick a service"}</Alert>
@@ -356,6 +359,9 @@ export default async function BookingNewPage({
 
     return (
       <Wizard step={step} country={country} initials={me.initials}>
+        <p className="mb-1 text-[12px] font-semibold uppercase tracking-wide text-text-tertiary">
+          {t("stepCounter", { step: 2, total: 4 })}
+        </p>
         <h1 className="text-[22px] font-bold">{t("step2Title")}</h1>
         {error === "pick" && (
           <Alert>
@@ -457,6 +463,9 @@ export default async function BookingNewPage({
       .orderBy(asc(addresses.createdAt));
     return (
       <Wizard step={step} country={country} initials={me.initials}>
+        <p className="mb-1 text-[12px] font-semibold uppercase tracking-wide text-text-tertiary">
+          {t("stepCounter", { step: 3, total: 4 })}
+        </p>
         <h1 className="text-[22px] font-bold">{t("step3Title")}</h1>
         {error === "pickAddress" && (
           <Alert>{isZh ? "请选择一个地址" : "Pick an address"}</Alert>
@@ -582,6 +591,9 @@ export default async function BookingNewPage({
 
   return (
     <Wizard step={step} country={country} initials={me.initials}>
+      <p className="mb-1 text-[12px] font-semibold uppercase tracking-wide text-text-tertiary">
+        {t("stepCounter", { step: 4, total: 4 })}
+      </p>
       <h1 className="text-[22px] font-bold">{t("step4Title")}</h1>
       <section className="mt-4 rounded-lg border border-border bg-bg-surface p-4 text-[14px]">
         <Row

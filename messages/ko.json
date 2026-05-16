@@ -321,6 +321,7 @@
     "step2Title": "시간을 선택하세요",
     "step3Title": "주소를 선택하세요",
     "step4Title": "확인 및 결제",
+    "stepCounter": "{total}단계 중 {step}단계",
     "tabsUpcoming": "예정",
     "tabsPast": "지난 예약",
     "tabsRecurring": "정기",

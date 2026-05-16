@@ -321,6 +321,7 @@
     "step2Title": "選擇時間",
     "step3Title": "選擇地址",
     "step4Title": "確認並付款",
+    "stepCounter": "第 {step} 步 / {total}",
     "tabsUpcoming": "即將進行",
     "tabsPast": "歷史",
     "tabsRecurring": "週期",

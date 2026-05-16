@@ -321,6 +321,7 @@
     "step2Title": "Pick a time",
     "step3Title": "Pick an address",
     "step4Title": "Review & pay",
+    "stepCounter": "Step {step} of {total}",
     "tabsUpcoming": "Upcoming",
     "tabsPast": "Past",
     "tabsRecurring": "Recurring",
