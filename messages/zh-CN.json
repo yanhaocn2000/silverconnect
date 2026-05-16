@@ -787,19 +787,6 @@
     "loginIpHint": "登录受 IP 白名单限制。",
     "loginLockHint": "连续 5 次失败会锁定账号 15 分钟。",
     "overviewTitle": "总览",
-    "kpiNewOrders": "今日新订单",
-    "kpiOpenDisputes": "未处理争议",
-    "kpiPendingProviders": "待审师傅",
-    "kpiSafetyEvents": "安全事件",
-    "kpiGmv": "本周 GMV",
-    "kpiAi": "AI 化解率",
-    "alertWebhookLag": "Stripe webhook 延迟超过 5 秒",
-    "alertPaymentFail": "支付失败率异常",
-    "alertSafetySpike": "近 24 小时安全事件激增",
-    "quickLinks": "快捷入口",
-    "reviewDisputes": "处理争议",
-    "reviewSafety": "处理安全事件",
-    "reviewProviders": "审核师傅",
     "disputesTitle": "争议列表",
     "filterStatus": "状态",
     "filterCountry": "国家",
@@ -909,7 +896,25 @@
     "navAi": "AI",
     "navSettings": "系统设置",
     "navReports": "举报",
-    "alertSafetyOpen": "有安全事件待处理"
+    "overviewLive": "实时更新 · 每 30 秒",
+    "statCustomers": "活跃顾客",
+    "statProviders": "已认证服务者",
+    "statGmv": "本周成交额",
+    "statFee": "平台抽成",
+    "statCustomersHint": "本周下单",
+    "statProvidersHint": "待审 {pending}",
+    "statGmvHint": "GMV · 含 GST",
+    "statFeeHint": "占 GMV {pct}%",
+    "chartTitle": "订单量 · 24 小时",
+    "attentionTitle": "需要关注",
+    "attnDisputes": "纠纷未处理",
+    "attnSafety": "安全事件",
+    "attnProviders": "服务者待审",
+    "attnReports": "评价被举报",
+    "attnRefunds": "退款待执行",
+    "topCategoriesTitle": "热门品类（本周）",
+    "recentEventsTitle": "近期事件",
+    "recentEventsEmpty": "暂无数据"
   },
   "family": {
     "title": "家属共管",
@@ -1210,11 +1215,26 @@
       "block3Body": "每 $50 让一位长者多一次温暖陪伴；每 $250 让一户家庭获得全年紧急响应保护。",
       "centerLabel": "直接服务",
       "items": [
-        { "label": "上门陪伴服务", "pct": 45 },
-        { "label": "健康监测 & 紧急响应", "pct": 25 },
-        { "label": "志愿者培训", "pct": 15 },
-        { "label": "平台技术维护", "pct": 10 },
-        { "label": "行政成本", "pct": 5 }
+        {
+          "label": "上门陪伴服务",
+          "pct": 45
+        },
+        {
+          "label": "健康监测 & 紧急响应",
+          "pct": 25
+        },
+        {
+          "label": "志愿者培训",
+          "pct": 15
+        },
+        {
+          "label": "平台技术维护",
+          "pct": 10
+        },
+        {
+          "label": "行政成本",
+          "pct": 5
+        }
       ],
       "footnote": "资金由第三方托管，年度由独立会计事务所审计。"
     },

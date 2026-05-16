@@ -787,19 +787,6 @@
     "loginIpHint": "허용된 IP에서만 로그인할 수 있습니다.",
     "loginLockHint": "5회 실패 시 계정이 15분간 잠깁니다.",
     "overviewTitle": "개요",
-    "kpiNewOrders": "오늘 신규 주문",
-    "kpiOpenDisputes": "진행 중 분쟁",
-    "kpiPendingProviders": "대기 중 도우미",
-    "kpiSafetyEvents": "안전 사건",
-    "kpiGmv": "GMV (주간)",
-    "kpiAi": "AI 해결률",
-    "alertWebhookLag": "Stripe 웹훅 지연 5초 초과",
-    "alertPaymentFail": "결제 실패율 상승",
-    "alertSafetySpike": "안전 사건 급증 (최근 24시간)",
-    "quickLinks": "빠른 링크",
-    "reviewDisputes": "분쟁 검토",
-    "reviewSafety": "안전 사건 검토",
-    "reviewProviders": "도우미 승인",
     "disputesTitle": "분쟁",
     "filterStatus": "상태",
     "filterCountry": "국가",
@@ -909,7 +896,25 @@
     "navAi": "AI",
     "navSettings": "설정",
     "navReports": "신고",
-    "alertSafetyOpen": "검토가 필요한 안전 사건이 있습니다"
+    "overviewLive": "실시간 · 30초마다 갱신",
+    "statCustomers": "활성 고객",
+    "statProviders": "인증된 워커",
+    "statGmv": "이번 주 거래액",
+    "statFee": "플랫폼 수수료",
+    "statCustomersHint": "이번 주 예약",
+    "statProvidersHint": "심사 대기 {pending}",
+    "statGmvHint": "GMV · GST 포함",
+    "statFeeHint": "GMV의 {pct}%",
+    "chartTitle": "주문량 · 24시간",
+    "attentionTitle": "확인 필요",
+    "attnDisputes": "미처리 분쟁",
+    "attnSafety": "안전 이벤트",
+    "attnProviders": "심사 대기 워커",
+    "attnReports": "신고된 리뷰",
+    "attnRefunds": "처리 대기 환불",
+    "topCategoriesTitle": "인기 카테고리 (이번 주)",
+    "recentEventsTitle": "최근 이벤트",
+    "recentEventsEmpty": "표시할 데이터가 없습니다"
   },
   "family": {
     "title": "가족 공동 관리",
@@ -1210,11 +1215,26 @@
       "block3Body": "$50로 어르신 한 분께 따뜻한 방문 한 번을, $250로 한 가구에 1년간의 긴급 대응을.",
       "centerLabel": "직접 지원",
       "items": [
-        { "label": "방문 말벗 서비스", "pct": 45 },
-        { "label": "건강 모니터링 & 긴급 대응", "pct": 25 },
-        { "label": "자원봉사자 교육", "pct": 15 },
-        { "label": "플랫폼 운영", "pct": 10 },
-        { "label": "관리비", "pct": 5 }
+        {
+          "label": "방문 말벗 서비스",
+          "pct": 45
+        },
+        {
+          "label": "건강 모니터링 & 긴급 대응",
+          "pct": 25
+        },
+        {
+          "label": "자원봉사자 교육",
+          "pct": 15
+        },
+        {
+          "label": "플랫폼 운영",
+          "pct": 10
+        },
+        {
+          "label": "관리비",
+          "pct": 5
+        }
       ],
       "footnote": "기금은 제3자 예치로 관리되며, 매년 독립 회계법인의 감사를 받습니다."
     },

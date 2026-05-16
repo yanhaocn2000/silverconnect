@@ -787,19 +787,6 @@
     "loginIpHint": "Sign-ins are restricted to allow-listed IPs.",
     "loginLockHint": "5 failed attempts will lock the account for 15 minutes.",
     "overviewTitle": "Overview",
-    "kpiNewOrders": "New orders today",
-    "kpiOpenDisputes": "Open disputes",
-    "kpiPendingProviders": "Pending providers",
-    "kpiSafetyEvents": "Safety events",
-    "kpiGmv": "GMV (week)",
-    "kpiAi": "AI resolution",
-    "alertWebhookLag": "Stripe webhook latency above 5 s",
-    "alertPaymentFail": "Elevated payment failure rate",
-    "alertSafetySpike": "Safety event spike (last 24 h)",
-    "quickLinks": "Quick links",
-    "reviewDisputes": "Review disputes",
-    "reviewSafety": "Review safety events",
-    "reviewProviders": "Approve providers",
     "disputesTitle": "Disputes",
     "filterStatus": "Status",
     "filterCountry": "Country",
@@ -909,7 +896,25 @@
     "navAi": "AI",
     "navSettings": "Settings",
     "navReports": "Reports",
-    "alertSafetyOpen": "Open safety events need review"
+    "overviewLive": "Live · refreshes every 30s",
+    "statCustomers": "Active customers",
+    "statProviders": "Verified providers",
+    "statGmv": "GMV this week",
+    "statFee": "Platform commission",
+    "statCustomersHint": "Booked this week",
+    "statProvidersHint": "{pending} pending review",
+    "statGmvHint": "GMV · incl. GST",
+    "statFeeHint": "{pct}% of GMV",
+    "chartTitle": "Order volume · 24h",
+    "attentionTitle": "Needs attention",
+    "attnDisputes": "Open disputes",
+    "attnSafety": "Safety events",
+    "attnProviders": "Providers awaiting review",
+    "attnReports": "Reported reviews",
+    "attnRefunds": "Refunds to process",
+    "topCategoriesTitle": "Top categories this week",
+    "recentEventsTitle": "Recent events",
+    "recentEventsEmpty": "Nothing to show yet"
   },
   "family": {
     "title": "Family co-management",
@@ -1210,11 +1215,26 @@
       "block3Body": "Every $50 buys one warm visit; every $250 covers a full year of emergency response for one household.",
       "centerLabel": "direct service",
       "items": [
-        { "label": "In-home companionship", "pct": 45 },
-        { "label": "Health monitoring & emergency response", "pct": 25 },
-        { "label": "Volunteer training", "pct": 15 },
-        { "label": "Platform & tech", "pct": 10 },
-        { "label": "Operations", "pct": 5 }
+        {
+          "label": "In-home companionship",
+          "pct": 45
+        },
+        {
+          "label": "Health monitoring & emergency response",
+          "pct": 25
+        },
+        {
+          "label": "Volunteer training",
+          "pct": 15
+        },
+        {
+          "label": "Platform & tech",
+          "pct": 10
+        },
+        {
+          "label": "Operations",
+          "pct": 5
+        }
       ],
       "footnote": "Funds held in escrow; audited annually by an independent firm."
     },

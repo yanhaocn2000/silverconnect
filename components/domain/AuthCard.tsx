@@ -54,7 +54,7 @@ export function AuthCard({
             {title}
           </h1>
           {subtitle && (
-            <p className="mt-1.5 max-w-[420px] text-[15px] text-text-secondary md:text-body">
+            <p className="mt-1.5 max-w-[420px] text-[15px] text-text-secondary md:max-w-[520px] md:text-body">
               {subtitle}
             </p>
           )}

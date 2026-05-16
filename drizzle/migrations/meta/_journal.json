@@ -57,6 +57,20 @@
       "when": 1778499238785,
       "tag": "0007_remarkable_ender_wiggin",
       "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "7",
+      "when": 1778914629869,
+      "tag": "0008_solid_chamber",
+      "breakpoints": true
+    },
+    {
+      "idx": 9,
+      "version": "7",
+      "when": 1778915144457,
+      "tag": "0009_overconfident_mikhail_rasputin",
+      "breakpoints": true
     }
   ]
 }

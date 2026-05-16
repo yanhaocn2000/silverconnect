@@ -787,19 +787,6 @@
     "loginIpHint": "登入受 IP 白名單限制。",
     "loginLockHint": "連續 5 次失敗將鎖定帳號 15 分鐘。",
     "overviewTitle": "總覽",
-    "kpiNewOrders": "今日新訂單",
-    "kpiOpenDisputes": "未處理爭議",
-    "kpiPendingProviders": "待審服務人員",
-    "kpiSafetyEvents": "安全事件",
-    "kpiGmv": "本週 GMV",
-    "kpiAi": "AI 化解率",
-    "alertWebhookLag": "Stripe webhook 延遲超過 5 秒",
-    "alertPaymentFail": "付款失敗率異常",
-    "alertSafetySpike": "近 24 小時安全事件激增",
-    "quickLinks": "快捷入口",
-    "reviewDisputes": "處理爭議",
-    "reviewSafety": "處理安全事件",
-    "reviewProviders": "審核服務人員",
     "disputesTitle": "爭議列表",
     "filterStatus": "狀態",
     "filterCountry": "國家／地區",
@@ -909,7 +896,25 @@
     "navAi": "AI",
     "navSettings": "系統設定",
     "navReports": "檢舉",
-    "alertSafetyOpen": "有安全事件待處理"
+    "overviewLive": "即時更新 · 每 30 秒",
+    "statCustomers": "活躍顧客",
+    "statProviders": "已認證服務者",
+    "statGmv": "本週成交額",
+    "statFee": "平台抽成",
+    "statCustomersHint": "本週下單",
+    "statProvidersHint": "待審 {pending}",
+    "statGmvHint": "GMV · 含 GST",
+    "statFeeHint": "佔 GMV {pct}%",
+    "chartTitle": "訂單量 · 24 小時",
+    "attentionTitle": "需要關注",
+    "attnDisputes": "糾紛未處理",
+    "attnSafety": "安全事件",
+    "attnProviders": "服務者待審",
+    "attnReports": "評價被檢舉",
+    "attnRefunds": "退款待執行",
+    "topCategoriesTitle": "熱門品類（本週）",
+    "recentEventsTitle": "近期事件",
+    "recentEventsEmpty": "暫無資料"
   },
   "family": {
     "title": "家屬共管",
@@ -1210,11 +1215,26 @@
       "block3Body": "每 $50 讓一位長者多一次溫暖陪伴；每 $250 讓一戶家庭獲得全年緊急應變保護。",
       "centerLabel": "直接服務",
       "items": [
-        { "label": "到府陪伴服務", "pct": 45 },
-        { "label": "健康監測 & 緊急應變", "pct": 25 },
-        { "label": "志工培訓", "pct": 15 },
-        { "label": "平台技術維護", "pct": 10 },
-        { "label": "行政成本", "pct": 5 }
+        {
+          "label": "到府陪伴服務",
+          "pct": 45
+        },
+        {
+          "label": "健康監測 & 緊急應變",
+          "pct": 25
+        },
+        {
+          "label": "志工培訓",
+          "pct": 15
+        },
+        {
+          "label": "平台技術維護",
+          "pct": 10
+        },
+        {
+          "label": "行政成本",
+          "pct": 5
+        }
       ],
       "footnote": "資金由第三方託管，年度由獨立會計師事務所審計。"
     },

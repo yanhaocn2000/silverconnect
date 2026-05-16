@@ -349,9 +349,12 @@ export default async function BookingDetailPage({
             />
             <div className="flex-1">
               <p className="text-[17px] font-bold">{dispName}</p>
-              <p className="text-[13px] text-text-tertiary">
-                {row.serviceCode || row.serviceCategory || "—"} ·{" "}
-                {Math.round(row.durationMin / 60 * 10) / 10}h
+              <p className="text-[13px] uppercase tracking-wide text-text-tertiary">
+                {(row.serviceCode || row.serviceCategory || "—").replace(
+                  /_/g,
+                  "-",
+                )}{" "}
+                · {Math.round(row.durationMin / 60 * 10) / 10}h
               </p>
             </div>
           </div>
